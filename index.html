@@ -47,7 +47,7 @@
   /* ---------- Torch light + custom cursor ---------- */
   #glow{
     position:fixed;top:0;left:0;width:640px;height:640px;border-radius:50%;
-    background:radial-gradient(circle, rgba(139,90,43,.22) 0%, rgba(139,90,43,.09) 38%, rgba(139,90,43,0) 70%);
+    background:radial-gradient(circle, rgba(169,116,63,.30) 0%, rgba(169,116,63,.13) 38%, rgba(169,116,63,0) 70%);
     pointer-events:none;z-index:5;transform:translate(-50%,-50%);
     transition:opacity .3s ease;opacity:0;
     mix-blend-mode:screen;
@@ -56,21 +56,24 @@
   body.glow-on{cursor:none;}
   body.glow-on a, body.glow-on button{cursor:none;}
   .cursor-dot{
-    position:fixed;top:0;left:0;width:8px;height:8px;border-radius:50%;
+    position:fixed;top:0;left:0;width:10px;height:10px;border-radius:50%;
     background:var(--brass-light);pointer-events:none;z-index:1001;
-    transform:translate(-50%,-50%);transition:opacity .3s ease;opacity:0;
+    transform:translate(-50%,-50%);transition:opacity .3s ease, transform .2s ease;opacity:0;
+    box-shadow:0 0 12px rgba(201,148,96,.7);
   }
   .cursor-ring{
-    position:fixed;top:0;left:0;width:46px;height:46px;border-radius:50%;
-    border:1px solid rgba(243,239,228,.55);pointer-events:none;z-index:1001;
+    position:fixed;top:0;left:0;width:52px;height:52px;border-radius:50%;
+    border:1px solid var(--brass-light);pointer-events:none;z-index:1001;
     transform:translate(-50%,-50%);
     transition:width .25s ease, height .25s ease, border-color .25s ease, opacity .3s ease, background .25s ease;
     opacity:0;
   }
   body.glow-on .cursor-dot,body.glow-on .cursor-ring{opacity:1;}
   .cursor-ring.hover{
-    width:60px;height:60px;border-color:#ffffff;background:rgba(255,255,255,.14);
+    width:68px;height:68px;border-color:#ffffff;background:rgba(255,255,255,.16);
   }
+  .cursor-ring.hover ~ .cursor-dot,
+  body.glow-on .cursor-dot.hover{transform:translate(-50%,-50%) scale(0);}
   @media(max-width:900px){#glow,.cursor-dot,.cursor-ring{display:none;}body.glow-on{cursor:auto;}}
 
   /* ---------- Intro splash ---------- */
@@ -738,8 +741,8 @@
   }, {threshold:0.15});
   revealEls.forEach(el=>io.observe(el));
 
-  // custom circular cursor + brown torch light — only on fine-pointer devices
-  if(window.matchMedia('(pointer: fine)').matches){
+  // custom circular cursor + brown torch light — only on desktop-sized, mouse-driven screens
+  if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
     document.body.classList.add('glow-on');
     const glow = document.getElementById('glow');
     const dot = document.getElementById('cursorDot');
@@ -756,8 +759,8 @@
     });
 
     function animateRing(){
-      ringX += (targetX - ringX) * 0.18;
-      ringY += (targetY - ringY) * 0.18;
+      ringX += (targetX - ringX) * 0.22;
+      ringY += (targetY - ringY) * 0.22;
       ring.style.left = ringX + 'px';
       ring.style.top = ringY + 'px';
       requestAnimationFrame(animateRing);
@@ -765,8 +768,8 @@
     animateRing();
 
     document.querySelectorAll('a, button').forEach(el=>{
-      el.addEventListener('mouseenter', ()=>ring.classList.add('hover'));
-      el.addEventListener('mouseleave', ()=>ring.classList.remove('hover'));
+      el.addEventListener('mouseenter', ()=>{ring.classList.add('hover'); dot.classList.add('hover');});
+      el.addEventListener('mouseleave', ()=>{ring.classList.remove('hover'); dot.classList.remove('hover');});
     });
   }
 </script>
