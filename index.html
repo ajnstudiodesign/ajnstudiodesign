@@ -4,12 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AJN Studio — Interior &amp; Architecture Design</title>
-<link rel="icon" href="images/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
-<link rel="icon" type="image/png" sizes="48x48" href="images/favicon-48.png">
-<link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
-<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -223,21 +217,22 @@
     background:var(--bg);padding:120px 0 100px;
   }
   .intro-grid{
-    display:grid;grid-template-columns:1fr 1fr 1fr 1.1fr;gap:22px;align-items:center;
+    display:flex;justify-content:center;text-align:center;
   }
-  .intro-grid img{height:340px;width:100%;object-fit:cover;filter:grayscale(.2) brightness(.9);transition:transform .6s ease, filter .6s ease;}
-  .intro-grid a{overflow:hidden;display:block;}
-  .intro-grid a:hover img{transform:scale(1.07);filter:grayscale(0) brightness(1);}
-  .intro-grid img:nth-child(2){height:400px;align-self:end;}
-  .intro-text .kicker{font-size:12px;letter-spacing:.14em;color:var(--brass);margin-bottom:18px;}
-  .intro-text h2{font-size:clamp(28px,3vw,38px);line-height:1.15;font-weight:450;color:var(--ivory);}
-  @media(max-width:1024px){
-    .intro-grid{grid-template-columns:1fr 1fr;}
-    .intro-text{grid-column:1/-1;order:-1;margin-bottom:10px;}
+  .intro-statement h3{
+    font-family:'Jost',sans-serif;
+    font-weight:500;
+    text-transform:uppercase;
+    font-size:clamp(32px,4.6vw,60px);
+    line-height:1.1;
+    letter-spacing:.005em;
+    color:var(--ivory);
+  }
+  .intro-statement h3 span{
+    color:var(--brass-light);
   }
   @media(max-width:600px){
-    .intro-grid{grid-template-columns:1fr;}
-    .intro-grid img,.intro-grid img:nth-child(2){height:280px;align-self:auto;}
+    .intro-statement h3{font-size:clamp(28px,8vw,40px);}
   }
 
   /* ---------- Projects intro ---------- */
@@ -452,13 +447,9 @@
 <!-- INTRO -->
 <section class="intro-sec">
   <div class="wrap intro-grid">
-    <div class="intro-text">
-      <div class="kicker">Since 2016</div>
-      <h2>Spaces designed to feel inevitable, never decorated.</h2>
+    <div class="intro-statement">
+      <h3>Visualizing<br><span>architecture</span><br>before it exists.</h3>
     </div>
-    <a href="#projects"><img src="https://images.unsplash.com/photo-1581784878214-8d5596b98a01?auto=format&fit=crop&w=700&q=80" alt="Interior detail, brass and stone"></a>
-    <a href="#projects"><img src="https://images.unsplash.com/photo-1760260864042-bdf1a0443aaf?auto=format&fit=crop&w=700&q=80" alt="Courtyard with palm shadow"></a>
-    <a href="#projects"><img src="https://images.unsplash.com/photo-1742422055779-1c180ba9b501?auto=format&fit=crop&w=700&q=80" alt="Hallway with natural light"></a>
   </div>
 </section>
 
