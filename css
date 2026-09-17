@@ -1,0 +1,8 @@
+.svc-step{
+  flex:0 0 auto;width:25%;min-width:170px;padding-right:1.8rem;
+  cursor:pointer;background:none;border:none;text-align:center;
+  font-family:'Jost',sans-serif;color:inherit;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  opacity:0;animation:svcRise .7s cubic-bezier(.22,1,.36,1) forwards;
+  transition:width .6s cubic-bezier(.22,1,.36,1);
+}
