@@ -255,12 +255,12 @@
     max-width:520px;margin:0 auto 70px;color:rgba(243,239,228,.6);font-weight:300;font-size:16px;line-height:1.7;
   }
 
-  .svc-rail{position:relative;border-top:1px solid var(--line);text-align:left;}
+  .svc-rail{position:relative;border-top:1px solid var(--line);text-align:center;}
   .svc-indicator{
     position:absolute;top:-1px;left:0;height:2px;width:0;background:var(--brass);
     transition:left .6s cubic-bezier(.22,1,.36,1), width .6s cubic-bezier(.22,1,.36,1);
   }
-  .svc-steps{display:flex;overflow-x:auto;scrollbar-width:none;padding-top:2.6rem;}
+  .svc-steps{display:flex;justify-content:center;overflow-x:auto;scrollbar-width:none;padding-top:2.6rem;}
   .svc-steps::-webkit-scrollbar{display:none;}
 
   @keyframes svcRise{
@@ -270,9 +270,9 @@
 
   .svc-step{
     flex:0 0 auto;width:25%;min-width:170px;padding-right:1.8rem;
-    cursor:pointer;background:none;border:none;text-align:left;
+    cursor:pointer;background:none;border:none;text-align:center;
     font-family:'Jost',sans-serif;color:inherit;
-    display:flex;flex-direction:column;justify-content:flex-start;
+    display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
     opacity:0;animation:svcRise .7s cubic-bezier(.22,1,.36,1) forwards;
     transition:width .6s cubic-bezier(.22,1,.36,1);
   }
@@ -283,7 +283,7 @@
   .svc-step.active{width:38%;}
 
   .svc-icon{
-    width:44px;height:44px;margin-bottom:1.2rem;color:var(--stone-dim);
+    width:44px;height:44px;margin:0 auto 1.2rem;color:var(--stone-dim);
     transition:color .5s cubic-bezier(.22,1,.36,1), transform .5s cubic-bezier(.22,1,.36,1);
   }
   .svc-icon svg{width:100%;height:100%;display:block;}
@@ -323,7 +323,8 @@
   .svc-step.active .svc-icon{transform:translateY(-3px) scale(1.06);}
 
   .svc-detail{
-    max-width:30ch;margin-top:1.4rem;opacity:0;max-height:0;transform:translateY(-6px);overflow:hidden;
+    max-width:30ch;margin:1.4rem auto 0;opacity:0;max-height:0;transform:translateY(-6px);overflow:hidden;
+    text-align:center;
     transition:opacity .5s cubic-bezier(.22,1,.36,1) .08s, max-height .6s cubic-bezier(.22,1,.36,1), transform .5s cubic-bezier(.22,1,.36,1) .08s;
   }
   .svc-step.active .svc-detail{opacity:1;max-height:14rem;transform:translateY(0);}
@@ -486,9 +487,9 @@
     <nav id="mainNav">
       <ul>
         <li><a href="#home" class="active">Home</a></li>
-        <li><a href="projects.html">Projects</a></li>
+        <li><a href="#projects">Projects</a></li>
         <li><a href="#approach">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
     <div class="nav-right">
