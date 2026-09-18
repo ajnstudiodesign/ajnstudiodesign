@@ -857,14 +857,22 @@
     if(track) initAutoScroll(wrap, track, 0.6);
   });
 
-  // services scroll-reveal (blackmonk boxes) — open on scroll in, close on scroll out
+  // services boxes — open on mouse hover, and hovering one closes the others
   const bmItems = document.querySelectorAll('.bm-item');
-  const bmIo = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      entry.target.classList.toggle('active', entry.isIntersecting);
+  bmItems.forEach(item => {
+    item.addEventListener('mouseenter', ()=>{
+      bmItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
     });
-  }, { threshold: 0.45 });
-  bmItems.forEach(item => bmIo.observe(item));
+    item.addEventListener('mouseleave', ()=>{
+      item.classList.remove('active');
+    });
+    // touch fallback: tap opens this one and closes the rest
+    item.addEventListener('touchstart', ()=>{
+      bmItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+    }, {passive:true});
+  });
 
   // reveal on scroll
   const revealEls = document.querySelectorAll('.reveal');
