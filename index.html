@@ -84,30 +84,33 @@
   #intro img{
     width:min(46vw,300px);
     opacity:0;
+    transform-origin:center;
     filter:drop-shadow(0 0 26px rgba(243,239,228,.06));
-    animation:logoFade 2.6s ease forwards;
+    animation:logoFade 2.6s cubic-bezier(.22,1,.36,1) forwards;
   }
   #intro .intro-tagline{
     opacity:0;
+    transform-origin:center;
     font-family:'Jost',sans-serif;
     font-weight:300;
-    font-size:11px;
+    font-size:14px;
     color:var(--stone);
     text-transform:uppercase;
     text-align:center;
-    animation:taglineReveal 1.6s ease forwards;
+    animation:taglineReveal 1.6s cubic-bezier(.22,1,.36,1) forwards;
     animation-delay:1.05s;
   }
   #intro.hide{opacity:0;visibility:hidden;}
   @keyframes logoFade{
-    0%{opacity:0;transform:scale(.94);letter-spacing:.3em;}
-    30%{opacity:1;transform:scale(1);}
+    0%{opacity:0;transform:scale(.4);letter-spacing:.3em;}
+    28%{opacity:1;transform:scale(1.08);}
+    46%{transform:scale(1);}
     88%{opacity:1;}
     100%{opacity:0;transform:scale(1.02);}
   }
   @keyframes taglineReveal{
-    0%{opacity:0;letter-spacing:.7em;transform:translateY(8px);}
-    45%{opacity:1;letter-spacing:.32em;transform:translateY(0);}
+    0%{opacity:0;letter-spacing:.7em;transform:translateY(8px) scale(.55);}
+    45%{opacity:1;letter-spacing:.32em;transform:translateY(0) scale(1);}
     82%{opacity:1;letter-spacing:.32em;}
     100%{opacity:0;letter-spacing:.32em;}
   }
@@ -128,7 +131,7 @@
   }
   .nav-inner{display:flex;align-items:center;justify-content:space-between;}
   .logo{display:flex;align-items:center;}
-  .logo img{height:38px;width:auto;transition:transform .4s ease;}
+  .logo img{height:52px;width:auto;transition:transform .4s ease;}
   .logo:hover img{transform:scale(1.06);}
   nav ul{display:flex;gap:40px;list-style:none;}
   nav a{
@@ -857,7 +860,8 @@
     if(track) initAutoScroll(wrap, track, 0.6);
   });
 
-  // services boxes — open on mouse hover, and hovering one closes the others
+  // services boxes — open on mouse hover (closing the others), and also open
+  // automatically as each one scrolls into view
   const bmItems = document.querySelectorAll('.bm-item');
   bmItems.forEach(item => {
     item.addEventListener('mouseenter', ()=>{
@@ -873,6 +877,12 @@
       item.classList.add('active');
     }, {passive:true});
   });
+  const bmIo = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      entry.target.classList.toggle('active', entry.isIntersecting);
+    });
+  }, {threshold:0.45});
+  bmItems.forEach(item => bmIo.observe(item));
 
   // reveal on scroll
   const revealEls = document.querySelectorAll('.reveal');
