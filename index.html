@@ -2,11 +2,57 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AJN Studio — Interior &amp; Architecture Design</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AJN Studio — Interior &amp; Architecture Design Visualization in Abu Dhabi, UAE</title>
+<meta name="description" content="AJN Studio is an architecture and interiors visualization practice based in Abu Dhabi, creating photorealistic renders, 3D models, animations and virtual walkthroughs for private homes and hospitality spaces across the UAE.">
+<meta name="keywords" content="architectural visualization, interior design UAE, 3D rendering Abu Dhabi, architecture animation, virtual walkthrough, 3D modeling, AJN Studio, Dubai interior design, villa design UAE">
+<meta name="author" content="AJN Studio">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://www.ajnstudio.ae/">
+<link rel="icon" type="image/png" href="images/icon-1.png">
+<link rel="apple-touch-icon" href="images/icon-1.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AJN Studio">
+<meta property="og:title" content="AJN Studio — Interior &amp; Architecture Design Visualization">
+<meta property="og:description" content="Photorealistic architectural visuals, 3D modeling, animation and virtual walkthroughs for private homes and hospitality spaces across the UAE.">
+<meta property="og:image" content="https://www.ajnstudio.ae/images/hero-1.jpg">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1080">
+<meta property="og:url" content="https://www.ajnstudio.ae/">
+<meta property="og:locale" content="en_AE">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AJN Studio — Interior &amp; Architecture Design Visualization">
+<meta name="twitter:description" content="Photorealistic architectural visuals, 3D modeling, animation and virtual walkthroughs for private homes and hospitality spaces across the UAE.">
+<meta name="twitter:image" content="https://www.ajnstudio.ae/images/hero-1.jpg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ArchitectureFirm",
+  "name": "AJN Studio",
+  "image": "https://www.ajnstudio.ae/images/hero-1.jpg",
+  "description": "Architecture and interiors visualization practice creating photorealistic renders, 3D models, animations and virtual walkthroughs for private homes and hospitality spaces.",
+  "url": "https://www.ajnstudio.ae/",
+  "telephone": "+971580000000",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ADIB Building, Al Bateen Tower",
+    "addressLocality": "Abu Dhabi",
+    "addressCountry": "AE"
+  },
+  "areaServed": "United Arab Emirates",
+  "sameAs": []
+}
+</script>
 <style>
   :root{
     --bg:#ffffff;
@@ -42,6 +88,7 @@
   a{color:inherit;text-decoration:none;}
   img{display:block;max-width:100%;}
   .wrap{max-width:1320px;margin:0 auto;padding:0 48px;}
+  @media(max-width:1024px){.wrap{padding:0 34px;}}
   @media(max-width:720px){.wrap{padding:0 22px;}}
 
   /* ---------- Torch light + custom cursor ---------- */
@@ -161,7 +208,7 @@
   }
 
   /* ---------- Hero Slider ---------- */
-  .hero{position:relative;height:100vh;min-height:640px;overflow:hidden;background:#fff;}
+  .hero{position:relative;height:100vh;height:100dvh;min-height:560px;overflow:hidden;background:#fff;}
   .slide{
     position:absolute;inset:0;opacity:0;transition:opacity 1.1s ease;
   }
@@ -211,15 +258,25 @@
     display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.08em;
   }
   .scroll-cue .line{width:26px;height:1px;background:rgba(28,26,21,.5);}
+  @media(max-width:900px){
+    .hero-controls{right:22px;bottom:auto;top:110px;}
+    .hero-content{bottom:80px;}
+  }
   @media(max-width:720px){
-    .hero-controls{right:22px;bottom:auto;top:120px;}
     .hero-content{bottom:70px;}
+    .hero-meta{gap:28px;margin-top:32px;}
     .scroll-cue{display:none;}
   }
 
   /* ---------- Intro strip ---------- */
   .intro-sec{
     background:var(--bg);padding:120px 0 100px;
+  }
+  @media(max-width:900px){
+    .intro-sec{padding:90px 0 70px;}
+  }
+  @media(max-width:600px){
+    .intro-sec{padding:70px 0 50px;}
   }
   .intro-grid{
     display:flex;justify-content:center;text-align:center;
@@ -245,14 +302,17 @@
     margin-top:64px;
   }
   .intro-video{
-    position:relative;width:100vw;height:100vh;min-height:520px;overflow:hidden;background:#000;
+    position:relative;width:100vw;height:80vh;height:80dvh;min-height:440px;overflow:hidden;background:#000;
   }
   .intro-video video{
     width:100%;height:100%;object-fit:cover;display:block;
   }
+  @media(max-width:900px){
+    .intro-video{height:65vh;height:65dvh;min-height:400px;}
+  }
   @media(max-width:600px){
     .intro-video-wrap{margin-top:44px;}
-    .intro-video{height:70vh;min-height:420px;}
+    .intro-video{height:50vh;height:50dvh;min-height:320px;}
   }
 
   /* ---------- Services (blackmonk scroll-reveal) ---------- */
@@ -267,6 +327,16 @@
     font-family:'Jost',sans-serif;
     letter-spacing:.12em; text-transform:uppercase;
     text-align:center; margin-bottom:80px;
+  }
+  @media(max-width:900px){
+    .bm-services-sec{padding:80px 0 30px;}
+    .bm-wrap{padding:0 20px 14vh;}
+    .bm-heading-main{margin-bottom:50px;}
+  }
+  @media(max-width:600px){
+    .bm-services-sec{padding:60px 0 20px;}
+    .bm-wrap{padding:0 16px 10vh;}
+    .bm-heading-main{margin-bottom:36px;letter-spacing:.08em;}
   }
 
   .bm-item{
@@ -398,6 +468,14 @@
     .bm-item.active .bm-desc-box p{ transform:translateY(0); }
   }
 
+  @media (max-width:480px){
+    .bm-sq{height:210px;}
+    .bm-sq .bm-title{font-size:19px;}
+    .bm-item.active .bm-desc-box{height:210px;}
+    .bm-desc-box{height:0;}
+    .bm-item{margin-bottom:40px;}
+  }
+
   /* ---------- Project showcase (banner + gallery per project) ---------- */
   .project-showcase{
     background:var(--bg-raised);padding:0 0 90px;
@@ -405,6 +483,12 @@
   .proj-block{margin-bottom:2px;}
   .proj-banner{
     position:relative;height:78vh;min-height:480px;max-height:720px;overflow:hidden;
+  }
+  @media(max-width:900px){
+    .proj-banner{height:60vh;min-height:400px;}
+  }
+  @media(max-width:600px){
+    .proj-banner{height:52vh;min-height:340px;}
   }
   .proj-banner img{
     width:100%;height:100%;object-fit:cover;filter:grayscale(.2) brightness(.96);
@@ -418,6 +502,7 @@
   .proj-caption{
     position:absolute;left:0;right:0;bottom:44px;z-index:2;padding:0 48px;color:var(--ivory);
   }
+  @media(max-width:900px){.proj-caption{padding:0 34px;bottom:36px;}}
   @media(max-width:720px){.proj-caption{padding:0 22px;bottom:30px;}}
   .proj-caption h3{font-size:clamp(30px,4.2vw,50px);font-weight:500;margin-bottom:14px;}
   .proj-link{display:inline-flex;align-items:center;gap:12px;font-size:14px;letter-spacing:.04em;color:var(--ivory);}
@@ -448,6 +533,8 @@
     background:#fff;color:var(--ivory);text-align:center;padding:130px 0;
     position:relative;border-top:1px solid var(--line);
   }
+  @media(max-width:900px){.cta{padding:90px 0;}}
+  @media(max-width:600px){.cta{padding:70px 0;}}
   .cta h2{
     font-family:'Jost',sans-serif;
     font-weight:500;
@@ -465,6 +552,8 @@
 
   /* ---------- Footer ---------- */
   footer{background:var(--bg);padding:80px 0 34px;border-top:1px solid var(--line);}
+  @media(max-width:900px){footer{padding:60px 0 28px;}}
+  @media(max-width:600px){footer{padding:50px 0 24px;}}
   .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;margin-bottom:60px;}
   .foot-logo img{height:26px;margin-bottom:20px;filter:brightness(0);}
   .foot-grid h4{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:450;margin-bottom:20px;color:var(--ivory);}
