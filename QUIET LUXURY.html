@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quiet Luxury — A Warm Contemporary Bedroom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF8F4;
+    --ink: #201C17;
+    --ink-soft: #6B6156;
+    --rule: rgba(32,28,23,0.15);
+    --brass: #A9895A;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  html, body { margin: 0; background: var(--cream); }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+
+  .progress {
+    position: fixed;
+    top: env(safe-area-inset-top, 0px);
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background: var(--brass);
+    z-index: 100;
+    transition: width 0.08s linear;
+  }
+
+  /* hero */
+  .hero { width: 100%; overflow: hidden; }
+  .hero img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transform: scale(1.05);
+    opacity: 0;
+    transition: transform 1.3s cubic-bezier(.16,.74,.24,1), opacity 1.1s ease;
+  }
+  .hero.in-view img { transform: scale(1); opacity: 1; }
+
+  /* meta row */
+  .meta {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 26px 6vw 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 22px;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .meta span.sep { color: var(--rule); }
+  .meta b { color: var(--ink); font-weight: 600; letter-spacing: 0.03em; }
+
+  /* title */
+  .title-wrap {
+    text-align: center;
+    padding: 90px 6vw 120px;
+  }
+  h1.title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: clamp(40px, 7.4vw, 96px);
+    letter-spacing: 0.02em;
+    line-height: 1.05;
+    margin: 0;
+    color: var(--ink);
+  }
+  .title-sub {
+    margin: 20px 0 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: clamp(15px, 2vw, 20px);
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+
+  /* photo stream */
+  .plate { width: 100%; overflow: hidden; }
+  .plate img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transform: scale(1.05);
+    opacity: 0;
+    transition: transform 1.3s cubic-bezier(.16,.74,.24,1), opacity 1.1s ease;
+    will-change: transform, opacity;
+  }
+  .plate.in-view img { transform: scale(1); opacity: 1; }
+  .plate + .plate,
+  .grid-row + .plate,
+  .plate + .grid-row { margin-top: 2px; }
+
+  /* two-up grid row, natural aspect, no cropping */
+  .grid-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+  .grid-row .cell { overflow: hidden; display: flex; align-items: center; }
+  .grid-row img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transform: scale(1.06);
+    opacity: 0;
+    transition: transform 1.2s cubic-bezier(.16,.74,.24,1), opacity 1s ease;
+  }
+  .grid-row.in-view img { transform: scale(1); opacity: 1; }
+  .grid-row.in-view .cell:nth-child(2) img { transition-delay: 0.12s; }
+
+  @media (max-width: 720px) {
+    .grid-row { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    .meta { font-size: 11.5px; gap: 10px 14px; padding-top: 20px; }
+    .title-wrap { padding: 56px 7vw 80px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero img, .plate img {
+      transition-duration: 0.01ms !important;
+      transform: none;
+      opacity: 1;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<div class="hero" id="heroPlate">
+  <img src="images/01-hero-daylight.jpg" alt="">
+</div>
+
+<div class="meta">
+  <span>LOCATION: <b>ABU DHABI, UAE</b></span>
+  <span class="sep">|</span>
+  <span>YEAR: <b>2026</b></span>
+  <span class="sep">|</span>
+  <span>INTERIOR DESIGN: <b>AJN STUDIO</b></span>
+  <span class="sep">|</span>
+  <span>VISUALIZATION: <b>AJN STUDIO</b></span>
+</div>
+
+<div class="title-wrap">
+  <h1 class="title">QUIET LUXURY</h1>
+  <p class="title-sub">A Warm Contemporary Bedroom</p>
+</div>
+
+<div class="plate"><img src="images/02-night.jpg" alt=""></div>
+
+<div class="grid-row">
+  <div class="cell"><img src="images/03-angle-view.jpg" alt=""></div>
+  <div class="cell"><img src="images/05-desk-detail.jpg" alt=""></div>
+</div>
+
+<div class="plate"><img src="images/04-tv-wall-dressing.jpg" alt=""></div>
+
+<div class="plate"><img src="images/06-nightstand-detail.jpg" alt=""></div>
+
+<script>
+(function(){
+  var progress = document.getElementById('progress');
+  function onScroll(){
+    var st = window.scrollY || document.documentElement.scrollTop;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = h > 0 ? (st / h) * 100 : 0;
+    progress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  var targets = document.querySelectorAll('.plate, .hero, .grid-row');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          e.target.classList.add('in-view');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    targets.forEach(function(t){ io.observe(t); });
+  } else {
+    targets.forEach(function(t){ t.classList.add('in-view'); });
+  }
+})();
+</script>
+
+</body>
+</html>
