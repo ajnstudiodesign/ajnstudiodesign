@@ -103,12 +103,12 @@
   body.glow-on{cursor:none;}
   body.glow-on a, body.glow-on button{cursor:none;}
   .cursor-dot{
-    position:fixed;top:0;left:0;width:6px;height:6px;border-radius:50%;
+    position:fixed;top:0;left:0;width:5px;height:5px;border-radius:50%;
     background:var(--ivory);pointer-events:none;z-index:1001;
     transform:translate(-50%,-50%);transition:opacity .3s ease, transform .2s ease;opacity:0;
   }
   .cursor-ring{
-    position:fixed;top:0;left:0;width:36px;height:36px;border-radius:50%;
+    position:fixed;top:0;left:0;width:26px;height:26px;border-radius:50%;
     border:1px solid rgba(28,26,21,.7);pointer-events:none;z-index:1001;
     transform:translate(-50%,-50%);
     transition:width .25s ease, height .25s ease, border-color .25s ease, opacity .3s ease, background .25s ease;
@@ -186,10 +186,10 @@
     transition:color .3s;
   }
   nav a::after{
-    content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--brass);
+    content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:#000;
     transition:width .35s ease;
   }
-  nav a.active::after,nav a:hover::after{width:100%;}
+  nav a:hover::after{width:100%;}
   nav a:hover{color:#000;}
   .nav-right{display:flex;align-items:center;gap:28px;}
   .btn-line{
@@ -302,17 +302,13 @@
     margin-top:64px;
   }
   .intro-video{
-    position:relative;width:100vw;height:80vh;height:80dvh;min-height:440px;overflow:hidden;background:#000;
+    position:relative;width:100vw;aspect-ratio:16/9;overflow:hidden;background:#000;
   }
   .intro-video video{
     width:100%;height:100%;object-fit:cover;display:block;
   }
-  @media(max-width:900px){
-    .intro-video{height:65vh;height:65dvh;min-height:400px;}
-  }
   @media(max-width:600px){
     .intro-video-wrap{margin-top:44px;}
-    .intro-video{height:50vh;height:50dvh;min-height:320px;}
   }
 
   /* ---------- Services (blackmonk scroll-reveal) ---------- */
@@ -344,13 +340,13 @@
     display:flex;
     align-items:stretch;
     justify-content:center;
-    gap:18px;
+    gap:0;
   }
 
   /* --- box holding the heading --- */
   .bm-sq{
     position:relative;
-    width:440px;
+    width:380px;
     height:250px;
     flex-shrink:0;
     border:1px solid #000;
@@ -397,6 +393,7 @@
     border-top:1px solid #000;
     border-right:1px solid #000;
     border-bottom:1px solid #000;
+    border-left:1px solid #000;
     opacity:0;
     display:flex;
     flex-direction:column;
@@ -407,9 +404,10 @@
                border-color .9s ease;
   }
   .bm-item.active .bm-desc-box{
-    width:440px;
+    width:380px;
     opacity:1;
     border-color:#000;
+    margin-left:-1px;
   }
   .bm-desc-box p{
     width:100%;
@@ -439,16 +437,17 @@
 
     .bm-sq{
       width:100%;
-      max-width:440px;
+      max-width:380px;
       height:250px;
     }
 
     .bm-desc-box{
       width:100%;
-      max-width:440px;
+      max-width:380px;
       height:0;
       border:1px solid #000;
       border-top:none;
+      margin-left:0;
       transition:height 1.3s cubic-bezier(.22,1,.36,1),
                  opacity .9s ease,
                  border-color .9s ease;
@@ -456,6 +455,7 @@
     .bm-item.active .bm-desc-box{
       width:100%;
       height:250px;
+      margin-left:0;
     }
 
     .bm-desc-box p{
@@ -615,8 +615,8 @@
     <a href="#home" class="logo"><img src="images/icon-1.png" alt="AJN Studio"></a>
     <nav id="mainNav">
       <ul>
-        <li><a href="#home" class="active">Home</a></li>
-        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="about.html">About</a></li>
         <li><a href="QUIET LUXURY.html">Projects</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
@@ -822,7 +822,7 @@
     <a class="proj-banner reveal" href="#">
       <img src="images/kids-bedroom.jpg" alt="Little Haven kids bedroom interior">
       <div class="proj-caption">
-        <h3>Little Haven — Kids&rsquo; Bedroom</h3>
+        <h3>Little Haven &mdash; Kids&rsquo; Bedroom</h3>
         <span class="proj-link"><span class="dash">—</span> See Full Project <span class="ln"></span></span>
       </div>
     </a>
@@ -1072,11 +1072,6 @@
       requestAnimationFrame(animateRing);
     }
     animateRing();
-
-    document.querySelectorAll('a, button').forEach(el=>{
-      el.addEventListener('mouseenter', ()=>{ring.classList.add('hover'); dot.classList.add('hover');});
-      el.addEventListener('mouseleave', ()=>{ring.classList.remove('hover'); dot.classList.remove('hover');});
-    });
   }
 </script>
 
