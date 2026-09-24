@@ -1,122 +1,649 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>About | AJN Studio</title>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AJN Studio — Contact</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Baloo+2:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --paper: #ffffff;
-    --ink: #1b1b18;
-    --muted: #6d685f;
-    --crumb: #5f6553;
-    --ghost: #f1f1ef;
-    --glow: rgba(238, 205, 175, .32);
-    --pad: clamp(20px, 3.65vw, 70px);
-    --font: "Jost", Futura, "Century Gothic", "Trebuchet MS", sans-serif;
+  :root{
+    --bg: #ffffff;
+    --bg-soft: #f7f6f2;
+    --panel: #ffffff;
+    --line: #00000014;
+    --ink: #14140f;
+    --ink-dim: #6b6d64;
+    --brass: #c69a5b;
+    --brass-dim: #c69a5b55;
+    --head: 'Space Grotesk', 'Baloo 2', sans-serif;
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --paper: #151513;
-      --ink: #f1efe9;
-      --muted: #a39e94;
-      --crumb: #a7ad98;
-      --ghost: #1f1f1c;
-      --glow: rgba(190, 140, 100, .14);
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+
+  a{ color: inherit; text-decoration: none; }
+
+  button, input, select, textarea{ font-family: inherit; }
+
+  :focus-visible{
+    outline: 2px solid var(--brass);
+    outline-offset: 3px;
+  }
+
+  .wrap{
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  /* ---------- NAV ---------- */
+
+  header.top{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: 1px solid var(--line);
+    background: #fffffff2;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 7px 0;
+  }
+
+  .brand{
+    display:flex;
+    align-items:center;
+    gap: 12px;
+  }
+
+  .brand img{
+    height: 78px;
+    width: auto;
+    display:block;
+  }
+
+  nav.links{
+    display:flex;
+    align-items:center;
+    gap: 38px;
+  }
+
+  nav.links a{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    position:relative;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+  }
+
+  nav.links a:hover{
+    color: var(--ink);
+    border-bottom: 2px solid var(--brass);
+  }
+
+  .make-request{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 12.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: 1px solid var(--ink);
+    padding: 12px 26px;
+    border-radius: 999px;
+    white-space: nowrap;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .make-request:hover{
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  .nav-toggle{ display:none; }
+
+  /* ---------- HERO ---------- */
+
+  .hero{
+    position: relative;
+    padding: 96px 0 110px;
+    overflow: hidden;
+  }
+
+  .hero-copy{
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+  }
+
+  .hero h1{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: clamp(38px, 5vw, 60px);
+    line-height: 1.08;
+    margin: 0 0 22px;
+  }
+
+  .hero p{
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink-dim);
+    max-width: 480px;
+    margin: 0 0 6px;
+  }
+
+  .hero-actions{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 34px;
+    flex-wrap: wrap;
+  }
+
+  .hero-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 15px 28px;
+    border-radius: 999px;
+    white-space: nowrap;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .hero-btn.primary{
+    background: var(--ink);
+    color: var(--bg);
+    border: 1px solid var(--ink);
+  }
+
+  .hero-btn.primary:hover{
+    background: transparent;
+    color: var(--ink);
+    transform: translateY(-1px);
+  }
+
+  .hero-btn.whatsapp{
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+  }
+
+  .hero-btn.whatsapp svg{ color: #25D366; }
+
+  .hero-btn.whatsapp:hover{
+    background: #25D366;
+    border-color: #25D366;
+    color: #ffffff;
+    transform: translateY(-1px);
+  }
+
+  .hero-btn.whatsapp:hover svg{ color: #ffffff; }
+
+  .watermark{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 210px;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 40px;
+    pointer-events: none;
+  }
+
+  .watermark span{
+    font-family: var(--head);
+    font-weight: 400;
+    font-size: clamp(70px, 13vw, 190px);
+    color: var(--ink);
+    opacity: 0.05;
+    line-height: 1;
+  }
+
+  .info-row{
+    position: relative;
+    z-index: 2;
+    display:flex;
+    gap: 96px;
+    margin-top: 190px;
+    padding-bottom: 90px;
+    flex-wrap: wrap;
+  }
+
+  .info-block h2{
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 18px;
+  }
+
+  .info-block .row{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    color: var(--ink-dim);
+    font-size: 15.5px;
+    margin-bottom: 10px;
+  }
+
+  .info-block .row svg{ flex: none; color: var(--brass); }
+
+  .info-block .row a:hover{ color: var(--ink); }
+
+  /* ---------- ABOUT ---------- */
+
+  .about{
+    position: relative;
+    padding: 90px 0 110px;
+    overflow: hidden;
+    border-top: 1px solid var(--line);
+  }
+
+  .about .watermark{
+    top: 40px;
+    justify-content: center;
+    gap: 1.2vw;
+    padding: 0 40px;
+  }
+
+  .about .watermark span{
+    font-size: clamp(48px, 9vw, 130px);
+  }
+
+  .about-inner{
+    position: relative;
+    z-index: 2;
+  }
+
+  .about h2.about-title{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: clamp(36px, 4.6vw, 54px);
+    margin: 0 0 40px;
+  }
+
+  .about-cols{
+    display: flex;
+    gap: 72px;
+    flex-wrap: wrap;
+  }
+
+  .about-cols p{
+    flex: 1 1 320px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--ink-dim);
+    margin: 0;
+  }
+
+  .about-team{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 100%;
+    margin-top: 64px;
+  }
+
+  .about-team figure{
+    position: relative;
+    margin: 0;
+    width: 540px;
+    max-width: 46vw;
+    aspect-ratio: 4 / 5;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .about-team figure::after{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 42%);
+    pointer-events: none;
+  }
+
+  .about-team img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .about-team figcaption{
+    position: absolute;
+    left: 18px;
+    bottom: 16px;
+    z-index: 2;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    text-align: left;
+  }
+
+  @media (max-width: 640px){
+    .about-team figure{
+      width: 220px;
+      max-width: 46vw;
     }
   }
-  :root[data-theme="dark"] {
-    --paper: #151513;
-    --ink: #f1efe9;
-    --muted: #a39e94;
-    --crumb: #a7ad98;
-    --ghost: #1f1f1c;
-    --glow: rgba(190, 140, 100, .14);
+
+  @media (max-width: 900px){
+    .about-cols{ gap: 32px; }
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { -webkit-text-size-adjust: 100%; }
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: var(--font);
-    font-weight: 300;
-    font-size: 1.125rem;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
-  a { color: inherit; text-decoration: none; }
-  :focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+  /* ---------- CTA SECTION ---------- */
 
-  .hero {
+  .cta-section{
+    border-top: 1px solid var(--line);
+    background: var(--bg);
+  }
+
+  .link-rows{}
+
+  .link-row{
     position: relative;
-    min-height: clamp(420px, 32vw, 620px);
-    padding: clamp(60px, 5vw, 96px) var(--pad) 0;
+    display: block;
+    height: 5.75rem;
+    border-bottom: 1px solid var(--line);
     overflow: hidden;
-    background: radial-gradient(58% 60% at 26% 108%, var(--glow), transparent 72%);
-  }
-  .ghost {
-    position: absolute;
-    left: 12.5vw;
-    top: clamp(24px, 2.4vw, 46px);
-    font-size: clamp(8rem, 19vw, 22rem);
-    font-weight: 600;
-    line-height: .85;
-    letter-spacing: -.02em;
-    color: var(--ghost);
-    user-select: none;
-    pointer-events: none;
-    white-space: nowrap;
-  }
-  .hero-inner { position: relative; z-index: 2; }
-  .crumbs {
-    display: flex;
-    gap: 14px;
-    font-size: 1.05rem;
-    letter-spacing: .06em;
-    color: var(--crumb);
-  }
-  .crumbs a:hover { text-decoration: underline; text-underline-offset: 4px; }
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 57fr 43fr;
-    align-items: center;
-    gap: 32px;
-    margin-top: clamp(28px, 3.6vw, 70px);
-  }
-  h1 {
-    font-size: clamp(2.8rem, 4.4vw, 4.6rem);
-    font-weight: 600;
-    line-height: 1.05;
-    letter-spacing: -.035em;
-  }
-  .lede {
-    font-size: clamp(1.15rem, 1.3vw, 1.4rem);
-    line-height: 1.9;
-    color: var(--muted);
-    max-width: 34em;
   }
 
-  @media (max-width: 860px) {
-    .ghost { left: 4vw; font-size: 34vw; }
-    .hero { min-height: 0; padding-bottom: 72px; }
-    .hero-grid { grid-template-columns: 1fr; align-items: start; }
+  .link-row .static{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(24px, 6vw, 48px);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(18px, 2.4vw, 24px);
+    font-weight: 600;
+    color: var(--ink);
+    transition: opacity 0.25s ease;
+  }
+
+  .link-row .arrow{
+    color: var(--ink);
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+  }
+
+  .link-row .marquee{
+    position: absolute;
+    inset: 0;
+    background: var(--ink);
+    color: var(--bg);
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(6%);
+    transition: opacity 0.25s ease, transform 0.3s ease;
+    pointer-events: none;
+  }
+
+  .marquee-track{
+    display: flex;
+    white-space: nowrap;
+    animation: scroll 14s linear infinite;
+    animation-play-state: paused;
+  }
+
+  .marquee-track span{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: clamp(18px, 2.4vw, 24px);
+    padding: 0 1.75rem;
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+  }
+
+  .marquee-track span::after{
+    content: '↗';
+    font-size: 1.05rem;
+  }
+
+  @keyframes scroll{
+    from{ transform: translateX(0); }
+    to{ transform: translateX(-50%); }
+  }
+
+  .link-row:hover .static, .link-row:focus-visible .static{ opacity: 0; }
+  .link-row:hover .arrow, .link-row:focus-visible .arrow{ transform: translate(3px,-3px); }
+  .link-row:hover .marquee, .link-row:focus-visible .marquee{ opacity: 1; transform: translateY(0); }
+  .link-row:hover .marquee-track, .link-row:focus-visible .marquee-track{ animation-play-state: running; }
+
+  @media (max-width: 640px){
+    .link-row{ height: 4.75rem; }
+  }
+
+  /* ---------- FOOTER ---------- */
+
+  footer{
+    padding: 34px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  footer .wrap{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    color: var(--ink-dim);
+    font-size: 13.5px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  footer a:hover{ color: var(--ink); }
+
+  /* ---------- CUSTOM CURSOR ---------- */
+
+  .cursor-ring{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 22px;
+    height: 22px;
+    border: 1px solid var(--ink);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease, opacity 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    box-shadow: 0 0 12px 2px rgba(20,20,15,0.15), 0 0 26px 5px rgba(20,20,15,0.06);
+    will-change: left, top;
+  }
+
+  .cursor-ring::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3px;
+    height: 3px;
+    background: var(--ink);
+    border-radius: 50%;
+    box-shadow: 0 0 7px 1.5px rgba(20,20,15,0.35);
+    transform: translate(-50%, -50%);
+    transition: opacity 0.22s ease;
+  }
+
+  .cursor-ring.active{ opacity: 1; }
+
+  html.custom-cursor, html.custom-cursor *{ cursor: none !important; }
+
+  @media (hover: none), (pointer: coarse){
+    .cursor-ring{ display: none; }
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+
+  @media (max-width: 900px){
+    .wrap{ padding: 0 24px; }
+    nav.links{ display:none; }
+    .info-row{ gap: 48px; margin-top: 140px; }
+    .watermark{ top: 160px; }
+  }
+
+  @media (max-width: 520px){
+    .make-request{ padding: 10px 16px; font-size: 13.5px; }
+    .brand img{ height: 50px; }
   }
 </style>
 </head>
 <body>
 
-<section class="hero">
-  <div class="ghost" aria-hidden="true">ABOUT</div>
-  <div class="hero-inner">
-    <div class="crumbs"><a href="index.html">Home</a><span aria-hidden="true">/</span><span>About</span></div>
-    <div class="hero-grid">
-      <h1>About the Studio</h1>
-      <p class="lede">An architecture and interior design studio for residences and hospitality spaces across the UAE &mdash; drawn from the site up, not from a template.</p>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<header class="top">
+  <div class="wrap nav">
+    <div class="brand">
+      <img src="logo.jpg" alt="AJN Studio logo">
+    </div>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="project.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a href="mailto:info@ajnstudio.com" class="make-request">Contact us</a>
+  </div>
+</header>
+
+<section class="about" id="about">
+  <div class="watermark" aria-hidden="true">
+    <span>A</span><span>B</span><span>O</span><span>U</span><span>T</span>
+  </div>
+
+  <div class="wrap about-inner">
+    <h2 class="about-title">About AJN Studio</h2>
+    <div class="about-cols">
+      <p>AJN Studio Design is a Chavakkad, Kerala-based design studio specializing in architecture, interior design, 3D visualization, and creative design solutions. The studio focuses on creating modern and functional spaces with detailed architectural and interior concepts.</p>
+      <p>Along with high-quality 3D visualizations that help clients clearly understand their projects before execution, AJN Studio Design aims to combine creativity, functionality, and visual appeal to deliver customized design solutions for residential and commercial projects.</p>
     </div>
   </div>
+
+  <div class="about-team">
+      <figure>
+        <img src="Ajmal.jpg" alt="Ajmal - AJN Studio">
+        <figcaption>Ajmal</figcaption>
+      </figure>
+      <figure>
+        <img src="Nejmal.jpg" alt="Nejmal - AJN Studio">
+        <figcaption>Nejmal</figcaption>
+      </figure>
+    </div>
 </section>
+
+<section class="cta-section">
+  <nav class="link-rows" aria-label="Social links">
+    <a class="link-row" href="https://instagram.com" target="_blank" rel="noopener">
+      <div class="static">
+        <span>Instagram</span>
+        <span class="arrow">↗</span>
+      </div>
+      <div class="marquee">
+        <div class="marquee-track">
+          <span>Instagram</span><span>Instagram</span><span>Instagram</span><span>Instagram</span>
+          <span>Instagram</span><span>Instagram</span><span>Instagram</span><span>Instagram</span>
+        </div>
+      </div>
+    </a>
+    <a class="link-row" href="https://behance.net" target="_blank" rel="noopener">
+      <div class="static">
+        <span>Behance</span>
+        <span class="arrow">↗</span>
+      </div>
+      <div class="marquee">
+        <div class="marquee-track">
+          <span>Behance</span><span>Behance</span><span>Behance</span><span>Behance</span>
+          <span>Behance</span><span>Behance</span><span>Behance</span><span>Behance</span>
+        </div>
+      </div>
+    </a>
+    <a class="link-row" href="https://facebook.com" target="_blank" rel="noopener">
+      <div class="static">
+        <span>Facebook</span>
+        <span class="arrow">↗</span>
+      </div>
+      <div class="marquee">
+        <div class="marquee-track">
+          <span>Facebook</span><span>Facebook</span><span>Facebook</span><span>Facebook</span>
+          <span>Facebook</span><span>Facebook</span><span>Facebook</span><span>Facebook</span>
+        </div>
+      </div>
+    </a>
+  </nav>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 AJN Studio. All rights reserved.</span>
+    <a href="mailto:ajnstudiodesign@gmail.com">ajnstudiodesign@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
+
+    document.documentElement.classList.add('custom-cursor');
+    const ring = document.getElementById('cursorRing');
+
+    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+    let ringX = mouseX, ringY = mouseY;
+
+    window.addEventListener('mousemove', function(e){
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      ring.classList.add('active');
+    });
+
+    document.addEventListener('mouseleave', function(){ ring.classList.remove('active'); });
+
+    function tick(){
+      ringX += (mouseX - ringX) * 0.12;
+      ringY += (mouseY - ringY) * 0.12;
+      ring.style.left = ringX + 'px';
+      ring.style.top = ringY + 'px';
+      requestAnimationFrame(tick);
+    }
+    tick();
+  })();
+</script>
 
 </body>
 </html>
