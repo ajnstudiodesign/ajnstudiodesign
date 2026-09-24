@@ -66,7 +66,7 @@
     display:flex;
     align-items:center;
     justify-content: space-between;
-    padding: 7px 0;
+    padding: 16px 0;
   }
 
   .brand{
@@ -76,7 +76,7 @@
   }
 
   .brand img{
-    height: 78px;
+    height: 64px;
     width: auto;
     display:block;
   }
@@ -308,55 +308,32 @@
   .about-team{
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
     gap: 40px;
-    width: 100%;
     margin-top: 64px;
+    flex-wrap: wrap;
   }
 
   .about-team figure{
-    position: relative;
     margin: 0;
-    width: 540px;
-    max-width: 46vw;
-    aspect-ratio: 4 / 5;
-    border-radius: 6px;
-    overflow: hidden;
-  }
-
-  .about-team figure::after{
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 42%);
-    pointer-events: none;
+    flex: 1 1 240px;
+    max-width: 320px;
   }
 
   .about-team img{
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     display: block;
+    border-radius: 4px;
+    background: #ffffff;
   }
 
   .about-team figcaption{
-    position: absolute;
-    left: 18px;
-    bottom: 16px;
-    z-index: 2;
+    margin-top: 16px;
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 600;
     font-size: 16px;
-    letter-spacing: 0.02em;
-    color: #ffffff;
-    text-align: left;
-  }
-
-  @media (max-width: 640px){
-    .about-team figure{
-      width: 220px;
-      max-width: 46vw;
-    }
+    color: var(--ink);
+    text-align: center;
   }
 
   @media (max-width: 900px){
@@ -520,7 +497,7 @@
 
   @media (max-width: 520px){
     .make-request{ padding: 10px 16px; font-size: 13.5px; }
-    .brand img{ height: 50px; }
+    .brand img{ height: 34px; }
   }
 </style>
 </head>
@@ -531,13 +508,13 @@
 <header class="top">
   <div class="wrap nav">
     <div class="brand">
-      <img src="logo.jpg" alt="AJN Studio logo">
+      <img src="image_1.jpg" alt="AJN Studio logo">
     </div>
     <nav class="links">
       <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="project.html">Projects</a>
-      <a href="contact.html">Contact</a>
+      <a href="#about">About</a>
+      <a href="#">Projects</a>
+      <a href="#">Contact</a>
     </nav>
     <a href="mailto:info@ajnstudio.com" class="make-request">Contact us</a>
   </div>
@@ -554,18 +531,18 @@
       <p>AJN Studio Design is a Chavakkad, Kerala-based design studio specializing in architecture, interior design, 3D visualization, and creative design solutions. The studio focuses on creating modern and functional spaces with detailed architectural and interior concepts.</p>
       <p>Along with high-quality 3D visualizations that help clients clearly understand their projects before execution, AJN Studio Design aims to combine creativity, functionality, and visual appeal to deliver customized design solutions for residential and commercial projects.</p>
     </div>
-  </div>
 
-  <div class="about-team">
+    <div class="about-team">
       <figure>
-        <img src="Ajmal.jpg" alt="Ajmal - AJN Studio">
+        <img src="image_2.jpg" alt="Ajmal - AJN Studio">
         <figcaption>Ajmal</figcaption>
       </figure>
       <figure>
-        <img src="Nejmal.jpg" alt="Nejmal - AJN Studio">
+        <img src="image_3.jpg" alt="Nejmal - AJN Studio">
         <figcaption>Nejmal</figcaption>
       </figure>
     </div>
+</div>
 </section>
 
 <section class="cta-section">
