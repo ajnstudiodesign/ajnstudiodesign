@@ -226,18 +226,16 @@
     display:flex;gap:10px;align-items:center;
   }
   .hero-eyebrow .dot{width:5px;height:5px;border-radius:50%;background:var(--brass);}
-  .hero h1{
-    font-size:clamp(40px,6vw,76px);font-weight:450;max-width:800px;line-height:1.02;margin-bottom:24px;
+  .hero-quote-text{
+    font-family:'Jost',sans-serif;
+    font-weight:500;
+    text-transform:uppercase;
+    font-size:clamp(34px,6.4vw,84px);
+    line-height:1.05;
+    letter-spacing:.005em;
+    max-width:900px;
+    color:var(--ivory);
   }
-  .hero p{
-    max-width:520px;font-size:16px;color:rgba(28,26,21,.72);font-weight:300;line-height:1.7;
-  }
-  .hero-meta{
-    display:flex;gap:48px;margin-top:46px;flex-wrap:wrap;
-  }
-  .hero-meta div{border-left:1px solid var(--line-strong);padding-left:14px;}
-  .hero-meta span{display:block;font-size:11px;letter-spacing:.1em;color:var(--stone-dim);margin-bottom:6px;}
-  .hero-meta strong{font-family:'Cormorant Garamond',serif;font-weight:450;font-size:17px;}
 
   .hero-controls{
     position:absolute;right:48px;bottom:120px;z-index:6;
@@ -622,14 +620,7 @@
   </div>
 
   <div class="hero-content wrap">
-    <div class="hero-eyebrow"><span class="dot"></span><span id="heroLoc">Dubai Hills, UAE</span></div>
-    <h1 id="heroTitle">Elyra Villa</h1>
-    <p id="heroDesc">A private residence built around light and stone, where interior and landscape read as one continuous gesture. Every room opens toward the horizon.</p>
-    <div class="hero-meta">
-      <div><span>Year</span><strong id="heroYear">2025</strong></div>
-      <div><span>Area</span><strong id="heroArea">3,200 m²</strong></div>
-      <div><span>Scope</span><strong>Architecture + Interiors</strong></div>
-    </div>
+    <h1 class="hero-quote-text">BETTER VISUALS.<br>STRONGER IMPACT.</h1>
   </div>
 
   <div class="hero-controls">
@@ -926,17 +917,6 @@
   const slides = document.querySelectorAll('.slide');
   const slideNum = document.getElementById('slideNum');
   const slideBar = document.getElementById('slideBar');
-  const heroTitle = document.getElementById('heroTitle');
-  const heroDesc = document.getElementById('heroDesc');
-  const heroLoc = document.getElementById('heroLoc');
-  const heroYear = document.getElementById('heroYear');
-  const heroArea = document.getElementById('heroArea');
-
-  const slideData = [
-    {title:"Elyra Villa", desc:"A private residence built around light and stone, where interior and landscape read as one continuous gesture. Every room opens toward the horizon."},
-    {title:"Noor Residence", desc:"A courtyard house organised around a central garden, using travertine and dark timber to hold a quiet, cool interior against the desert sun."},
-    {title:"Solace Caf&eacute;", desc:"A small neighbourhood caf&eacute; carved from raw plaster and brass, designed to feel unhurried at every hour of the day."}
-  ];
 
   let current = 0;
   let autoTimer;
@@ -945,14 +925,8 @@
     slides[current].classList.remove('active');
     current = (i + slides.length) % slides.length;
     slides[current].classList.add('active');
-    const s = slides[current];
     slideNum.textContent = String(current+1).padStart(2,'0');
     slideBar.style.width = ((current+1)/slides.length*100) + '%';
-    heroTitle.innerHTML = slideData[current].title;
-    heroDesc.innerHTML = slideData[current].desc;
-    heroLoc.textContent = s.dataset.loc;
-    heroYear.textContent = s.dataset.year;
-    heroArea.textContent = s.dataset.area;
   }
   document.getElementById('nextSlide').addEventListener('click', ()=>{goTo(current+1); restartAuto();});
   document.getElementById('prevSlide').addEventListener('click', ()=>{goTo(current-1); restartAuto();});
