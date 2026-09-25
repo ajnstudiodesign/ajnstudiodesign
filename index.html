@@ -234,7 +234,7 @@
     line-height:1.05;
     letter-spacing:.005em;
     max-width:900px;
-    color:var(--ivory);
+    color:#ffffff;
   }
 
   .hero-controls{
@@ -475,12 +475,12 @@
   }
 
   /* ---------- Project images collage (hover name + scroll animation) ---------- */
-  .pc-wrap{--pc-gap:clamp(6px,.9vw,12px);max-width:1320px;margin:0 auto;padding:0 48px;}
-  @media(max-width:720px){.pc-wrap{padding:0 22px;}}
-  .pc-row{display:flex;gap:var(--pc-gap);margin-bottom:var(--pc-gap);}
-  .pc-item{position:relative;overflow:hidden;margin:0;min-width:0;background:#efeae0;
+  .pc-wrap{--pc-gap:clamp(6px,.9vw,12px);width:100%;max-width:none;margin:0;padding:0;}
+  .pc-row{display:flex;align-items:stretch;gap:var(--pc-gap);margin-bottom:var(--pc-gap);}
+  .pc-item{position:relative;overflow:hidden;margin:0;min-width:0;background:transparent;
+    border:1px solid var(--line);
     flex-grow:var(--ar);flex-shrink:1;flex-basis:0;}
-  .pc-item img{display:block;width:100%;height:auto;transition:transform 1s cubic-bezier(.2,.7,.2,1);}
+  .pc-item img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1);}
   .pc-item:hover img{transform:scale(1.06);}
   .pc-item figcaption{position:absolute;left:0;right:0;bottom:0;padding:56px 24px 22px;color:var(--ivory);
     font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(20px,2vw,28px);letter-spacing:.01em;
@@ -823,9 +823,17 @@
   </div>
 
   <div class="pc-row">
-    <figure class="pc-item pc-reveal" style="--ar:1.5">
-      <img src="images/kids-bedroom.jpg" width="2000" height="1333" alt="Little Haven — Kids' Bedroom" loading="lazy">
-      <figcaption>Little Haven — Kids' Bedroom</figcaption>
+    <figure class="pc-item pc-reveal" style="--ar:1.3333">
+      <img src="images/bathroom.jpg" width="2000" height="1500" alt="Spa Residence — Bathroom" loading="lazy">
+      <figcaption>Spa Residence — Bathroom</figcaption>
+    </figure>
+    <figure class="pc-item pc-reveal" style="--ar:1.3333">
+      <img src="images/home-office.jpg" width="2000" height="1500" alt="Timber Study — Home Office" loading="lazy">
+      <figcaption>Timber Study — Home Office</figcaption>
+    </figure>
+    <figure class="pc-item pc-reveal" style="--ar:1.3333">
+      <img src="images/living-area.jpg" width="1800" height="1350" alt="Hillside Villa — Living Area" loading="lazy">
+      <figcaption>Hillside Villa — Living Area</figcaption>
     </figure>
   </div>
   </div>
