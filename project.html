@@ -88,7 +88,7 @@
   }
   .nav-inner{display:flex;align-items:center;justify-content:space-between;}
   .logo{display:flex;align-items:center;}
-  .logo img{height:30px;width:auto;transition:transform .4s ease;}
+  .logo img{height:30px;width:auto;transition:transform .4s ease;filter:brightness(0) saturate(100%);}
   .logo:hover img{transform:scale(1.06);}
   nav ul{display:flex;gap:40px;list-style:none;}
   nav a{
@@ -354,7 +354,7 @@
   /* ---------- Footer ---------- */
   footer{background:var(--bg);padding:80px 0 34px;border-top:1px solid var(--line);}
   .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;margin-bottom:60px;}
-  .foot-logo img{height:26px;margin-bottom:20px;}
+  .foot-logo img{height:26px;margin-bottom:20px;filter:brightness(0) saturate(100%);}
   .foot-grid h4{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:450;margin-bottom:20px;color:var(--ivory);}
   .foot-grid p{color:var(--stone-dim);font-size:14.5px;font-weight:300;line-height:1.8;max-width:340px;}
   .foot-links{display:flex;flex-direction:column;gap:12px;}
@@ -475,12 +475,12 @@
 
 <header id="siteHeader">
   <div class="wrap nav-inner">
-    <a href="index.html" class="logo"><img src="images/icon-1.png" alt="AJN Studio"></a>
+    <a href="index.html" class="logo"><img src="images/logo.png" alt="AJN Studio"></a>
     <nav id="mainNav">
       <ul>
         <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
         <li><a href="about.html" class="active">About</a></li>
-         <li><a href="#projects" class="active">Projects</a></li>
         <li><a href="contact.html" class="active">Contact</a></li>
       </ul>
     </nav>
@@ -651,7 +651,7 @@
     <div class="foot-grid">
       <div>
         <div class="foot-logo"><img src="images/logo.png" alt="AJN Studio"></div>
-        <p>Architectural visualization and 3D imagery for spaces that have yet to be built.</p>
+        <p>An architecture and interiors practice based in Abu Dhabi, working on private homes and hospitality spaces across the UAE.</p>
         <div class="socials">
           <a href="#" aria-label="Instagram">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
@@ -668,8 +668,8 @@
         <h4>Studio</h4>
         <a href="index.html">Home</a>
         <a href="projects.html">Projects</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <a href="index.html#approach">About</a>
+        <a href="index.html#contact">Contact</a>
       </div>
       <div class="foot-contact">
         <h4>Contact</h4>
