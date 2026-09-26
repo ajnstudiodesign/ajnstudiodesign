@@ -9,7 +9,7 @@
 <style>
   :root{
     --bg: #ffffff;
-    --bg-soft: #f7f6f2;
+    --bg-soft: #ffffff;
     --panel: #ffffff;
     --line: #00000014;
     --ink: #14140f;
@@ -309,16 +309,16 @@
 
   .team-section{
     position: relative;
-    background: #6e6d67;
-    color: #f6f4ee;
+    background: #ffffff;
+    color: var(--ink);
     padding: 90px 0 110px;
     overflow: hidden;
     border-top: 1px solid var(--line);
   }
 
   .team-section .watermark span{
-    color: #ffffff;
-    opacity: 0.07;
+    color: var(--ink);
+    opacity: 0.05;
   }
 
   .team-inner{
@@ -332,6 +332,7 @@
 
   .team-eyebrow{
     display: block;
+    text-align: center;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 12.5px;
@@ -346,7 +347,7 @@
     font-weight: 700;
     font-size: clamp(36px, 4.6vw, 54px);
     margin: 0 0 64px;
-    color: #ffffff;
+    color: var(--ink);
   }
 
   .about-team{
@@ -370,12 +371,7 @@
     height: auto;
     display: block;
     border-radius: 4px;
-    background: #eeece5;
-    transition: transform 0.4s ease;
-  }
-
-  .about-team figure:hover img{
-    transform: scale(1.03);
+    background: #f2f1ec;
   }
 
   .about-team.single{
@@ -408,8 +404,82 @@
     display: block;
   }
 
+  /* team card photo + hover name/role reveal, matching reference style */
+  .team-card{
+    aspect-ratio: 4 / 5;
+    background: #1c1c18;
+    cursor: pointer;
+  }
+
+  .team-card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    filter: grayscale(100%) contrast(1.02);
+    transition: transform 0.6s ease, filter 0.6s ease, opacity 0.6s ease;
+  }
+
+  .team-card:hover img,
+  .team-card:focus-within img{
+    transform: scale(1.045);
+    filter: grayscale(15%) brightness(1.35) contrast(0.95);
+    opacity: 0.32;
+  }
+
+  .team-overlay{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+  }
+
+  .team-card:hover .team-overlay,
+  .team-card:focus-within .team-overlay{
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .team-name{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: clamp(24px, 3vw, 32px);
+    color: #ffffff;
+    letter-spacing: 0.01em;
+  }
+
+  .team-role{
+    margin-top: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #eceae2cc;
+  }
+
   @media (max-width: 900px){
     .about-cols{ gap: 32px; }
+  }
+
+  @media (hover: none), (pointer: coarse){
+    .team-card img{ filter: grayscale(60%); }
+    .team-overlay{
+      opacity: 1;
+      transform: none;
+      position: static;
+      padding-top: 16px;
+    }
+    .team-card{ display: flex; flex-direction: column; aspect-ratio: auto; }
+    .team-card img{ aspect-ratio: 4 / 5; }
   }
 
   /* ---------- CTA SECTION ---------- */
@@ -605,6 +675,35 @@
     <div class="about-cols">
       <p>AJN Studio is an architectural visualization studio creating photorealistic 3D visuals for architects, interior designers, developers and design studios. We turn drawings, models and design ideas into images that make the final space easier to understand, present and experience.</p>
       <p>Our work goes beyond simply producing a render. We focus on the details that make an image feel convincing — accurate materials, natural lighting, composition, scale and atmosphere. From a single interior view to complete visual packages, animations and walkthroughs, we create visuals that communicate the design clearly and with purpose.</p>
+    </div>
+  </div>
+</section>
+
+<section class="team-section" id="team">
+  <div class="watermark" aria-hidden="true">
+    <span>T</span><span>E</span><span>A</span><span>M</span>
+  </div>
+
+  <div class="wrap team-inner">
+    <span class="team-eyebrow">The People Behind AJN</span>
+    <h2 class="team-title">Our Team</h2>
+
+    <div class="about-team">
+      <figure class="team-card" tabindex="0">
+        <img src="images/team-ajmal.jpg" alt="Ajmal — Founder, AJN Studio">
+        <figcaption class="team-overlay">
+          <span class="team-name">Ajmal</span>
+          <span class="team-role">Founder &amp; 3D Visualization Artist</span>
+        </figcaption>
+      </figure>
+
+      <figure class="team-card" tabindex="0">
+        <img src="images/team-nejmal.jpg" alt="Nejmal — 3D Artist, AJN Studio">
+        <figcaption class="team-overlay">
+          <span class="team-name">Nejmal</span>
+          <span class="team-role">3D Visualization Artist</span>
+        </figcaption>
+      </figure>
     </div>
   </div>
 </section>
