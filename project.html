@@ -96,10 +96,10 @@
     transition:color .3s;
   }
   nav a::after{
-    content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--brass);
+    content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:#000;
     transition:width .35s ease;
   }
-  nav a.active::after,nav a:hover::after{width:100%;}
+  nav a:hover::after{width:100%;}
   nav a:hover{color:#fff;}
   .nav-right{display:flex;align-items:center;gap:28px;}
   .btn-line{
@@ -385,8 +385,7 @@
   }
 
   /* ---------- Project images collage (hover name + scroll animation) ---------- */
-  .pc-wrap{--pc-gap:clamp(6px,.9vw,12px);max-width:1320px;margin:0 auto;padding:0 48px;}
-  @media(max-width:720px){.pc-wrap{padding:0 22px;}}
+  .pc-wrap{--pc-gap:clamp(3px,.4vw,6px);width:100%;max-width:100%;margin:0;padding:0;}
   .pc-row{display:flex;gap:var(--pc-gap);margin-bottom:var(--pc-gap);}
   /* width of each image follows its own aspect ratio -> same height per row, no cropping */
   .pc-item{position:relative;overflow:hidden;margin:0;min-width:0;background:#efeae0;
@@ -401,6 +400,10 @@
     transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.65,0,.35,1) .1s;}
   .pc-item:hover figcaption{opacity:1;transform:none;}
   .pc-item:hover figcaption::before{transform:scaleX(1);}
+
+  /* full-screen: each row fills the viewport height */
+  .pc-row{min-height:100vh;}
+  .pc-item img{height:100%;object-fit:cover;}
 
   /* stronger scroll animation just for this collage */
   .pc-reveal{opacity:0;transform:translateY(60px) scale(.96);
@@ -632,162 +635,6 @@
   </div>
   </div>
 
-  <!-- Empty project blocks hidden (restore by deleting this comment wrapper)
-  <div class="proj-block reveal">
-    <a class="proj-banner" href="project-detail.html?project=walnut-study-residence">
-      
-      <div class="proj-caption">
-        <h3>Walnut Study Residence</h3>
-        <span class="proj-link"><span class="dash">—</span> See Full Project <span class="ln"></span></span>
-      </div>
-    </a>
-    <div class="proj-gallery">
-      <a href="project-detail.html?project=walnut-study-residence"></a>
-      <a href="project-detail.html?project=walnut-study-residence"></a>
-      <a href="project-detail.html?project=walnut-study-residence"></a>
-      <a href="project-detail.html?project=walnut-study-residence"></a>
-      <a href="project-detail.html?project=walnut-study-residence"></a>
-      <a href="project-detail.html?project=walnut-study-residence"></a>
-      <a href="project-detail.html?project=walnut-study-residence"></a>
-    </div>
-  </div>
-  <div class="proj-block reveal">
-    <a class="proj-banner" href="project-detail.html?project=elyra-villa">
-      
-      <div class="proj-caption">
-        <h3>Elyra Villa</h3>
-        <span class="proj-link"><span class="dash">—</span> See Full Project <span class="ln"></span></span>
-      </div>
-    </a>
-    <div class="proj-gallery">
-      <a href="project-detail.html?project=elyra-villa"></a>
-      <a href="project-detail.html?project=elyra-villa"></a>
-      <a href="project-detail.html?project=elyra-villa"></a>
-      <a href="project-detail.html?project=elyra-villa"></a>
-    </div>
-  </div>
-  <div class="proj-block reveal">
-    <a class="proj-banner" href="project-detail.html?project=noor-residence">
-      
-      <div class="proj-caption">
-        <h3>Noor Residence</h3>
-        <span class="proj-link"><span class="dash">—</span> See Full Project <span class="ln"></span></span>
-      </div>
-    </a>
-    <div class="proj-gallery">
-      <a href="project-detail.html?project=noor-residence"></a>
-      <a href="project-detail.html?project=noor-residence"></a>
-      <a href="project-detail.html?project=noor-residence"></a>
-      <a href="project-detail.html?project=noor-residence"></a>
-    </div>
-  </div>
-  <div class="proj-block reveal">
-    <a class="proj-banner" href="project-detail.html?project=solace-cafe">
-      
-      <div class="proj-caption">
-        <h3>Solace Caf&eacute;</h3>
-        <span class="proj-link"><span class="dash">—</span> See Full Project <span class="ln"></span></span>
-      </div>
-    </a>
-    <div class="proj-gallery">
-      <a href="project-detail.html?project=solace-cafe"></a>
-      <a href="project-detail.html?project=solace-cafe"></a>
-      <a href="project-detail.html?project=solace-cafe"></a>
-      <a href="project-detail.html?project=solace-cafe"></a>
-    </div>
-  </div>
-  <div class="proj-block reveal">
-    <a class="proj-banner" href="project-detail.html?project=birch-penthouse">
-      
-      <div class="proj-caption">
-        <h3>Birch Penthouse</h3>
-        <span class="proj-link"><span class="dash">—</span> See Full Project <span class="ln"></span></span>
-      </div>
-    </a>
-    <div class="proj-gallery">
-      <a href="project-detail.html?project=birch-penthouse"></a>
-      <a href="project-detail.html?project=birch-penthouse"></a>
-      <a href="project-detail.html?project=birch-penthouse"></a>
-      <a href="project-detail.html?project=birch-penthouse"></a>
-    </div>
-  </div>
-  <div class="proj-block reveal">
-    <a class="proj-banner" href="project-detail.html?project=marea-restaurant">
-      
-      <div class="proj-caption">
-        <h3>Marea Restaurant</h3>
-        <span class="proj-link"><span class="dash">—</span> See Full Project <span class="ln"></span></span>
-      </div>
-    </a>
-    <div class="proj-gallery">
-      <a href="project-detail.html?project=marea-restaurant"></a>
-      <a href="project-detail.html?project=marea-restaurant"></a>
-      <a href="project-detail.html?project=marea-restaurant"></a>
-      <a href="project-detail.html?project=marea-restaurant"></a>
-    </div>
-  </div>
-  <div class="proj-block reveal">
-    <a class="proj-banner" href="project-detail.html?project=dune-house">
-      
-      <div class="proj-caption">
-        <h3>Dune House</h3>
-        <span class="proj-link"><span class="dash">—</span> See Full Project <span class="ln"></span></span>
-      </div>
-    </a>
-    <div class="proj-gallery">
-      <a href="project-detail.html?project=dune-house"></a>
-      <a href="project-detail.html?project=dune-house"></a>
-      <a href="project-detail.html?project=dune-house"></a>
-      <a href="project-detail.html?project=dune-house"></a>
-    </div>
-  </div>
-  <div class="proj-block reveal">
-    <a class="proj-banner" href="project-detail.html?project=amber-court">
-      
-      <div class="proj-caption">
-        <h3>Amber Court</h3>
-        <span class="proj-link"><span class="dash">—</span> See Full Project <span class="ln"></span></span>
-      </div>
-    </a>
-    <div class="proj-gallery">
-      <a href="project-detail.html?project=amber-court"></a>
-      <a href="project-detail.html?project=amber-court"></a>
-      <a href="project-detail.html?project=amber-court"></a>
-      <a href="project-detail.html?project=amber-court"></a>
-    </div>
-  </div>
-  <div class="proj-block reveal">
-    <a class="proj-banner" href="project-detail.html?project=vale-house">
-      
-      <div class="proj-caption">
-        <h3>Vale House</h3>
-        <span class="proj-link"><span class="dash">—</span> See Full Project <span class="ln"></span></span>
-      </div>
-    </a>
-    <div class="proj-gallery">
-      <a href="project-detail.html?project=vale-house"></a>
-      <a href="project-detail.html?project=vale-house"></a>
-      <a href="project-detail.html?project=vale-house"></a>
-      <a href="project-detail.html?project=vale-house"></a>
-    </div>
-  </div>
-  <div class="proj-block reveal">
-    <a class="proj-banner" href="project-detail.html?project=lumen-loft">
-      
-      <div class="proj-caption">
-        <h3>Lumen Loft</h3>
-        <span class="proj-link"><span class="dash">—</span> See Full Project <span class="ln"></span></span>
-      </div>
-    </a>
-    <div class="proj-gallery">
-      <a href="project-detail.html?project=lumen-loft"></a>
-      <a href="project-detail.html?project=lumen-loft"></a>
-      <a href="project-detail.html?project=lumen-loft"></a>
-      <a href="project-detail.html?project=lumen-loft"></a>
-    </div>
-  </div>
-
-  -->
 </section>
 
 <!-- CTA -->
@@ -826,10 +673,8 @@
       </div>
       <div class="foot-contact">
         <h4>Contact</h4>
-        <span class="phone">+971 58 000 0000</span>
-        <p>ADIB Building, Al Bateen Tower</p>
-        <p>Abu Dhabi, United Arab Emirates</p>
-        <p style="margin-top:10px;">hello@ajnstudio.ae</p>
+        <span class="phone">+91 88912 30958</span>
+        <p style="margin-top:10px;">ajnstudiodesign@gmail.com</p>
       </div>
     </div>
     <div class="foot-bottom">
@@ -912,13 +757,7 @@
       },{threshold:0.12,rootMargin:'0px 0px -6% 0px'});
       items.forEach(function(el){o.observe(el);});
     }
-    var ring=document.getElementById('cursorRing');
-    if(ring){
-      root.querySelectorAll('.pc-item').forEach(function(el){
-        el.addEventListener('mouseenter',function(){ring.classList.add('hover');});
-        el.addEventListener('mouseleave',function(){ring.classList.remove('hover');});
-      });
-    }
+
   })();
 </script>
 
