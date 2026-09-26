@@ -344,7 +344,7 @@
   /* --- box holding the heading --- */
   .bm-sq{
     position:relative;
-    width:380px;
+    width:550px;
     height:250px;
     flex-shrink:0;
     border:1px solid #000;
@@ -352,7 +352,7 @@
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding:22px;
+    padding:32px;
     transition:border-color .9s ease;
   }
   .bm-item.active .bm-sq{ border-color:#000; }
@@ -360,7 +360,7 @@
   .bm-sq .bm-title{
     color:var(--ivory);
     font-family:'Jost',sans-serif;
-    font-size:22px;
+    font-size:30px;
     font-weight:400;
     letter-spacing:-0.01em;
     line-height:1.3;
@@ -369,9 +369,9 @@
 
   .bm-desc-box .bm-icon{
     position:static;
-    width:28px;
-    height:28px;
-    margin:0 auto 16px;
+    width:36px;
+    height:36px;
+    margin:0 auto 20px;
   }
   .bm-desc-box .bm-icon svg{ width:100%; height:100%; overflow:visible; }
   .bm-desc-box .bm-shape{ stroke:rgba(28,26,21,.45); fill:none; stroke-width:1; transition:stroke .6s ease; }
@@ -402,22 +402,22 @@
                border-color .9s ease;
   }
   .bm-item.active .bm-desc-box{
-    width:380px;
+    width:550px;
     opacity:1;
     border-color:#000;
     margin-left:-1px;
   }
   .bm-desc-box p{
     width:100%;
-    max-width:300px;
+    max-width:400px;
     box-sizing:border-box;
     padding:0;
     margin:0;
     font-family:'Jost',sans-serif;
     color:#000000;
-    font-size:13.5px;
+    font-size:15.5px;
     font-weight:300;
-    line-height:1.65;
+    line-height:1.75;
     text-align:center;
     transform:translateY(16px);
     transition:transform 1.1s cubic-bezier(.22,1,.36,1) .2s;
@@ -435,13 +435,13 @@
 
     .bm-sq{
       width:100%;
-      max-width:380px;
-      height:250px;
+      max-width:550px;
+      height:360px;
     }
 
     .bm-desc-box{
       width:100%;
-      max-width:380px;
+      max-width:550px;
       height:0;
       border:1px solid #000;
       border-top:none;
@@ -452,7 +452,7 @@
     }
     .bm-item.active .bm-desc-box{
       width:100%;
-      height:250px;
+      height:360px;
       margin-left:0;
     }
 
@@ -475,7 +475,7 @@
   }
 
   /* ---------- Project images collage (hover name + scroll animation) ---------- */
-  .pc-wrap{--pc-gap:clamp(6px,.9vw,12px);width:100%;max-width:none;margin:0;padding:0;}
+  .pc-wrap{--pc-gap:clamp(3px,.5vw,6px);width:100%;max-width:none;margin:0;padding:0;}
   .pc-row{display:flex;align-items:stretch;gap:var(--pc-gap);margin-bottom:var(--pc-gap);}
   .pc-item{position:relative;overflow:hidden;margin:0;min-width:0;background:transparent;
     border:1px solid var(--line);
