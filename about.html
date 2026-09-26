@@ -305,18 +305,64 @@
     margin: 0;
   }
 
+  /* ---------- OUR TEAM ---------- */
+
+  .team-section{
+    position: relative;
+    background: #6e6d67;
+    color: #f6f4ee;
+    padding: 90px 0 110px;
+    overflow: hidden;
+    border-top: 1px solid var(--line);
+  }
+
+  .team-section .watermark span{
+    color: #ffffff;
+    opacity: 0.07;
+  }
+
+  .team-inner{
+    position: relative;
+    z-index: 2;
+  }
+
+  .team-section .wrap h2.team-title{
+    text-align: center;
+  }
+
+  .team-eyebrow{
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 12.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-bottom: 16px;
+  }
+
+  .team-section h2.team-title{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: clamp(36px, 4.6vw, 54px);
+    margin: 0 0 64px;
+    color: #ffffff;
+  }
+
   .about-team{
     display: flex;
     justify-content: center;
     gap: 40px;
-    margin-top: 64px;
     flex-wrap: wrap;
   }
 
   .about-team figure{
+    position: relative;
     margin: 0;
     flex: 1 1 240px;
     max-width: 320px;
+    overflow: hidden;
+    border-radius: 4px;
   }
 
   .about-team img{
@@ -324,16 +370,42 @@
     height: auto;
     display: block;
     border-radius: 4px;
-    background: #ffffff;
+    background: #eeece5;
+    transition: transform 0.4s ease;
   }
 
-  .about-team figcaption{
-    margin-top: 16px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    color: var(--ink);
-    text-align: center;
+  .about-team figure:hover img{
+    transform: scale(1.03);
+  }
+
+  .about-team.single{
+    justify-content: center;
+  }
+
+  .about-team.single figure{
+    flex: 1 1 100%;
+    max-width: 900px;
+  }
+
+  .about-team.single figcaption{
+    display: none;
+  }
+
+  .about-team.full-bleed{
+    max-width: none;
+    margin-top: 56px;
+  }
+
+  .about-team.full-bleed figure{
+    max-width: none;
+    flex: 1 1 100%;
+    border-radius: 0;
+  }
+
+  .about-team.full-bleed img{
+    border-radius: 0;
+    width: 100%;
+    display: block;
   }
 
   @media (max-width: 900px){
@@ -526,23 +598,12 @@
   </div>
 
   <div class="wrap about-inner">
-    <h2 class="about-title">About AJN Studio</h2>
+    <h2 class="about-title">About AJN</h2>
     <div class="about-cols">
-      <p>AJN Studio Design is a Chavakkad, Kerala-based design studio specializing in architecture, interior design, 3D visualization, and creative design solutions. The studio focuses on creating modern and functional spaces with detailed architectural and interior concepts.</p>
-      <p>Along with high-quality 3D visualizations that help clients clearly understand their projects before execution, AJN Studio Design aims to combine creativity, functionality, and visual appeal to deliver customized design solutions for residential and commercial projects.</p>
+      <p>AJN Studio is an architectural visualization studio creating photorealistic 3D visuals for architects, interior designers, developers and design studios. We turn drawings, models and design ideas into images that make the final space easier to understand, present and experience.</p>
+      <p>Our work goes beyond simply producing a render. We focus on the details that make an image feel convincing — accurate materials, natural lighting, composition, scale and atmosphere. From a single interior view to complete visual packages, animations and walkthroughs, we create visuals that communicate the design clearly and with purpose.</p>
     </div>
-
-    <div class="about-team">
-      <figure>
-        <img src="image_2.jpg" alt="Ajmal - AJN Studio">
-        <figcaption>Ajmal</figcaption>
-      </figure>
-      <figure>
-        <img src="image_3.jpg" alt="Nejmal - AJN Studio">
-        <figcaption>Nejmal</figcaption>
-      </figure>
-    </div>
-</div>
+  </div>
 </section>
 
 <section class="cta-section">
