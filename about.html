@@ -577,18 +577,21 @@
 
 <div class="cursor-ring" id="cursorRing"></div>
 
-<header class="top">
-  <div class="wrap nav">
-    <div class="brand">
-      <img src="image_1.jpg" alt="AJN Studio logo">
-    </div>
-    <nav class="links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="project.html">Projects</a>
-      <a href="contact.html">Contact</a>
+<header id="siteHeader">
+  <div class="wrap nav-inner">
+    <a href="#home" class="logo"><img src="images/icon-1.png" alt="AJN Studio"></a>
+    <nav id="mainNav">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="project.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </nav>
-    <a href="mailto:info@ajnstudio.com" class="make-request">Contact us</a>
+    <div class="nav-right">
+      <a href="contact.html" class="btn-line">Start a Project</a>
+      <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </header>
 
