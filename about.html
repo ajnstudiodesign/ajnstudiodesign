@@ -420,11 +420,22 @@
     transition: transform 0.6s ease, filter 0.6s ease, opacity 0.6s ease;
   }
 
+  /* full-view variant: shows the whole photo instead of cropping it */
+  .team-card--full img{
+    object-fit: contain;
+    object-position: center;
+  }
+
   .team-card:hover img,
   .team-card:focus-within img{
     transform: scale(1.045);
     filter: grayscale(15%) brightness(1.35) contrast(0.95);
     opacity: 0.32;
+  }
+
+  .team-card--full:hover img,
+  .team-card--full:focus-within img{
+    transform: none;
   }
 
   .team-overlay{
@@ -554,11 +565,6 @@
     font-size: 1.05rem;
   }
 
-  @keyframes scroll{
-    from{ transform: translateX(0); }
-    to{ transform: translateX(-50%); }
-  }
-
   .link-row:hover .static, .link-row:focus-visible .static{ opacity: 0; }
   .link-row:hover .arrow, .link-row:focus-visible .arrow{ transform: translate(3px,-3px); }
   .link-row:hover .marquee, .link-row:focus-visible .marquee{ opacity: 1; transform: translateY(0); }
@@ -642,6 +648,200 @@
     .brand img{ height: 34px; }
   }
 </style>
+<style>
+
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --gold: #a9793f;
+    --gold-soft: #8c6530;
+    --ink: #14140f;
+    --paper: #faf8f4;
+  }
+
+  .why-section {
+    position: relative;
+    width: 100%;
+    min-height: 0;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .why-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(250,248,244,1) 100%);
+    z-index: 1;
+  }
+
+  .why-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(169,121,63,0.06) 0%, transparent 55%);
+    z-index: 1;
+  }
+
+  .why-inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 80px 40px 70px;
+  }
+
+  .why-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 22px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.1s;
+  }
+
+  .why-eyebrow .line {
+    width: 44px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .why-eyebrow span {
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    font-weight: 500;
+  }
+
+  .why-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(38px, 6vw, 76px);
+    line-height: 1.05;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+    text-align: center;
+    margin-bottom: 90px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.25s;
+  }
+
+  .why-heading em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid rgba(20,20,15,0.12);
+  }
+
+  .why-item {
+    position: relative;
+    padding: 44px 34px 28px 0;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards;
+    transition: padding-top 0.5s ease, background 0.5s ease;
+    cursor: default;
+  }
+
+  .why-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -1px;
+    height: 2px;
+    width: 0;
+    background: var(--gold);
+    transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .why-item:hover::before { width: 100%; }
+
+  .why-item:hover { padding-top: 54px; }
+
+  .why-item:last-child { border-right: none; padding-right: 0; }
+  .why-item:nth-child(1) { animation-delay: 0.4s; padding-left: 0; }
+  .why-item:nth-child(2) { animation-delay: 0.55s; padding-left: 34px; }
+  .why-item:nth-child(3) { animation-delay: 0.7s; padding-left: 34px; }
+  .why-item:nth-child(4) { animation-delay: 0.85s; padding-left: 34px; }
+
+  .why-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 26px;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), color 0.4s ease;
+  }
+
+  .why-item:hover .why-num {
+    transform: translateY(-4px) scale(1.15);
+    color: var(--gold-soft);
+  }
+
+  .why-item h3 {
+    font-family: 'Jost', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 20px;
+    line-height: 1.4;
+    transition: color 0.4s ease, letter-spacing 0.4s ease;
+    min-height: 42px;
+  }
+
+  .why-item:hover h3 {
+    color: var(--gold-soft);
+    letter-spacing: 0.09em;
+  }
+
+  .why-item p {
+    font-size: 14.5px;
+    line-height: 1.85;
+    color: rgba(20,20,15,0.62);
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    transition: color 0.4s ease;
+  }
+
+  .why-item:hover p {
+    color: rgba(20,20,15,0.88);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 900px) {
+    .why-grid { grid-template-columns: repeat(2, 1fr); row-gap: 44px; }
+    .why-item:nth-child(2) { border-right: none; }
+    .why-item:nth-child(3) { padding-left: 0; border-top: 1px solid rgba(20,20,15,0.1); padding-top: 44px; }
+    .why-item:nth-child(4) { border-right: none; border-top: 1px solid rgba(20,20,15,0.1); padding-top: 44px; }
+    .why-heading { margin-bottom: 60px; }
+  }
+
+  @media (max-width: 560px) {
+    .why-inner { padding: 90px 24px 70px; }
+    .why-grid { grid-template-columns: 1fr; }
+    .why-item { border-right: none !important; padding-left: 0 !important; }
+    .why-item:nth-child(n+2) { border-top: 1px solid rgba(20,20,15,0.1); padding-top: 36px; }
+  }
+
+</style>
 </head>
 <body>
 
@@ -694,13 +894,48 @@
         </figcaption>
       </figure>
 
-      <figure class="team-card" tabindex="0">
+      <figure class="team-card team-card--full" tabindex="0">
         <img src="images/Nejmal.jpg" alt="Nejmal — 3D Artist, AJN Studio">
         <figcaption class="team-overlay">
           <span class="team-name">Nejmal</span>
           <span class="team-role">3D Visualization Artist</span>
         </figcaption>
       </figure>
+    </div>
+  </div>
+</section>
+
+<section class="why-section">
+  <div class="why-inner">
+
+    <h2 class="why-heading">Why Choose <em>AJN</em></h2>
+
+    <div class="why-grid">
+
+      <div class="why-item">
+        <span class="why-num">01</span>
+        <h3>Photorealism That Feels Real</h3>
+        <p>We focus on accurate materials, natural lighting, composition and detail to create visuals that feel close to the finished space — not just technically correct renders.</p>
+      </div>
+
+      <div class="why-item">
+        <span class="why-num">02</span>
+        <h3>Design-Led Visualization</h3>
+        <p>We understand space, proportion, materials and lighting. That allows us to translate architectural and interior design ideas into visuals that communicate the original intent clearly.</p>
+      </div>
+
+      <div class="why-item">
+        <span class="why-num">03</span>
+        <h3>Built Around Your Project</h3>
+        <p>Every project is different. We adapt our visual approach to the design, whether it is a single interior view, a complete residential project, an exterior, animation or a walkthrough.</p>
+      </div>
+
+      <div class="why-item">
+        <span class="why-num">04</span>
+        <h3>Clear Communication, Reliable Delivery</h3>
+        <p>From the initial drawings to the final images, we keep the process straightforward, organized and focused on delivering visuals that are ready for presentation, marketing or client approval.</p>
+      </div>
+
     </div>
   </div>
 </section>
