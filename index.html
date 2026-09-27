@@ -13,7 +13,6 @@
 <link rel="icon" type="image/jpeg" href="favicon.jpg">
 <link rel="apple-touch-icon" href="favicon.jpg">
 
-<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="AJN Studio">
 <meta property="og:title" content="AJN Studio — Interior &amp; Architecture Design Visualization">
@@ -24,7 +23,6 @@
 <meta property="og:url" content="https://www.ajnstudio.ae/">
 <meta property="og:locale" content="en_AE">
 
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AJN Studio — Interior &amp; Architecture Design Visualization">
 <meta name="twitter:description" content="Photorealistic architectural visuals, 3D modeling, animation and virtual walkthroughs for private homes and hospitality spaces across the UAE.">
@@ -91,7 +89,6 @@
   @media(max-width:1024px){.wrap{padding:0 34px;}}
   @media(max-width:720px){.wrap{padding:0 22px;}}
 
-  /* ---------- Torch light + custom cursor ---------- */
   #glow{
     position:fixed;top:0;left:0;width:420px;height:420px;border-radius:50%;
     background:radial-gradient(circle, rgba(28,26,21,.09) 0%, rgba(28,26,21,.04) 40%, rgba(28,26,21,0) 72%);
@@ -122,7 +119,6 @@
   body.glow-on .cursor-dot.hover{transform:translate(-50%,-50%) scale(0);}
   @media(max-width:900px){#glow,.cursor-dot,.cursor-ring{display:none;}body.glow-on{cursor:auto;}}
 
-  /* ---------- Intro splash ---------- */
   #intro{
     position:fixed;inset:0;background:#fff;z-index:999;
     display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;
@@ -163,7 +159,6 @@
   }
   body.loading{overflow:hidden;height:100vh;}
 
-  /* ---------- Nav ---------- */
   header{
     position:fixed;top:0;left:0;right:0;z-index:100;
     padding:26px 0;
@@ -207,7 +202,6 @@
     .burger{display:flex;}
   }
 
-  /* ---------- Hero Slider ---------- */
   .hero{position:relative;height:100vh;height:100dvh;min-height:560px;overflow:hidden;background:#fff;}
   .slide{
     position:absolute;inset:0;opacity:0;transition:opacity 1.1s ease;
@@ -219,7 +213,7 @@
     background:none;
   }
   .hero-content{
-    position:absolute;left:0;right:0;bottom:120px;z-index:5;color:var(--ivory);
+    position:absolute;left:0;right:0;bottom:100px;z-index:5;color:var(--ivory);
   }
   .hero-eyebrow{
     font-size:13px;letter-spacing:.06em;color:var(--brass);margin-bottom:18px;
@@ -229,13 +223,15 @@
   .hero-quote-text{
     font-family:'Jost',sans-serif;
     font-weight:300;
-    text-transform:uppercase;
     font-size:clamp(34px,6.4vw,84px);
     line-height:1.05;
     letter-spacing:.005em;
     max-width:900px;
     color:#ffffff;
   }
+  .hero-content.wrap{padding-left:38px;}
+  @media(max-width:1024px){.hero-content.wrap{padding-left:20px;}}
+  @media(max-width:720px){.hero-content.wrap{padding-left:10px;}}
 
   .hero-controls{
     position:absolute;right:48px;bottom:120px;z-index:6;
@@ -252,8 +248,7 @@
   .hero-track em{position:absolute;left:0;top:-1px;height:2px;background:var(--brass);width:33%;font-style:normal;transition:width .4s;}
 
   .scroll-cue{
-    position:absolute;left:48px;bottom:44px;z-index:6;color:rgba(28,26,21,.6);
-    display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.08em;
+    display:none;
   }
   .scroll-cue .line{width:26px;height:1px;background:rgba(28,26,21,.5);}
   @media(max-width:900px){
@@ -266,7 +261,6 @@
     .scroll-cue{display:none;}
   }
 
-  /* ---------- Intro strip ---------- */
   .intro-sec{
     background:var(--bg);padding:120px 0 100px;
   }
@@ -295,7 +289,6 @@
     .intro-statement h3{font-size:clamp(28px,8vw,40px);}
   }
 
-  /* ---------- Intro animation video (full screen) ---------- */
   .intro-video-wrap{
     margin-top:64px;
   }
@@ -309,7 +302,6 @@
     .intro-video-wrap{margin-top:44px;}
   }
 
-  /* ---------- Services (blackmonk scroll-reveal) ---------- */
   .bm-services-sec{
     background:var(--bg-raised);padding:120px 0 40px;
     border-top:1px solid var(--line);border-bottom:1px solid var(--line);
@@ -341,7 +333,6 @@
     gap:0;
   }
 
-  /* --- box holding the heading --- */
   .bm-sq{
     position:relative;
     width:550px;
@@ -381,7 +372,6 @@
   .bm-item.active .bm-rot{ animation-play-state:running; }
   @keyframes bmSpin{ to{ transform:rotate(360deg); } }
 
-  /* --- description box: a bordered box that reveals from the right of the box --- */
   .bm-desc-box{
     position:relative;
     width:0;
@@ -429,15 +419,11 @@
     .bm-rot{ animation:none; }
   }
 
-  /* --- mid-width screens (small laptops / large tablets landscape):
-     550px + 550px side-by-side no longer fits without overflowing/clipping,
-     so shrink both boxes until there's room again --- */
   @media (min-width:946px) and (max-width:1200px){
     .bm-sq{ width:420px; }
     .bm-item.active .bm-desc-box{ width:420px; }
   }
 
-  /* --- narrow screens: stack the boxes so nothing gets cut off sideways --- */
   @media (max-width: 945px){
     .bm-item{ flex-direction:column; align-items:center; }
 
@@ -482,7 +468,6 @@
     .bm-item{margin-bottom:22px;}
   }
 
-  /* ---------- Project images collage (hover name + scroll animation) ---------- */
   .pc-wrap{--pc-gap:clamp(3px,.5vw,6px);width:100%;max-width:none;margin:0;padding:0;}
   .pc-row{display:flex;align-items:stretch;gap:var(--pc-gap);margin-bottom:var(--pc-gap);}
   .pc-item{position:relative;overflow:hidden;margin:0;min-width:0;background:transparent;
@@ -533,7 +518,6 @@
 
   .more-projects{text-align:center;padding:36px 0 0;}
 
-  /* ---------- CTA ---------- */
   .cta{
     background:#fff;color:var(--ivory);text-align:center;padding:130px 0;
     position:relative;border-top:1px solid var(--line);
@@ -555,7 +539,6 @@
   }
   .btn-solid:hover{background:#000;color:#fff;transform:translateY(-3px);}
 
-  /* ---------- Footer ---------- */
   footer{background:var(--bg);padding:80px 0 34px;border-top:1px solid var(--line);}
   @media(max-width:900px){footer{padding:60px 0 28px;}}
   @media(max-width:600px){footer{padding:50px 0 24px;}}
@@ -592,7 +575,6 @@
 </style>
 </head>
 <body class="loading">
-
 <div id="intro"><img src="images/icon-1.png" alt="AJN Studio"><div class="intro-tagline">Interior &amp; Architecture Design</div></div>
 <div id="glow"></div>
 <div class="cursor-dot" id="cursorDot"></div>
@@ -618,23 +600,23 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div class="slide active" data-loc="" data-year="2026" data-area="3,200 m²">
-    <img src="images/hero-2.jpg" alt="Luxury living room with wood slat divider">
+  <div class="slide active" data-loc="Kerala, India" data-year="2026" data-area="—">
+    <img src="images/hero-1.jpg" alt="Open living and dining room with floor-to-ceiling windows and city view">
   </div>
   <div class="slide" data-loc="Kerala, India" data-year="2026" data-area="—">
-    <img src="images/hero-5.jpg" alt="Open living and dining room with floor-to-ceiling windows and city view">
+    <img src="images/hero-2.jpg" alt="Kitchen with marble waterfall island and wood-paneled walls">
+  </div>
+  <div class="slide" data-loc="Kerala, India" data-year="2026" data-area="—">
+    <img src="images/hero-3.jpg" alt="Home office with paper lantern pendant light and built-in shelving">
   </div>
   <div class="slide" data-loc="Abu Dhabi, UAE" data-year="2024" data-area="4,500 m²">
     <img src="images/hero-4.jpg" alt="Minimalist bedroom with boucle chairs">
   </div>
-  <div class="slide" data-loc="Kerala, India" data-year="2026" data-area="—">
-    <img src="images/hero-1.jpg" alt="Kitchen with marble waterfall island and wood-paneled walls">
+  <div class="slide" data-loc="" data-year="2026" data-area="3,200 m²">
+    <img src="images/hero-5.jpg" alt="Luxury living room with wood slat divider">
   </div>
   <div class="slide" data-loc="Sharjah, UAE" data-year="2025" data-area="650 m²">
     <img src="images/hero-6.jpg" alt="Walnut-paneled dining room with marble accent">
-  </div>
-  <div class="slide" data-loc="Kerala, India" data-year="2026" data-area="—">
-    <img src="images/hero-3.jpg" alt="Home office with paper lantern pendant light and built-in shelving">
   </div>
 
   <div class="hero-content wrap">
@@ -677,8 +659,6 @@
 <!-- SERVICES -->
 <section class="bm-services-sec" id="services">
   <div class="bm-wrap">
-
-    <div class="bm-heading-main">Services</div>
 
     <div class="bm-item">
       <div class="bm-sq">
@@ -834,7 +814,6 @@
           <img src="images/hero-3 (1).jpg" alt="Heritage Residence — Dining Room" loading="lazy" draggable="false">
           <figcaption>Heritage Residence — Dining Room</figcaption>
         </figure>
-        <!-- duplicate set for seamless loop -->
         <figure class="pc-item pc-m" style="--ar:1" aria-hidden="true">
           <img src="images/bedroom.jpg" alt="" loading="lazy" draggable="false">
           <figcaption>Elyra Villa — Master Bedroom</figcaption>
@@ -950,7 +929,6 @@
 </footer>
 
 <script>
-  // intro splash
   window.addEventListener('load', ()=>{
     const intro = document.getElementById('intro');
     setTimeout(()=>{
@@ -960,13 +938,11 @@
     }, 2500);
   });
 
-  // header scroll state
   const header = document.getElementById('siteHeader');
   window.addEventListener('scroll', ()=>{
     header.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // mobile nav toggle
   const burger = document.getElementById('burgerBtn');
   const nav = document.getElementById('mainNav');
   burger.addEventListener('click', ()=>{
@@ -978,8 +954,6 @@
       nav.querySelector('ul').style.flexDirection='column';nav.querySelector('ul').style.gap='16px';
     }
   });
-  // reset the mobile menu's inline styles when the viewport is widened back
-  // to desktop/tablet, so the nav doesn't stay hidden/misplaced after resizing
   window.addEventListener('resize', ()=>{
     if(window.innerWidth > 900){
       nav.removeAttribute('style');
@@ -988,7 +962,6 @@
     }
   });
 
-  // hero slider
   const slides = document.querySelectorAll('.slide');
   const slideNum = document.getElementById('slideNum');
   const slideBar = document.getElementById('slideBar');
@@ -1014,8 +987,6 @@
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // services boxes — open on mouse hover (closing the others), and also open
-  // automatically as each one scrolls into view
   const bmItems = document.querySelectorAll('.bm-item');
   bmItems.forEach(item => {
     item.addEventListener('mouseenter', ()=>{
@@ -1025,7 +996,6 @@
     item.addEventListener('mouseleave', ()=>{
       item.classList.remove('active');
     });
-    // touch fallback: tap opens this one and closes the rest
     item.addEventListener('touchstart', ()=>{
       bmItems.forEach(i => i.classList.remove('active'));
       item.classList.add('active');
@@ -1038,14 +1008,12 @@
   }, {threshold:0.45});
   bmItems.forEach(item => bmIo.observe(item));
 
-  // reveal on scroll
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
   }, {threshold:0.15});
   revealEls.forEach(el=>io.observe(el));
 
-  // project images collage (home page): stagger + scroll reveal + cursor ring hover
   (function(){
     var root=document.getElementById('pcGalleryHome'); if(!root) return;
     var items=root.querySelectorAll('.pc-reveal');
@@ -1061,7 +1029,6 @@
     }
   })();
 
-  // intro animation video: pause when off-screen to save resources, play when visible
   const introVideo = document.querySelector('.intro-video video');
   if(introVideo){
     const videoIo = new IntersectionObserver((entries)=>{
@@ -1073,7 +1040,6 @@
     videoIo.observe(introVideo);
   }
 
-  // custom circular cursor + brown torch light — only on desktop-sized, mouse-driven screens
   if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
     document.body.classList.add('glow-on');
     const glow = document.getElementById('glow');
@@ -1105,6 +1071,5 @@
     });
   }
 </script>
-
 </body>
 </html>
