@@ -228,13 +228,14 @@
 
   /* ---------- Project images collage (framed, centered, border like reference) ---------- */
   .pc-frame{
-    max-width:100%;margin:0;padding:14px;background:#0c0b09;
+    max-width:100%;margin:0;padding:14px;background:#f5f2ea;
   }
   .pc-wrap{--pc-gap:6px;width:100%;max-width:100%;margin:0;padding:0;}
-  .pc-row{display:flex;gap:var(--pc-gap);margin-bottom:var(--pc-gap);height:min(46vw,420px);}
+  .pc-row{display:flex;gap:var(--pc-gap);margin-bottom:var(--pc-gap);align-items:stretch;}
   .pc-row:last-child{margin-bottom:0;}
-  .pc-item{position:relative;overflow:hidden;margin:0;min-width:0;background:#0c0b09;flex:1 1 0;height:100%;}
-  .pc-item img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1);}
+  .pc-item{position:relative;overflow:hidden;margin:0;min-width:0;background:#efeae0;
+    flex-grow:var(--ar);flex-shrink:1;flex-basis:0;}
+  .pc-item img{display:block;width:100%;height:auto;transition:transform 1s cubic-bezier(.2,.7,.2,1);}
   .pc-item:hover img{transform:scale(1.06);}
   .pc-item figcaption{position:absolute;left:0;right:0;bottom:0;padding:44px 22px 18px;color:#fff;
     font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(18px,1.8vw,24px);letter-spacing:.01em;
@@ -263,7 +264,7 @@
   }
 
   /* Auto-scrolling image strip (framed to match reference) */
-  .pc-marquee{--mh:clamp(220px,26vw,360px);overflow:hidden;margin-top:var(--pc-gap);background:#0c0b09;}
+  .pc-marquee{--mh:clamp(220px,26vw,360px);overflow:hidden;margin-top:var(--pc-gap);background:#f5f2ea;}
   .pc-track{display:flex;gap:var(--pc-gap);width:max-content;animation:pcMarquee 60s linear infinite;}
   .pc-marquee:hover .pc-track{animation-play-state:paused;}
   .pc-marquee .pc-item.pc-m{flex:none;height:var(--mh);aspect-ratio:var(--ar);}
@@ -349,75 +350,69 @@
   <div class="pc-frame">
   <div class="pc-wrap" id="pcGallery">
   <div class="pc-row">
-    <figure class="pc-item pc-reveal">
-      <img src="images/kids-bedroom.jpg" alt="Kids Bedroom" loading="lazy">
-      <figcaption>Kids Bedroom</figcaption>
+    <figure class="pc-item pc-reveal" style="--ar:1.7778">
+      <img src="images/room-full-1.jpg" alt="Master Bedroom" loading="lazy">
+      <figcaption>Master Bedroom</figcaption>
     </figure>
-    <figure class="pc-item pc-reveal">
-      <img src="images/guest-bedroom.jpg" alt="Guest Bedroom" loading="lazy">
+  </div>
+  <div class="pc-row">
+    <figure class="pc-item pc-reveal" style="--ar:1">
+      <img src="images/dining-square.jpg" alt="Dining Room" loading="lazy">
+      <figcaption>Dining Room</figcaption>
+    </figure>
+    <figure class="pc-item pc-reveal" style="--ar:1">
+      <img src="images/living-square.jpg" alt="Living Room" loading="lazy">
+      <figcaption>Living Room</figcaption>
+    </figure>
+  </div>
+  <div class="pc-row">
+    <figure class="pc-item pc-reveal" style="--ar:1.5">
+      <img src="images/room-full-2.jpg" alt="Guest Bedroom" loading="lazy">
       <figcaption>Guest Bedroom</figcaption>
     </figure>
   </div>
   <div class="pc-row">
-    <figure class="pc-item pc-reveal">
-      <img src="images/hero-3.jpg" alt="Dining Room" loading="lazy">
-      <figcaption>Dining Room</figcaption>
+    <figure class="pc-item pc-reveal" style="--ar:1">
+      <img src="images/kids-square.jpg" alt="Kids Bedroom" loading="lazy">
+      <figcaption>Kids Bedroom</figcaption>
     </figure>
-  </div>
-  <div class="pc-row">
-    <figure class="pc-item pc-reveal">
-      <img src="images/kitchen-walnut.jpg" alt="Walnut Kitchen" loading="lazy">
+    <figure class="pc-item pc-reveal" style="--ar:1">
+      <img src="images/kitchen-square.jpg" alt="Walnut Kitchen" loading="lazy">
       <figcaption>Walnut Kitchen</figcaption>
     </figure>
-    <figure class="pc-item pc-reveal">
-      <img src="images/kitchen-oak.jpg" alt="Oak Kitchen" loading="lazy">
-      <figcaption>Oak Kitchen</figcaption>
+  </div>
+  <div class="pc-row">
+    <figure class="pc-item pc-reveal" style="--ar:1.3333">
+      <img src="images/room-full-3.jpg" alt="Living Area" loading="lazy">
+      <figcaption>Living Area</figcaption>
     </figure>
   </div>
   <div class="pc-row">
-    <figure class="pc-item pc-reveal">
-      <img src="images/hero-1.jpg" alt="Grand Living Hall" loading="lazy">
-      <figcaption>Grand Living Hall</figcaption>
-    </figure>
-  </div>
-  <div class="pc-row">
-    <figure class="pc-item pc-reveal">
-      <img src="images/living-room.jpg" alt="Living Room" loading="lazy">
-      <figcaption>Living Room</figcaption>
-    </figure>
-    <figure class="pc-item pc-reveal">
-      <img src="images/bedroom.jpg" alt="Bedroom" loading="lazy">
-      <figcaption>Bedroom</figcaption>
-    </figure>
-  </div>
-  <div class="pc-row">
-    <figure class="pc-item pc-reveal">
-      <img src="images/hero-2.jpg" alt="Master Bedroom" loading="lazy">
-      <figcaption>Master Bedroom</figcaption>
+    <figure class="pc-item pc-reveal" style="--ar:1.7778">
+      <img src="images/room-full-4.jpg" alt="TV Lounge" loading="lazy">
+      <figcaption>TV Lounge</figcaption>
     </figure>
   </div>
 
   <!-- AUTO-SCROLLING IMAGE STRIP -->
   <div class="pc-marquee pc-reveal">
     <div class="pc-track">
-        <figure class="pc-item pc-m" style="--ar:1"><img src="images/kids-bedroom.jpg" alt="Kids Bedroom" loading="lazy" draggable="false"><figcaption>Kids Bedroom</figcaption></figure>
-        <figure class="pc-item pc-m" style="--ar:0.7068"><img src="images/guest-bedroom.jpg" alt="Guest Bedroom" loading="lazy" draggable="false"><figcaption>Guest Bedroom</figcaption></figure>
-        <figure class="pc-item pc-m" style="--ar:1.7778"><img src="images/hero-3.jpg" alt="Dining Room" loading="lazy" draggable="false"><figcaption>Dining Room</figcaption></figure>
-        <figure class="pc-item pc-m" style="--ar:1"><img src="images/kitchen-walnut.jpg" alt="Walnut Kitchen" loading="lazy" draggable="false"><figcaption>Walnut Kitchen</figcaption></figure>
-        <figure class="pc-item pc-m" style="--ar:1"><img src="images/kitchen-oak.jpg" alt="Oak Kitchen" loading="lazy" draggable="false"><figcaption>Oak Kitchen</figcaption></figure>
-        <figure class="pc-item pc-m" style="--ar:1.7778"><img src="images/hero-1.jpg" alt="Grand Living Hall" loading="lazy" draggable="false"><figcaption>Grand Living Hall</figcaption></figure>
-        <figure class="pc-item pc-m" style="--ar:1"><img src="images/living-room.jpg" alt="Living Room" loading="lazy" draggable="false"><figcaption>Living Room</figcaption></figure>
-        <figure class="pc-item pc-m" style="--ar:1"><img src="images/bedroom.jpg" alt="Bedroom" loading="lazy" draggable="false"><figcaption>Bedroom</figcaption></figure>
-        <figure class="pc-item pc-m" style="--ar:1.5"><img src="images/hero-2.jpg" alt="Master Bedroom" loading="lazy" draggable="false"><figcaption>Master Bedroom</figcaption></figure>
-        <figure class="pc-item pc-m" style="--ar:1" aria-hidden="true"><img src="images/kids-bedroom.jpg" alt="" loading="lazy" draggable="false"><figcaption>Kids Bedroom</figcaption></figure>
-        <figure class="pc-item pc-m" style="--ar:0.7068" aria-hidden="true"><img src="images/guest-bedroom.jpg" alt="" loading="lazy" draggable="false"><figcaption>Guest Bedroom</figcaption></figure>
-        <figure class="pc-item pc-m" style="--ar:1.7778" aria-hidden="true"><img src="images/hero-3.jpg" alt="" loading="lazy" draggable="false"><figcaption>Dining Room</figcaption></figure>
-        <figure class="pc-item pc-m" style="--ar:1" aria-hidden="true"><img src="images/kitchen-walnut.jpg" alt="" loading="lazy" draggable="false"><figcaption>Walnut Kitchen</figcaption></figure>
-        <figure class="pc-item pc-m" style="--ar:1" aria-hidden="true"><img src="images/kitchen-oak.jpg" alt="" loading="lazy" draggable="false"><figcaption>Oak Kitchen</figcaption></figure>
-        <figure class="pc-item pc-m" style="--ar:1.7778" aria-hidden="true"><img src="images/hero-1.jpg" alt="" loading="lazy" draggable="false"><figcaption>Grand Living Hall</figcaption></figure>
-        <figure class="pc-item pc-m" style="--ar:1" aria-hidden="true"><img src="images/living-room.jpg" alt="" loading="lazy" draggable="false"><figcaption>Living Room</figcaption></figure>
-        <figure class="pc-item pc-m" style="--ar:1" aria-hidden="true"><img src="images/bedroom.jpg" alt="" loading="lazy" draggable="false"><figcaption>Bedroom</figcaption></figure>
-        <figure class="pc-item pc-m" style="--ar:1.5" aria-hidden="true"><img src="images/hero-2.jpg" alt="" loading="lazy" draggable="false"><figcaption>Master Bedroom</figcaption></figure>
+        <figure class="pc-item pc-m" style="--ar:1.7778"><img src="images/room-full-1.jpg" alt="Master Bedroom" loading="lazy" draggable="false"><figcaption>Master Bedroom</figcaption></figure>
+        <figure class="pc-item pc-m" style="--ar:1"><img src="images/dining-square.jpg" alt="Dining Room" loading="lazy" draggable="false"><figcaption>Dining Room</figcaption></figure>
+        <figure class="pc-item pc-m" style="--ar:1"><img src="images/living-square.jpg" alt="Living Room" loading="lazy" draggable="false"><figcaption>Living Room</figcaption></figure>
+        <figure class="pc-item pc-m" style="--ar:1.5"><img src="images/room-full-2.jpg" alt="Guest Bedroom" loading="lazy" draggable="false"><figcaption>Guest Bedroom</figcaption></figure>
+        <figure class="pc-item pc-m" style="--ar:1"><img src="images/kids-square.jpg" alt="Kids Bedroom" loading="lazy" draggable="false"><figcaption>Kids Bedroom</figcaption></figure>
+        <figure class="pc-item pc-m" style="--ar:1"><img src="images/kitchen-square.jpg" alt="Walnut Kitchen" loading="lazy" draggable="false"><figcaption>Walnut Kitchen</figcaption></figure>
+        <figure class="pc-item pc-m" style="--ar:1.3333"><img src="images/room-full-3.jpg" alt="Living Area" loading="lazy" draggable="false"><figcaption>Living Area</figcaption></figure>
+        <figure class="pc-item pc-m" style="--ar:1.7778"><img src="images/room-full-4.jpg" alt="TV Lounge" loading="lazy" draggable="false"><figcaption>TV Lounge</figcaption></figure>
+        <figure class="pc-item pc-m" style="--ar:1.7778" aria-hidden="true"><img src="images/room-full-1.jpg" alt="" loading="lazy" draggable="false"><figcaption>Master Bedroom</figcaption></figure>
+        <figure class="pc-item pc-m" style="--ar:1" aria-hidden="true"><img src="images/dining-square.jpg" alt="" loading="lazy" draggable="false"><figcaption>Dining Room</figcaption></figure>
+        <figure class="pc-item pc-m" style="--ar:1" aria-hidden="true"><img src="images/living-square.jpg" alt="" loading="lazy" draggable="false"><figcaption>Living Room</figcaption></figure>
+        <figure class="pc-item pc-m" style="--ar:1.5" aria-hidden="true"><img src="images/room-full-2.jpg" alt="" loading="lazy" draggable="false"><figcaption>Guest Bedroom</figcaption></figure>
+        <figure class="pc-item pc-m" style="--ar:1" aria-hidden="true"><img src="images/kids-square.jpg" alt="" loading="lazy" draggable="false"><figcaption>Kids Bedroom</figcaption></figure>
+        <figure class="pc-item pc-m" style="--ar:1" aria-hidden="true"><img src="images/kitchen-square.jpg" alt="" loading="lazy" draggable="false"><figcaption>Walnut Kitchen</figcaption></figure>
+        <figure class="pc-item pc-m" style="--ar:1.3333" aria-hidden="true"><img src="images/room-full-3.jpg" alt="" loading="lazy" draggable="false"><figcaption>Living Area</figcaption></figure>
+        <figure class="pc-item pc-m" style="--ar:1.7778" aria-hidden="true"><img src="images/room-full-4.jpg" alt="" loading="lazy" draggable="false"><figcaption>TV Lounge</figcaption></figure>
     </div>
   </div>
   </div>
