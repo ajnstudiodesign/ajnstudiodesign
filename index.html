@@ -89,13 +89,10 @@
     position:fixed;top:0;left:0;width:26px;height:26px;border-radius:50%;
     border:1px solid rgba(28,26,21,.7);pointer-events:none;z-index:1001;
     transform:translate(-50%,-50%);
-    transition:width .25s ease, height .25s ease, border-color .25s ease, opacity .3s ease, background .25s ease;
+    transition:opacity .3s ease;
     opacity:0;
   }
   body.glow-on .cursor-dot,body.glow-on .cursor-ring{opacity:1;}
-  .cursor-ring.hover{width:50px;height:50px;border-color:#000000;background:rgba(0,0,0,.08);}
-  .cursor-ring.hover ~ .cursor-dot,
-  body.glow-on .cursor-dot.hover{transform:translate(-50%,-50%) scale(0);}
   @media(max-width:900px){#glow,.cursor-dot,.cursor-ring{display:none;}body.glow-on{cursor:auto;}}
 
   #intro{
@@ -612,11 +609,6 @@
       requestAnimationFrame(animateRing);
     }
     animateRing();
-
-    document.querySelectorAll('a, button').forEach(el=>{
-      el.addEventListener('mouseenter', ()=>ring.classList.add('hover'));
-      el.addEventListener('mouseleave', ()=>ring.classList.remove('hover'));
-    });
   }
 </script>
 </body>
