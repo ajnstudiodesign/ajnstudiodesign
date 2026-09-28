@@ -593,11 +593,17 @@
     overflow: hidden;
   }
 
+  /* Overlay lowered so more of the background image shows through */
   .why-section::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(255,255,255,0.82) 0%, rgba(250,248,244,0.78) 50%, rgba(250,248,244,0.88) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(255,255,255,0.68) 0%,
+      rgba(250,248,244,0.60) 50%,
+      rgba(250,248,244,0.74) 100%
+    );
     z-index: 1;
   }
 
@@ -730,17 +736,18 @@
     letter-spacing: 0.09em;
   }
 
+  /* Body copy made darker and slightly heavier for readability over the stronger image */
   .why-item p {
     font-size: 14.5px;
     line-height: 1.85;
-    color: rgba(20,20,15,0.8);
-    font-weight: 300;
+    color: rgba(20,20,15,0.88);
+    font-weight: 400;
     letter-spacing: 0.01em;
     transition: color 0.4s ease;
   }
 
   .why-item:hover p {
-    color: rgba(20,20,15,0.88);
+    color: rgba(20,20,15,0.95);
   }
 
   @keyframes fadeUp {
