@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AJN Studio — Contact</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Baloo+2:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Baloo+2:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg: #ffffff;
@@ -517,9 +517,9 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 clamp(24px, 6vw, 48px);
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: clamp(18px, 2.4vw, 24px);
-    font-weight: 600;
+    font-weight: 400;
     color: var(--ink);
     transition: opacity 0.25s ease;
   }
@@ -545,14 +545,18 @@
 
   .marquee-track{
     display: flex;
+    flex: 0 0 auto;
+    width: max-content;
     white-space: nowrap;
-    animation: scroll 14s linear infinite;
+    will-change: transform;
+    animation: marqueeLeft 14s linear infinite;
     animation-play-state: paused;
   }
 
   .marquee-track span{
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
+    flex: 0 0 auto;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
     font-size: clamp(18px, 2.4vw, 24px);
     padding: 0 1.75rem;
     display: flex;
@@ -563,6 +567,12 @@
   .marquee-track span::after{
     content: '↗';
     font-size: 1.05rem;
+  }
+
+  /* text moves from right to LEFT, endless loop */
+  @keyframes marqueeLeft{
+    from{ transform: translateX(0); }
+    to{ transform: translateX(-50%); }
   }
 
   .link-row:hover .static, .link-row:focus-visible .static{ opacity: 0; }
@@ -665,7 +675,7 @@
     position: relative;
     width: 100%;
     min-height: 0;
-    background: #ffffff;
+    background: #ffffff url('images/room-full-1.jpg') center / cover no-repeat;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -675,7 +685,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(250,248,244,1) 100%);
+    background: linear-gradient(180deg, rgba(255,255,255,0.82) 0%, rgba(250,248,244,0.78) 50%, rgba(250,248,244,0.88) 100%);
     z-index: 1;
   }
 
@@ -811,7 +821,7 @@
   .why-item p {
     font-size: 14.5px;
     line-height: 1.85;
-    color: rgba(20,20,15,0.62);
+    color: rgba(20,20,15,0.8);
     font-weight: 300;
     letter-spacing: 0.01em;
     transition: color 0.4s ease;
@@ -853,12 +863,12 @@
       <img src="images/icon-1.png" alt="AJN Studio logo">
     </div>
     <nav class="links">
-        <li><a href="index.html">Home</a></li>
+        <li><a href="#home">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="project.html">Projects</a></li>
         <li><a href="contact.html">Contact</a></li>
     </nav>
-    <a href="mailto:ajnstudiodesign@gmail.com" class="make-request">Contact us</a>
+    <a href="mailto:info@ajnstudio.com" class="make-request">Contact us</a>
   </div>
 </header>
 
@@ -942,39 +952,36 @@
 
 <section class="cta-section">
   <nav class="link-rows" aria-label="Social links">
-    <a class="link-row" href="https://www.instagram.com/ajnstudio.design/" target="_blank" rel="noopener">
+    <a class="link-row" href="https://instagram.com" target="_blank" rel="noopener">
       <div class="static">
         <span>Instagram</span>
         <span class="arrow">↗</span>
       </div>
       <div class="marquee">
         <div class="marquee-track">
-          <span>Instagram</span><span>Instagram</span><span>Instagram</span><span>Instagram</span>
-          <span>Instagram</span><span>Instagram</span><span>Instagram</span><span>Instagram</span>
+          <span>Instagram</span><span>Instagram</span><span>Instagram</span><span>Instagram</span><span>Instagram</span><span>Instagram</span><span>Instagram</span><span>Instagram</span><span>Instagram</span><span>Instagram</span><span>Instagram</span><span>Instagram</span><span>Instagram</span><span>Instagram</span><span>Instagram</span><span>Instagram</span>
         </div>
       </div>
     </a>
-    <a class="link-row" href="https://www.behance.net/ajmalarchviz" target="_blank" rel="noopener">
+    <a class="link-row" href="https://behance.net" target="_blank" rel="noopener">
       <div class="static">
         <span>Behance</span>
         <span class="arrow">↗</span>
       </div>
       <div class="marquee">
         <div class="marquee-track">
-          <span>Behance</span><span>Behance</span><span>Behance</span><span>Behance</span>
-          <span>Behance</span><span>Behance</span><span>Behance</span><span>Behance</span>
+          <span>Behance</span><span>Behance</span><span>Behance</span><span>Behance</span><span>Behance</span><span>Behance</span><span>Behance</span><span>Behance</span><span>Behance</span><span>Behance</span><span>Behance</span><span>Behance</span><span>Behance</span><span>Behance</span><span>Behance</span><span>Behance</span>
         </div>
       </div>
     </a>
-    <a class="link-row" href="https://www.linkedin.com/in/ajmal-v-k/" target="_blank" rel="noopener">
+    <a class="link-row" href="https://facebook.com" target="_blank" rel="noopener">
       <div class="static">
-        <span>Linkedin</span>
+        <span>Facebook</span>
         <span class="arrow">↗</span>
       </div>
       <div class="marquee">
         <div class="marquee-track">
-          <span>Linkedin</span><span>Linkedin</span><span>Linkedin</span><span>Linkedin</span>
-          <span>Linkedin</span><span>Linkedin</span><span>Linkedin</span><span>Linkedin</span>
+          <span>Facebook</span><span>Facebook</span><span>Facebook</span><span>Facebook</span><span>Facebook</span><span>Facebook</span><span>Facebook</span><span>Facebook</span><span>Facebook</span><span>Facebook</span><span>Facebook</span><span>Facebook</span><span>Facebook</span><span>Facebook</span><span>Facebook</span><span>Facebook</span>
         </div>
       </div>
     </a>
