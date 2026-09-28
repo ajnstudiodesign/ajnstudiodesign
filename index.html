@@ -158,7 +158,7 @@
   .slide::after{content:"";position:absolute;inset:0;background:none;}
   .hero-content{position:absolute;left:0;right:0;bottom:100px;z-index:5;color:var(--ivory);}
   .hero-quote-text{
-    font-family:'Jost',sans-serif;font-weight:300;font-size:clamp(34px,6.4vw,84px);
+    font-family:'Helvetica Neue Light','HelveticaNeue-Light','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300;font-size:clamp(34px,6.4vw,84px);
     line-height:1.05;letter-spacing:.005em;max-width:900px;color:#ffffff;
   }
   .hero-content.wrap{padding-left:38px;}
@@ -262,6 +262,28 @@
   .sv-project:hover .sv-more::after,.sv-project:active .sv-more::after,.sv-project:focus-within .sv-more::after{transform:scaleX(1);}
   @media(hover:none){.sv-more{opacity:.9;transform:none;}.sv-title{transform:none;opacity:1;}}
 
+  /* AUTO-SCROLL IMAGE GALLERY (sits inside the services grid) */
+  .sg-col{padding:0 0 4px;}
+  .sg-gallery{position:relative;overflow:hidden;width:100%;}
+  .sg-track{display:flex;width:max-content;will-change:transform;touch-action:pan-y;user-select:none;-webkit-user-select:none;}
+  .sg-track,.sg-track *{cursor:grab;}
+  body.glow-on .sg-track,body.glow-on .sg-track a{cursor:none;}
+  .sg-track.dragging,.sg-track.dragging *{cursor:grabbing;}
+  .sg-slide{flex:0 0 auto;width:33.3333vw;aspect-ratio:4/5;}
+  .sg-slide img{pointer-events:none;-webkit-user-drag:none;}
+  .sg-arrow{
+    position:absolute;top:50%;margin-top:-22px;z-index:3;width:44px;height:44px;border:0;padding:0;
+    display:grid;place-items:center;background:none;color:#fff;cursor:pointer;
+    filter:drop-shadow(0 1px 4px rgba(0,0,0,.55));opacity:0;transition:opacity .25s,transform .2s;
+  }
+  .sg-gallery:hover .sg-arrow,.sg-arrow:focus-visible{opacity:1;}
+  .sg-arrow svg{width:30px;height:30px;}
+  .sg-prev{left:12px;}.sg-next{right:12px;}
+  .sg-prev:hover{transform:translateX(-3px);}.sg-next:hover{transform:translateX(3px);}
+  @media(hover:none){.sg-arrow{opacity:1;}}
+  @media(max-width:900px){.sg-slide{width:50vw;}}
+  @media(max-width:560px){.sg-slide{width:80vw;}}
+
   .cta{background:#fff;color:var(--ivory);text-align:center;padding:130px 0;position:relative;}
   @media(max-width:900px){.cta{padding:90px 0;}}
   @media(max-width:600px){.cta{padding:70px 0;}}
@@ -287,7 +309,7 @@
   .foot-links a{font-size:14.5px;color:rgba(28,26,21,.75);transition:color .3s;}
   .foot-links a:hover{color:var(--brass);}
   .foot-contact p{margin-bottom:6px;font-size:14.5px;color:rgba(28,26,21,.75);}
-  .foot-contact .phone{font-family:'Cormorant Garamond',serif;font-size:19px;margin-bottom:14px;display:block;color:var(--ivory);}
+  .foot-contact .phone{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:19px;margin-bottom:14px;display:block;color:var(--ivory);}
   .socials{display:flex;gap:12px;margin-top:20px;}
   .socials a{
     width:38px;height:38px;border-radius:50%;border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center;
@@ -431,9 +453,14 @@
 
 <div class="sv-col"><div class="sv-project" style="aspect-ratio:16/9"><a href="#"><img loading="lazy" src="images/05_16x9_dining-living.jpg" alt="Open plan dining and living"><div class="sv-cover"><h4 class="sv-title">Dining &amp; Living</h4><span class="sv-more">see full project</span></div></a></div></div>
 
-<div class="sv-col sv-4"><div class="sv-project" style="aspect-ratio:4/5"><a href="Timber & Burgundy Residence.html"><img loading="lazy" src="images/06_4x5_bathroom.jpg" alt="Bathroom"><div class="sv-cover"><h4 class="sv-title">Timber & Burgundy</h4><span class="sv-more">see full project</span></div></a></div></div>
-<div class="sv-col sv-4"><div class="sv-project" style="aspect-ratio:4/5"><a href="#"><img loading="lazy" src="images/07a_4x5_bedroom.jpg" alt="Bedroom"><div class="sv-cover"><h4 class="sv-title">Bedroom</h4><span class="sv-more">see full project</span></div></a></div></div>
-<div class="sv-col sv-4"><div class="sv-project" style="aspect-ratio:4/5"><a href="#"><img loading="lazy" src="images/07b_4x5_living-details.jpg" alt="Coffee table detail"><div class="sv-cover"><h4 class="sv-title">Living Details</h4><span class="sv-more">see full project</span></div></a></div></div>
+<!-- AUTO-SCROLL GALLERY: 4:5 images, 3 visible on desktop -->
+<div class="sv-col sg-col">
+  <div class="sg-gallery" id="sgGallery" aria-roledescription="carousel" aria-label="Project images">
+    <div class="sg-track" id="sgTrack"></div>
+    <button class="sg-arrow sg-prev" aria-label="Previous image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button class="sg-arrow sg-next" aria-label="Next image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+</div>
 
 <div class="sv-col"><div class="sv-project" style="aspect-ratio:16/9"><a href="#"><img loading="lazy" src="images/08_16x9_master-suite.jpg" alt="Master bedroom"><div class="sv-cover"><h4 class="sv-title">Master Suite</h4><span class="sv-more">see full project</span></div></a></div></div>
 
@@ -603,6 +630,132 @@
     }
     animateRing();
   }
+</script>
+
+<!-- AUTO-SCROLL IMAGE GALLERY -->
+<script>
+(function(){
+  /* Edit titles and links here. Images are in the images/ folder. */
+  const SG_SLIDES = [
+    { title: "Powder Room",    href: "#", src: "images/scroll-01.jpg" },
+    { title: "Dining Room",    href: "#", src: "images/scroll-02.jpg" },
+    { title: "Dining Area",    href: "#", src: "images/scroll-03.jpg" },
+    { title: "Entry Nook",     href: "#", src: "images/scroll-04.jpg" },
+    { title: "Kitchen",        href: "#", src: "images/scroll-05.jpg" },
+    { title: "Kids Bedroom",   href: "#", src: "images/scroll-06.jpg" },
+    { title: "Kitchen Bar",    href: "#", src: "images/scroll-07.jpg" },
+    { title: "Girl's Bedroom", href: "#", src: "images/scroll-08.jpg" },
+    { title: "Master Bedroom", href: "#", src: "images/scroll-09.jpg" },
+    { title: "Breakfast Bar",  href: "#", src: "images/scroll-10.jpg" }
+  ];
+  const SPEED = 45;           // auto-scroll speed in pixels per second
+  const RESUME_DELAY = 1200;  // ms before auto scroll continues after touch or drag
+
+  const gallery = document.getElementById("sgGallery");
+  const track = document.getElementById("sgTrack");
+  if(!gallery || !track) return;
+
+  /* two copies of the set so the loop never shows an empty end */
+  for(let c = 0; c < 2; c++){
+    SG_SLIDES.forEach((s, i) => {
+      const box = document.createElement("div");
+      box.className = "sv-project sg-slide";
+      if(c) box.setAttribute("aria-hidden", "true");
+      box.innerHTML =
+        '<a href="' + s.href + '" draggable="false"' + (c ? ' tabindex="-1"' : '') + '>' +
+        '<img loading="lazy" draggable="false" src="' + s.src + '" alt="' + (c ? '' : s.title) + '">' +
+        '<div class="sv-cover"><h4 class="sv-title">' + s.title + '</h4><span class="sv-more">see full project</span></div></a>';
+      track.appendChild(box);
+    });
+  }
+
+  let x = 0, setW = 0, slideW = 0;
+  function measure(){
+    slideW = track.querySelector(".sg-slide").getBoundingClientRect().width;
+    setW = slideW * SG_SLIDES.length;
+  }
+  function paint(){
+    x = ((x % setW) + setW) % setW;
+    track.style.transform = "translate3d(" + (-x) + "px,0,0)";
+  }
+
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let hovering = false, dragging = false, onScreen = true, holdUntil = 0, anim = null, coast = null;
+
+  new IntersectionObserver(es => { onScreen = es[0].isIntersecting; }).observe(gallery);
+
+  let last = performance.now();
+  function tick(now){
+    const dt = Math.min(now - last, 64) / 1000; last = now;
+    if(!reduced && onScreen && !hovering && !dragging && !anim && now > holdUntil){ x += SPEED * dt; paint(); }
+    requestAnimationFrame(tick);
+  }
+
+  /* arrows glide by exactly one image */
+  function glide(dir){
+    const from = x, to = x + dir * slideW, t0 = performance.now(), D = 550;
+    const me = anim = {};
+    coast = null;
+    holdUntil = t0 + RESUME_DELAY + D;
+    (function step(t){
+      if(anim !== me) return;
+      const p = Math.min((t - t0) / D, 1), e = 1 - Math.pow(1 - p, 3);
+      x = from + (to - from) * e; paint();
+      if(p < 1) requestAnimationFrame(step); else anim = null;
+    })(t0);
+  }
+  gallery.querySelector(".sg-prev").addEventListener("click", () => glide(-1));
+  gallery.querySelector(".sg-next").addEventListener("click", () => glide(1));
+
+  /* drag with mouse or finger, with a little momentum */
+  let sx = 0, sxPos = 0, moved = false, lastX = 0, lastT = 0, vel = 0;
+  track.addEventListener("pointerdown", e => {
+    if(e.pointerType === "mouse" && e.button !== 0) return;
+    dragging = true; moved = false; anim = null; coast = null;
+    sx = lastX = e.clientX; sxPos = x; lastT = performance.now(); vel = 0;
+    track.setPointerCapture(e.pointerId);
+  });
+  track.addEventListener("pointermove", e => {
+    if(!dragging) return;
+    const dx = e.clientX - sx;
+    if(Math.abs(dx) > 5){ moved = true; track.classList.add("dragging"); }
+    const now = performance.now();
+    vel = (lastX - e.clientX) / Math.max(now - lastT, 1); lastX = e.clientX; lastT = now;
+    if(moved){ x = sxPos - dx; paint(); }
+  });
+  function endDrag(){
+    if(!dragging) return;
+    dragging = false; track.classList.remove("dragging");
+    holdUntil = performance.now() + RESUME_DELAY;
+    if(moved && Math.abs(vel) > 0.1){
+      const me = coast = {}; let v = vel * 1000, prev = performance.now();
+      (function step(t){
+        if(coast !== me) return;
+        const dt = (t - prev) / 1000; prev = t;
+        x += v * dt; v *= Math.pow(0.02, dt); paint();
+        holdUntil = performance.now() + RESUME_DELAY;
+        if(Math.abs(v) > 20) requestAnimationFrame(step);
+      })(prev);
+    }
+  }
+  track.addEventListener("pointerup", endDrag);
+  track.addEventListener("pointercancel", endDrag);
+  track.addEventListener("click", e => { if(moved){ e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+
+  /* sideways trackpad scroll */
+  gallery.addEventListener("wheel", e => {
+    if(Math.abs(e.deltaX) > Math.abs(e.deltaY)){
+      e.preventDefault(); x += e.deltaX; paint(); holdUntil = performance.now() + RESUME_DELAY;
+    }
+  }, { passive: false });
+
+  gallery.addEventListener("mouseenter", () => { hovering = true; });
+  gallery.addEventListener("mouseleave", () => { hovering = false; });
+
+  new ResizeObserver(() => { const r = slideW ? x / slideW : 0; measure(); x = r * slideW; paint(); }).observe(gallery);
+  measure(); paint();
+  requestAnimationFrame(tick);
+})();
 </script>
 </body>
 </html>
