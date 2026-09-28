@@ -280,6 +280,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    margin: 0 auto;
     gap: 40px;
     flex-wrap: wrap;
   }
@@ -333,7 +334,7 @@
 
   /* team card photo + hover name/role reveal, matching reference style */
   .team-card{
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 2 / 3;
     background: #1c1c18;
     cursor: pointer;
   }
@@ -342,7 +343,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top center;
+    object-position: center;
     filter: grayscale(100%) contrast(1.02);
     transition: transform 0.6s ease, filter 0.6s ease, opacity 0.6s ease;
   }
@@ -356,7 +357,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top;
+    object-position: center;
   }
 
   .team-card:hover img,
@@ -364,11 +365,6 @@
     transform: scale(1.045);
     filter: grayscale(15%) brightness(1.35) contrast(0.95);
     opacity: 0.32;
-  }
-
-  .team-card--full:hover img,
-  .team-card--full:focus-within img{
-    transform: none;
   }
 
   .team-overlay{
@@ -423,7 +419,7 @@
       padding-top: 16px;
     }
     .team-card{ display: flex; flex-direction: column; aspect-ratio: auto; }
-    .team-card img{ aspect-ratio: 4 / 5; }
+    .team-card img{ aspect-ratio: 2 / 3; }
   }
 
   /* ---------- CTA SECTION ---------- */
@@ -823,11 +819,11 @@
         </figcaption>
       </figure>
 
-      <figure class="team-card team-card--full" tabindex="0">
-        <img src="images/Nejmal.jpg" alt="Nejmal — 3D Artist, AJN Studio">
+      <figure class="team-card" tabindex="0">
+        <img src="images/Nejmal.jpg" alt="Nejmal — Founder, AJN Studio">
         <figcaption class="team-overlay">
           <span class="team-name">Nejmal</span>
-          <span class="team-role">3D Visualization Artist</span>
+          <span class="team-role">Founder &amp; 3D Visualization Artist</span>
         </figcaption>
       </figure>
     </div>
