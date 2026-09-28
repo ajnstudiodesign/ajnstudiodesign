@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AJN Studio — Contact</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AJN Studio — About</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Baloo+2:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Baloo+2:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg: #ffffff;
@@ -17,6 +18,9 @@
     --brass: #c69a5b;
     --brass-dim: #c69a5b55;
     --head: 'Space Grotesk', 'Baloo 2', sans-serif;
+    --ivory:#1c1a15;
+    --stone-dim:#8a8271;
+    --line-strong: rgba(28,26,21,.22);
   }
 
   *{ box-sizing: border-box; }
@@ -44,85 +48,7 @@
     outline-offset: 3px;
   }
 
-  .wrap{
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: 0 48px;
-  }
-
-  /* ---------- NAV ---------- */
-
-  header.top{
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    border-bottom: 1px solid var(--line);
-    background: #fffffff2;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-  }
-
-  .nav{
-    display:flex;
-    align-items:center;
-    justify-content: space-between;
-    padding: 16px 0;
-  }
-
-  .brand{
-    display:flex;
-    align-items:center;
-    gap: 12px;
-  }
-
-  .brand img{
-    height: 64px;
-    width: auto;
-    display:block;
-  }
-
-  nav.links{
-    display:flex;
-    align-items:center;
-    gap: 38px;
-  }
-
-  nav.links a{
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 13px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--ink-dim);
-    position:relative;
-    padding-bottom: 4px;
-    border-bottom: 2px solid transparent;
-  }
-
-  nav.links a:hover{
-    color: var(--ink);
-    border-bottom: 2px solid var(--brass);
-  }
-
-  .make-request{
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 12.5px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    border: 1px solid var(--ink);
-    padding: 12px 26px;
-    border-radius: 999px;
-    white-space: nowrap;
-    transition: background 0.15s ease, color 0.15s ease;
-  }
-
-  .make-request:hover{
-    background: var(--ink);
-    color: var(--bg);
-  }
-
-  .nav-toggle{ display:none; }
+  .wrap{ max-width: 1320px; margin: 0 auto; padding: 0 48px; }
 
   /* ---------- HERO ---------- */
 
@@ -263,7 +189,7 @@
 
   .about{
     position: relative;
-    padding: 90px 0 110px;
+    padding: 170px 0 110px;
     overflow: hidden;
     border-top: 1px solid var(--line);
   }
@@ -353,6 +279,7 @@
   .about-team{
     display: flex;
     justify-content: center;
+    align-items: flex-start;
     gap: 40px;
     flex-wrap: wrap;
   }
@@ -420,10 +347,16 @@
     transition: transform 0.6s ease, filter 0.6s ease, opacity 0.6s ease;
   }
 
-  /* full-view variant: shows the whole photo instead of cropping it */
+  /* Nejmal card: same size as Ajmal, photo fills the whole card (no side frame/bars) */
+  .team-card--full{
+    background: transparent;
+  }
+
   .team-card--full img{
-    object-fit: contain;
-    object-position: center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
   }
 
   .team-card:hover img,
@@ -505,7 +438,7 @@
   .link-row{
     position: relative;
     display: block;
-    height: 5.75rem;
+    height: 3.75rem;
     border-bottom: 1px solid var(--line);
     overflow: hidden;
   }
@@ -518,7 +451,7 @@
     justify-content: space-between;
     padding: 0 clamp(24px, 6vw, 48px);
     font-family: 'Poppins', sans-serif;
-    font-size: clamp(18px, 2.4vw, 24px);
+    font-size: clamp(16px, 1.8vw, 20px);
     font-weight: 400;
     color: var(--ink);
     transition: opacity 0.25s ease;
@@ -557,7 +490,7 @@
     flex: 0 0 auto;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    font-size: clamp(18px, 2.4vw, 24px);
+    font-size: clamp(16px, 1.8vw, 20px);
     padding: 0 1.75rem;
     display: flex;
     align-items: center;
@@ -581,27 +514,8 @@
   .link-row:hover .marquee-track, .link-row:focus-visible .marquee-track{ animation-play-state: running; }
 
   @media (max-width: 640px){
-    .link-row{ height: 4.75rem; }
+    .link-row{ height: 3.25rem; }
   }
-
-  /* ---------- FOOTER ---------- */
-
-  footer{
-    padding: 34px 0;
-    border-top: 1px solid var(--line);
-  }
-
-  footer .wrap{
-    display:flex;
-    justify-content: space-between;
-    align-items:center;
-    color: var(--ink-dim);
-    font-size: 13.5px;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  footer a:hover{ color: var(--ink); }
 
   /* ---------- CUSTOM CURSOR ---------- */
 
@@ -648,15 +562,61 @@
 
   @media (max-width: 900px){
     .wrap{ padding: 0 24px; }
-    nav.links{ display:none; }
     .info-row{ gap: 48px; margin-top: 140px; }
     .watermark{ top: 160px; }
   }
 
-  @media (max-width: 520px){
-    .make-request{ padding: 10px 16px; font-size: 13.5px; }
-    .brand img{ height: 34px; }
+  /* ---------- HEADER (same as index) ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;padding:26px 0;
+    transition:background .4s ease, padding .4s ease, border-color .4s ease;
+    border-bottom:1px solid transparent;
   }
+  header.scrolled{background:rgba(255,255,255,.86);backdrop-filter:blur(10px);padding:16px 0;border-bottom:1px solid var(--line);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;}
+  .logo{display:flex;align-items:center;}
+  .logo img{height:52px;width:auto;transition:transform .4s ease;filter:brightness(0);}
+  .logo:hover img{transform:scale(1.06);}
+  nav ul{display:flex;gap:40px;list-style:none;margin:0;padding:0;}
+  nav a{font-family:'Jost',sans-serif;font-weight:300;font-size:14px;color:rgba(28,26,21,.82);position:relative;padding-bottom:4px;transition:color .3s;}
+  nav a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:#000;transition:width .35s ease;}
+  nav a:hover::after{width:100%;}
+  nav a:hover{color:#000;}
+  .nav-right{display:flex;align-items:center;gap:28px;}
+  .btn-line{
+    font-family:'Jost',sans-serif;font-weight:300;
+    border:1px solid var(--line-strong);color:var(--ivory);padding:10px 22px;font-size:13px;letter-spacing:.02em;
+    transition:background .35s, color .35s, border-color .35s, transform .35s;white-space:nowrap;display:inline-block;
+  }
+  .btn-line:hover{background:#000;color:#fff;border-color:#000;transform:translateY(-2px);}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+  .burger span{width:24px;height:1px;background:var(--ivory);}
+  @media(max-width:900px){nav{display:none;}.burger{display:flex;}}
+
+  /* ---------- FOOTER (same as index) ---------- */
+  footer{font-family:'Jost',sans-serif;font-weight:300;background:var(--bg);padding:80px 0 34px;border-top:1px solid var(--line);}
+  @media(max-width:900px){footer{padding:60px 0 28px;}}
+  @media(max-width:600px){footer{padding:50px 0 24px;}}
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;margin-bottom:60px;}
+  .foot-logo img{height:26px;margin-bottom:20px;filter:brightness(0);}
+  .foot-grid h4{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;margin:0 0 20px;color:var(--ivory);}
+  .foot-grid p{color:var(--stone-dim);font-size:14.5px;font-weight:300;line-height:1.8;max-width:340px;margin:0;}
+  .foot-links{display:flex;flex-direction:column;gap:12px;}
+  .foot-links a{font-size:14.5px;color:rgba(28,26,21,.75);transition:color .3s;}
+  .foot-links a:hover{color:var(--brass);}
+  .foot-contact p{margin-bottom:6px;font-size:14.5px;color:rgba(28,26,21,.75);}
+  .foot-contact .phone{font-family:'Cormorant Garamond',serif;font-size:19px;margin-bottom:14px;display:block;color:var(--ivory);}
+  .socials{display:flex;gap:12px;margin-top:20px;}
+  .socials a{
+    width:38px;height:38px;border-radius:50%;border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center;
+    transition:background .3s,border-color .3s,color .3s,transform .3s;
+  }
+  .socials a:hover{background:#000;border-color:#000;color:#fff;transform:translateY(-3px);}
+  .foot-bottom{
+    display:flex;justify-content:space-between;padding-top:26px;border-top:1px solid var(--line);
+    font-size:12.5px;color:var(--stone-dim);flex-wrap:wrap;gap:10px;
+  }
+  @media(max-width:800px){.foot-grid{grid-template-columns:1fr;gap:36px;}}
 </style>
 <style>
 
@@ -857,18 +817,21 @@
 
 <div class="cursor-ring" id="cursorRing"></div>
 
-  <header class="top">
-  <div class="wrap nav">
-    <div class="brand">
-      <img src="images/icon-1.png" alt="AJN Studio logo">
-    </div>
-    <nav class="links">
-        <li><a href="#home">Home</a></li>
+<header id="siteHeader">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="logo"><img src="images/icon-1.png" alt="AJN Studio"></a>
+    <nav id="mainNav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="project.html">Projects</a></li>
         <li><a href="contact.html">Contact</a></li>
+      </ul>
     </nav>
-    <a href="mailto:info@ajnstudio.com" class="make-request">Contact us</a>
+    <div class="nav-right">
+      <a href="contact.html" class="btn-line">Start a Project</a>
+      <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </header>
 
@@ -952,7 +915,7 @@
 
 <section class="cta-section">
   <nav class="link-rows" aria-label="Social links">
-    <a class="link-row" href="https://instagram.com" target="_blank" rel="noopener">
+    <a class="link-row" href="https://www.instagram.com/ajnstudio.design/" target="_blank" rel="noopener">
       <div class="static">
         <span>Instagram</span>
         <span class="arrow">↗</span>
@@ -963,7 +926,7 @@
         </div>
       </div>
     </a>
-    <a class="link-row" href="https://behance.net" target="_blank" rel="noopener">
+    <a class="link-row" href="https://www.behance.net/ajmalarchviz" target="_blank" rel="noopener">
       <div class="static">
         <span>Behance</span>
         <span class="arrow">↗</span>
@@ -990,8 +953,38 @@
 
 <footer>
   <div class="wrap">
-    <span>© 2026 AJN Studio. All rights reserved.</span>
-    <a href="mailto:ajnstudiodesign@gmail.com">ajnstudiodesign@gmail.com</a>
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo"><img src="images/icon-1.png" alt="AJN Studio"></div>
+        <p>Architectural visualization and 3D imagery for spaces that have yet to be built.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/ajnstudio.design/" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+          </a>
+          <a href="https://www.behance.net/ajmalarchviz" aria-label="Behance">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h6a2.6 2.6 0 0 1 0 5.2H3z"/><path d="M3 12.2h6.6a2.8 2.8 0 0 1 0 5.6H3z"/><path d="M14.5 12.8h6.3M14.7 15.5a3 3 0 0 0 3 2.4c1.7 0 2.8-.9 3-2M14.7 14.3a3 3 0 0 1 3-2.7c1.9 0 3 1.4 3 3.2"/><path d="M15.2 8.2h4.6"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/ajmal-v-k/" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7.5 10v6M7.5 7.5v.01M12 16v-3.5c0-1.4 1-2.5 2.4-2.5S17 11.1 17 12.5V16M12 12.2V16"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="foot-links">
+        <h4>Studio</h4>
+        <a href="index.html">Home</a>
+        <a href="project.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="foot-contact">
+        <h4>Contact</h4>
+        <span class="phone">+91 88912 30958</span>
+        <p style="margin-top:10px;">ajnstudiodesign@gmail.com</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 AJN Studio. All rights reserved.</span>
+    </div>
   </div>
 </footer>
 
@@ -1021,6 +1014,64 @@
       requestAnimationFrame(tick);
     }
     tick();
+  })();
+</script>
+
+<script>
+  const header = document.getElementById('siteHeader');
+  header.classList.toggle('scrolled', window.scrollY > 60);
+  window.addEventListener('scroll', ()=>{
+    header.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  const burger = document.getElementById('burgerBtn');
+  const nav = document.getElementById('mainNav');
+  burger.addEventListener('click', ()=>{
+    const open = nav.style.display === 'block';
+    nav.style.display = open ? 'none' : 'block';
+    if(!open){
+      nav.style.position='absolute';nav.style.top='100%';nav.style.left='0';nav.style.right='0';
+      nav.style.background='var(--bg)';nav.style.padding='20px 22px';
+      nav.querySelector('ul').style.flexDirection='column';nav.querySelector('ul').style.gap='16px';
+    }
+  });
+  window.addEventListener('resize', ()=>{
+    if(window.innerWidth > 900){
+      nav.removeAttribute('style');
+      const ul = nav.querySelector('ul');
+      if(ul){ ul.removeAttribute('style'); }
+    }
+  });
+</script>
+
+<script>
+  // Endless left-scrolling marquee: fills the row, then duplicates so the loop never shows a gap
+  (function(){
+    function build(){
+      document.querySelectorAll('.marquee-track').forEach(function(track){
+        var label = track.dataset.label || track.querySelector('span').textContent.trim();
+        track.dataset.label = label;
+        track.style.animation = 'none';
+        track.innerHTML = '';
+        var vw = Math.max(window.innerWidth, 1200);
+        var count = 0;
+        do {
+          var sp = document.createElement('span');
+          sp.textContent = label;
+          track.appendChild(sp);
+          count++;
+        } while (track.scrollWidth < vw && count < 60);
+        var groupWidth = track.scrollWidth;
+        var clones = Array.from(track.children).map(function(n){ return n.cloneNode(true); });
+        clones.forEach(function(n){ track.appendChild(n); });
+        track.style.animation = '';
+        track.style.animationDuration = Math.max(groupWidth / 80, 8) + 's';
+      });
+    }
+    var ready = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+    ready.then(build);
+    var t;
+    window.addEventListener('resize', function(){ clearTimeout(t); t = setTimeout(build, 200); });
   })();
 </script>
 
