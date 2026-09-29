@@ -2,14 +2,30 @@
 <html lang="en"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Timber &amp; Burgundy Residence</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Poppins:wght@400&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fff;--ink:#000;--mute:#444;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--bg:#fff;--ink:#000;--mute:#444;--line:#00000014;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box;margin:0}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 body{background:var(--bg);color:var(--ink);font:400 17px/1.7 Montserrat,Helvetica,Arial,sans-serif}
 a:focus-visible{outline:3px solid currentColor;outline-offset:3px}
 img{display:block;width:100%;height:auto}
+
+/* ---------- Header (AJN Studio) ---------- */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;border-bottom:1px solid var(--line);background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;max-width:1240px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{height:42px;width:auto;display:block;filter:brightness(0)}
+nav.links{display:flex;align-items:center;gap:38px;list-style:none;padding:0}
+nav.links li{list-style:none}
+nav.links a{font-family:'Montserrat',sans-serif;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);position:relative;padding-bottom:4px;text-decoration:none}
+nav.links a::after{content:'';position:absolute;left:0;bottom:0;height:1px;width:0;background:currentColor;transition:width .3s ease}
+nav.links a:hover{color:var(--ink)}
+nav.links a:hover::after{width:100%}
+.make-request{font-family:'Montserrat',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--ink);padding:12px 26px;border-radius:999px;white-space:nowrap;transition:background .15s ease,color .15s ease;color:inherit;text-decoration:none}
+.make-request:hover{background:var(--ink);color:var(--bg)}
+
 .meta{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 28px;padding:28px 24px;font-size:14px;text-transform:uppercase;color:var(--mute)}
 .meta b{color:var(--ink);font-weight:600}
 .intro{max-width:920px;margin:0 auto;padding:72px 24px 88px;text-align:center}
@@ -17,9 +33,38 @@ h1{font-weight:300;font-size:clamp(34px,6vw,72px);line-height:1.08;text-transfor
 .intro p{color:var(--mute)}
 .gallery{column-count:2;column-gap:4px;padding:0 10.5% 4px}
 figure{break-inside:avoid;margin:0 0 4px}
+
+/* ---------- Social links section ---------- */
+.cta-section{border-top:1px solid var(--line);background:var(--bg)}
+.link-row{position:relative;display:block;height:4rem;border-bottom:1px solid var(--line);overflow:hidden;text-decoration:none;color:inherit}
+.link-row .static{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(24px,6vw,48px);font-family:'Poppins',sans-serif;font-size:clamp(18px,2.4vw,24px);font-weight:400;color:var(--ink);transition:opacity .25s ease}
+.link-row .arrow{color:var(--ink);font-size:1.2rem;transition:transform .3s ease}
+.link-row .marquee{position:absolute;inset:0;background:var(--ink);color:var(--bg);display:flex;align-items:center;overflow:hidden;opacity:0;transform:translateY(6%);transition:opacity .25s ease,transform .3s ease;pointer-events:none}
+.marquee-track{display:flex;flex:none;width:max-content;white-space:nowrap;will-change:transform}
+.marquee-track span{flex:none;font-family:'Poppins',sans-serif;font-weight:400;font-size:clamp(18px,2.4vw,24px);padding:0 1.75rem;display:flex;align-items:center;gap:1.75rem}
+.marquee-track span::after{content:'↗';font-size:1.05rem}
+.link-row:hover .static,.link-row:focus-visible .static{opacity:0}
+.link-row:hover .arrow,.link-row:focus-visible .arrow{transform:translate(3px,-3px)}
+.link-row:hover .marquee,.link-row:focus-visible .marquee{opacity:1;transform:translateY(0)}
+@media (max-width:640px){.link-row{height:3.5rem}}
+
 footer{padding:48px 24px;text-align:center;font-size:14px;color:var(--mute)}
-@media (max-width:600px){.gallery{column-count:1;padding:0 16px 4px}}
+@media (max-width:600px){.nav{padding:16px}nav.links{display:none}.gallery{column-count:1;padding:0 16px 4px}.make-request{padding:10px 16px;font-size:13.5px}.brand img{height:34px}}
 </style></head><body>
+
+<header class="top">
+  <div class="nav">
+    <div class="brand"><img src="images/ajn-logo.png" alt="AJN Studio logo"></div>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="project.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a href="mailto:ajnstudiodesign@gmail.com" class="make-request">Contact us</a>
+  </div>
+</header>
+
 <main>
 <div class="hero"><img src="images/hero (1).jpg" width="4500" height="3375" alt="Living room with timber and burgundy details"></div>
 <div class="meta"><span>Location: <b>Add location</b></span><span>Year: <b>Add year</b></span><span>Architectural bureau: <b>Add name</b></span><span>Visualization: <b>Add name</b></span></div>
@@ -27,5 +72,79 @@ footer{padding:48px 24px;text-align:center;font-size:14px;color:var(--mute)}
 <p>Warm timber, deep burgundy accents and natural textures define this residence.The living and dining areas feature custom timber detailing and soft natural light, while the kitchen adds a marble focal point. The bedroom and wardrobe continue the palette with timber,muted green tones and warm lighting. The home office provides integrated storage and a practical workspace, while the bathroom takes a quieter, more minimal approach. Throughout each space maintains a cohesive material language while having its own character.</p></section>
 <section class="gallery" aria-label="Gallery"><figure><img src="images/living-2.jpg" width="4500" height="5625" alt="Living and dining area" loading="lazy"></figure><figure><img src="images/living-3.jpg" width="4500" height="5625" alt="Living and dining area" loading="lazy"></figure><figure><img src="images/living-4.jpg" width="4500" height="5625" alt="Living and dining area" loading="lazy"></figure><figure><img src="images/living-5.jpg" width="4500" height="3375" alt="Living and dining area" loading="lazy"></figure><figure><img src="images/living-6.jpg" width="4500" height="5581" alt="Living and dining area" loading="lazy"></figure><figure><img src="images/living-7.jpg" width="4500" height="3375" alt="Living and dining area" loading="lazy"></figure><figure><img src="images/living-8.jpg" width="4500" height="5625" alt="Living and dining area" loading="lazy"></figure><figure><img src="images/living-9.jpg" width="4500" height="5625" alt="Living and dining area" loading="lazy"></figure><figure><img src="images/living-10.jpg" width="4500" height="4500" alt="Living and dining area" loading="lazy"></figure><figure><img src="images/living-11.jpg" width="4500" height="5625" alt="Living and dining area" loading="lazy"></figure><figure><img src="images/office-1.jpg" width="5000" height="3750" alt="Home office" loading="lazy"></figure><figure><img src="images/office-2.jpg" width="4500" height="4500" alt="Home office" loading="lazy"></figure><figure><img src="images/office-3.jpg" width="4500" height="4500" alt="Home office" loading="lazy"></figure><figure><img src="images/office-4.jpg" width="4500" height="4500" alt="Home office" loading="lazy"></figure><figure><img src="images/bathroom-1.jpg" width="5000" height="3750" alt="Bathroom" loading="lazy"></figure><figure><img src="images/bathroom-2.jpg" width="4500" height="6365" alt="Bathroom" loading="lazy"></figure><figure><img src="images/bathroom-3.jpg" width="4500" height="4500" alt="Bathroom" loading="lazy"></figure><figure><img src="images/bathroom-4.jpg" width="4500" height="6365" alt="Bathroom" loading="lazy"></figure><figure><img src="images/bathroom-5.jpg" width="4500" height="4500" alt="Bathroom" loading="lazy"></figure></section>
 </main>
+
+<section class="cta-section">
+  <nav aria-label="Social links">
+    <a class="link-row" href="https://www.instagram.com/ajnstudio.design/" target="_blank" rel="noopener">
+      <div class="static"><span>Instagram</span><span class="arrow">↗</span></div>
+      <div class="marquee"><div class="marquee-track" data-marquee>
+        <span>Instagram</span><span>Instagram</span><span>Instagram</span><span>Instagram</span>
+      </div></div>
+    </a>
+    <a class="link-row" href="https://www.behance.net/ajnstudio" target="_blank" rel="noopener">
+      <div class="static"><span>Behance</span><span class="arrow">↗</span></div>
+      <div class="marquee"><div class="marquee-track" data-marquee>
+        <span>Behance</span><span>Behance</span><span>Behance</span><span>Behance</span>
+      </div></div>
+    </a>
+    <a class="link-row" href="https://www.linkedin.com/in/nejmal-v-k/" target="_blank" rel="noopener">
+      <div class="static"><span>Linkedin</span><span class="arrow">↗</span></div>
+      <div class="marquee"><div class="marquee-track" data-marquee>
+        <span>Linkedin</span><span>Linkedin</span><span>Linkedin</span><span>Linkedin</span>
+      </div></div>
+    </a>
+  </nav>
+</section>
+
 <footer>Add your studio name and contact details here.</footer>
+
+<script>
+(function(){
+  var SPEED = 90; // pixels per second
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var tracks = Array.prototype.slice.call(document.querySelectorAll('[data-marquee]'));
+  var state = tracks.map(function(t){ return { el: t, x: 0, half: 0 }; });
+
+  function build(){
+    state.forEach(function(s){
+      var track = s.el;
+      if (!track.dataset.base) track.dataset.base = track.innerHTML;
+      track.innerHTML = track.dataset.base;
+      var guard = 0;
+      while (track.scrollWidth < window.innerWidth * 1.2 && guard < 60){
+        track.insertAdjacentHTML('beforeend', track.dataset.base);
+        guard++;
+      }
+      var half = track.innerHTML;
+      track.innerHTML = half + half;
+      s.half = track.scrollWidth / 2;
+      s.x = -s.half;
+    });
+  }
+
+  var last = performance.now();
+  function frame(now){
+    var dt = Math.min((now - last) / 1000, 0.05);
+    last = now;
+    state.forEach(function(s){
+      if (!s.half) return;
+      s.x += SPEED * dt;           // scroll to the right
+      if (s.x >= 0) s.x -= s.half;
+      s.el.style.transform = 'translate3d(' + s.x + 'px,0,0)';
+    });
+    requestAnimationFrame(frame);
+  }
+
+  var resizeTimer;
+  build();
+  window.addEventListener('load', build);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
+  window.addEventListener('resize', function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(build, 200);
+  });
+  if (!reduce) requestAnimationFrame(frame);
+})();
+</script>
+
 </body></html>
