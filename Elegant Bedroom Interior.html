@@ -14,8 +14,9 @@ body{background:var(--bg);color:var(--ink);font:400 17px/1.7 Montserrat,Helvetic
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;border-bottom:1px solid var(--line);background:color-mix(in srgb, var(--bg) 95%, transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;max-width:1240px;margin:0 auto}
 .brand{display:flex;align-items:center;gap:12px}
-.brand img{height:42px;width:auto;display:block;filter:brightness(0);color:#000}
-nav.links{display:flex;align-items:center;gap:38px;list-style:none;padding:0}
+/* JPG logo has a white background, so no brightness filter here */
+.brand img{height:48px;width:auto;display:block}
+nav.links ul{display:flex;align-items:center;gap:38px;list-style:none;padding:0}
 nav.links li{list-style:none}
 nav.links a{font-family:'Montserrat',sans-serif;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);position:relative;padding-bottom:4px;text-decoration:none}
 nav.links a::after{content:'';position:absolute;left:0;bottom:0;height:1px;width:0;background:currentColor;transition:width .3s ease}
@@ -27,6 +28,7 @@ a:focus-visible{outline:3px solid currentColor;outline-offset:3px}
 
 .hero{width:100%;aspect-ratio:16/9;overflow:hidden}
 img{display:block;width:100%;height:auto}
+.brand img{width:auto}
 .meta{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 28px;padding:28px 24px;font-size:14px;text-transform:uppercase;color:var(--mute)}
 .meta b{color:var(--ink);font-weight:600}
 .intro{max-width:920px;margin:0 auto;padding:72px 24px 88px;text-align:center}
@@ -37,7 +39,7 @@ h1{font-weight:300;font-size:clamp(36px,6.5vw,76px);line-height:1.08;text-transf
 
 /* ---------- Social links section ---------- */
 .cta-section{border-top:1px solid var(--line);background:var(--bg)}
-.link-row{position:relative;display:block;height:4rem;border-bottom:1px solid var(--line);overflow:hidden;text-decoration:none;color:inherit}
+.link-row{position:relative;display:block;height:73px;/* one fixed height for all devices */border-bottom:1px solid var(--line);overflow:hidden;text-decoration:none;color:inherit}
 .link-row .static{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(24px,6vw,48px);font-family:'Poppins',sans-serif;font-size:clamp(18px,2.4vw,24px);font-weight:400;color:var(--ink);transition:opacity .25s ease}
 .link-row .arrow{color:var(--ink);font-size:1.2rem;transition:transform .3s ease}
 .link-row .marquee{position:absolute;inset:0;background:var(--ink);color:var(--bg);display:flex;align-items:center;overflow:hidden;opacity:0;transform:translateY(6%);transition:opacity .25s ease,transform .3s ease;pointer-events:none}
@@ -47,23 +49,24 @@ h1{font-weight:300;font-size:clamp(36px,6.5vw,76px);line-height:1.08;text-transf
 .link-row:hover .static,.link-row:focus-visible .static{opacity:0}
 .link-row:hover .arrow,.link-row:focus-visible .arrow{transform:translate(3px,-3px)}
 .link-row:hover .marquee,.link-row:focus-visible .marquee{opacity:1;transform:translateY(0)}
-@media (max-width:640px){.link-row{height:3.5rem}}
 
 footer{padding:48px 24px;text-align:center;font-size:14px;color:var(--mute)}
 
-@media (max-width:600px){.nav{padding:16px}nav.links{display:none}.gallery{grid-template-columns:1fr;padding:0 16px 4px}.last{grid-column:1}.make-request{padding:10px 16px;font-size:13.5px}.brand img{height:34px}}
+@media (max-width:600px){.nav{padding:16px}nav.links{display:none}.gallery{grid-template-columns:1fr;padding:0 16px 4px}.last{grid-column:1}.make-request{padding:10px 16px;font-size:13.5px}.brand img{height:40px}}
 </style></head><body>
 
 <header class="top">
   <div class="nav">
     <div class="brand">
-    <img src="images/icon-1.png" alt="AJN Studio logo">  <nav class="links">
+      <a href="index.html" aria-label="AJN Studio home"><img src="images/logo.jpg" width="448" height="192" alt="AJN Studio logo"></a>
     </div>
     <nav class="links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="project.html">Projects</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="project.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </nav>
     <a href="mailto:ajnstudiodesign@gmail.com" class="make-request">Contact us</a>
   </div>
