@@ -54,7 +54,9 @@
     -webkit-backdrop-filter: blur(10px);
     gap: 20px;
   }
-  header.site .brand { justify-self: start; }
+  header.site .brand { justify-self: start; display: flex; align-items: center; }
+  header.site .brand a { display: block; line-height: 0; }
+  /* logo is already black on white, so no filter */
   header.site .brand img { height: 40px; width: auto; display: block; }
   header.site nav.links {
     display: flex;
@@ -564,7 +566,7 @@
 <div class="progress" id="progress"></div>
 
 <header class="site">
-  <div></div>
+  <div class="brand"><a href="index.html" aria-label="AJN Studio home"><img src="images/ajn-logo.png" alt="AJN Studio logo" width="237" height="96" onerror="var s=this.dataset.step|0; var f=['images/ajn-logo.jpg','images/ajn-logo.jpeg']; if(s<f.length){this.dataset.step=s+1; this.src=f[s];} else {this.onerror=null;}"></a></div>
   <nav class="links">
     <a href="index.html">Home</a>
     <a href="project.html">Projects</a>
@@ -574,7 +576,7 @@
   <a class="hdr-btn" href="mailto:ajnstudiodesign@gmail.com">Contact us</a>
 </header>
 
- <div class="hero" id="heroPlate">
+<div class="hero" id="heroPlate">
   <img src="images/little-haven-01-hero.jpg" width="1932" height="1932" alt="Little Haven kids bedroom, wardrobe wall view">
 </div>
 
