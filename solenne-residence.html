@@ -60,7 +60,6 @@
   }
   header.site .brand { justify-self: start; display: flex; align-items: center; }
   header.site .brand a { display: block; line-height: 0; }
-  /* logo is already black on white, so no filter */
   header.site .brand img { height: 40px; width: auto; display: block; }
   header.site nav.links {
     display: flex;
@@ -109,7 +108,7 @@
   .intro { padding: 100px 24px 90px; text-align: center; }
   h1 { font-weight: 300; font-size: clamp(30px, 4.4vw, 52px); letter-spacing: .03em; margin: 0 0 56px; }
   .intro p { max-width: 720px; margin: 0 auto; font-size: 13px; line-height: 1.9; color: var(--mute); }
-  section.gallery { display: grid; gap: 16px; max-width: 1200px; margin: 0 auto 16px; padding: 0 24px; }
+  section.gallery { display: grid; gap: 5px; max-width: 1200px; margin: 0 auto 5px; padding: 0 24px; }
   .two { grid-template-columns: 1fr 1fr; }
   .three { grid-template-columns: repeat(3, 1fr); }
   @media (max-width: 700px) { .two, .three { grid-template-columns: 1fr; } }
@@ -344,7 +343,6 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // custom cursor
   if (!window.matchMedia('(hover: none), (pointer: coarse)').matches) {
     document.documentElement.classList.add('custom-cursor');
     var ring = document.getElementById('cursorRing');
@@ -366,7 +364,6 @@
 })();
 
 (function(){
-  /* seamless infinite marquee */
   var SPEED = 90;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var tracks = Array.prototype.slice.call(document.querySelectorAll('[data-marquee]'));
