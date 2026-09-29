@@ -546,7 +546,14 @@
     border: 1px solid var(--brass);
     transition: background 0.2s ease, color 0.2s ease;
   }
-  .cta-section .cta-btn:hover { background: var(--brass); color: #fff; }
+  .cta-section a.cta-btn:hover,
+  .cta-section a.cta-btn:focus,
+  .cta-section a.cta-btn:active,
+  .cta-section a.cta-btn:visited:hover {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fff;
+  }
 </style>
 </head>
 <body>
@@ -558,10 +565,10 @@
 <header class="site">
   <div></div>
   <nav class="links">
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Projects</a>
-    <a href="#">Contact</a>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="project.html">Projects</a>
+    <a href="contact/html">Contact</a>
   </nav>
   <a class="hdr-btn" href="mailto:ajnstudiodesign@gmail.com">Contact us</a>
 </header>
@@ -589,6 +596,14 @@
 </div>
 <div class="split-row">
   <div class="cell"><img src="images/verde-08-gallery-media-room.jpg" width="1600" height="1600" loading="lazy" alt="Media room with leather sofa and bar"></div>
+</div>
+
+<div class="split-row">
+  <div class="cell"><img src="images/verde-09-gallery-tv-wall.jpg" width="1600" height="1600" loading="lazy" alt="TV wall media unit, close view"></div>
+  <div class="cell"><img src="images/verde-10-gallery-tv-wall-wide.jpg" width="1600" height="1600" loading="lazy" alt="TV wall media unit, wide view"></div>
+</div>
+<div class="split-row">
+  <div class="cell"><img src="images/verde-08-gallery-media-room.jpg" width="1600" height="1600" loading="lazy" alt="Media room with leather sofa and bar, repeat view"></div>
 </div>
 
 <footer class="site">
