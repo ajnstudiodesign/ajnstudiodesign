@@ -14,7 +14,8 @@ body{background:var(--bg);color:var(--ink);font:400 17px/1.7 Montserrat,Helvetic
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;border-bottom:1px solid var(--line);background:color-mix(in srgb, var(--bg) 95%, transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;max-width:1240px;margin:0 auto}
 .brand{display:flex;align-items:center;gap:12px}
-/* JPG logo has a white background, so no brightness filter here */
+.brand a{display:block;line-height:0}
+/* Logo has a white background, so no brightness filter here */
 .brand img{height:48px;width:auto;display:block}
 nav.links ul{display:flex;align-items:center;gap:38px;list-style:none;padding:0}
 nav.links li{list-style:none}
@@ -39,7 +40,7 @@ h1{font-weight:300;font-size:clamp(36px,6.5vw,76px);line-height:1.08;text-transf
 
 /* ---------- Social links section ---------- */
 .cta-section{border-top:1px solid var(--line);background:var(--bg)}
-.link-row{position:relative;display:block;height:73px;/* one fixed height for all devices */border-bottom:1px solid var(--line);overflow:hidden;text-decoration:none;color:inherit}
+.link-row{position:relative;display:block;height:73px;border-bottom:1px solid var(--line);overflow:hidden;text-decoration:none;color:inherit}
 .link-row .static{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(24px,6vw,48px);font-family:'Poppins',sans-serif;font-size:clamp(18px,2.4vw,24px);font-weight:400;color:var(--ink);transition:opacity .25s ease}
 .link-row .arrow{color:var(--ink);font-size:1.2rem;transition:transform .3s ease}
 .link-row .marquee{position:absolute;inset:0;background:var(--ink);color:var(--bg);display:flex;align-items:center;overflow:hidden;opacity:0;transform:translateY(6%);transition:opacity .25s ease,transform .3s ease;pointer-events:none}
@@ -58,7 +59,12 @@ footer{padding:48px 24px;text-align:center;font-size:14px;color:var(--mute)}
 <header class="top">
   <div class="nav">
     <div class="brand">
- <div class="brand"><img src="images/ajn-logo.png" alt="AJN Studio logo"></div>    </div>
+      <a href="index.html" aria-label="AJN Studio home">
+        <!-- Tries .png first; if not found, automatically falls back to .jpg / .jpeg -->
+        <img src="images/ajn-logo.png" alt="AJN Studio logo"
+             onerror="var s=this.dataset.step|0; var f=['images/ajn-logo.jpg','images/ajn-logo.jpeg']; if(s<f.length){this.dataset.step=s+1; this.src=f[s];} else {this.onerror=null;}">
+      </a>
+    </div>
     <nav class="links">
       <ul>
         <li><a href="index.html">Home</a></li>
