@@ -16,7 +16,9 @@ img{display:block;width:100%;height:auto}
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;border-bottom:1px solid var(--line);background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;max-width:1240px;margin:0 auto}
 .brand{display:flex;align-items:center;gap:12px}
-.brand img{height:42px;width:auto;display:block;filter:brightness(0)}
+.brand a{display:block;line-height:0}
+/* logo is already black on white, so no filter */
+.brand img{height:42px;width:auto;display:block}
 nav.links{display:flex;align-items:center;gap:38px;list-style:none;padding:0}
 nav.links li{list-style:none}
 nav.links a{font-family:'Montserrat',sans-serif;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);position:relative;padding-bottom:4px;text-decoration:none}
@@ -54,7 +56,7 @@ footer{padding:48px 24px;text-align:center;font-size:14px;color:var(--mute)}
 
 <header class="top">
   <div class="nav">
-   <div class="brand"><img src="images/ajn-logo.png" alt="AJN Studio logo"></div>
+    <div class="brand"><a href="index.html" aria-label="AJN Studio home"><img src="img src="images/ajn-logo.png" alt="AJN Studio logo"" alt="AJN Studio logo" width="237" height="96"></a></div>
     <nav class="links">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
