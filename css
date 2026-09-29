@@ -6,15 +6,3 @@
   opacity:0;animation:svcRise .7s cubic-bezier(.22,1,.36,1) forwards;
   transition:width .6s cubic-bezier(.22,1,.36,1);
 }
-.brand {
-    display: flex;
-    align-items: center;
-}
-
-.brand img {
-    width: 120px;
-    height: 50px;
-    object-fit: contain;
-    display: block;
-    filter: none;
-}
