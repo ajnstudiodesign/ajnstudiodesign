@@ -22,6 +22,7 @@
   *{ box-sizing: border-box; }
 
   html{ scroll-behavior: smooth; }
+  html.smooth-scroll{ scroll-behavior: auto; }   /* JS handles smoothing on desktop */
 
   body{
     margin:0;
@@ -29,7 +30,10 @@
     color: var(--ink);
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
+
+  img{ max-width: 100%; }
 
   @media (prefers-reduced-motion: reduce){
     *{ animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
@@ -83,10 +87,10 @@
     color: #000;
   }
 
-  nav.links{
+  nav.links ul{
     display:flex;
     align-items:center;
-    gap: 38px;
+    gap: clamp(20px, 3vw, 38px);
     list-style: none;
     margin: 0;
     padding: 0;
@@ -145,7 +149,7 @@
 
   .hero{
     position: relative;
-    padding: 96px 0 110px;
+    padding: clamp(56px, 8vw, 96px) 0 clamp(64px, 9vw, 110px);
     overflow: hidden;
   }
 
@@ -165,7 +169,7 @@
   }
 
   .hero p{
-    font-size: 19px;
+    font-size: clamp(16px, 1.6vw, 19px);
     line-height: 1.65;
     color: var(--ink-dim);
     max-width: 560px;
@@ -228,54 +232,24 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 210px;
+    top: clamp(56px, 8vw, 96px);   /* same start as the heading */
     z-index: 1;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
-    padding: 0 40px;
+    padding: 0 clamp(12px, 3vw, 40px);
     pointer-events: none;
   }
 
   .watermark span{
     font-family: var(--head);
     font-weight: 400;
-    font-size: clamp(70px, 13vw, 190px);
+    font-size: clamp(38px, 12.5vw, 190px);
     color: var(--ink);
     opacity: 0.05;
-    line-height: 1;
+    line-height: 0.8;
   }
-
-  .info-row{
-    position: relative;
-    z-index: 2;
-    display:flex;
-    gap: 96px;
-    margin-top: 190px;
-    padding-bottom: 90px;
-    flex-wrap: wrap;
-  }
-
-  .info-block h2{
-    font-family: 'Baloo 2', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    margin: 0 0 18px;
-  }
-
-  .info-block .row{
-    display:flex;
-    align-items:center;
-    gap: 10px;
-    color: var(--ink-dim);
-    font-size: 15.5px;
-    margin-bottom: 10px;
-  }
-
-  .info-block .row svg{ flex: none; color: var(--brass); }
-
-  .info-block .row a:hover{ color: var(--ink); }
 
   /* ---------- CTA SECTION ---------- */
 
@@ -284,12 +258,10 @@
     background: var(--bg);
   }
 
-  .link-rows{}
-
   .link-row{
     position: relative;
     display: block;
-    height: 4rem;
+    height: 73px;   /* one fixed height for all devices */
     border-bottom: 1px solid var(--line);
     overflow: hidden;
   }
@@ -358,10 +330,6 @@
   .link-row:hover .arrow, .link-row:focus-visible .arrow{ transform: translate(3px,-3px); }
   .link-row:hover .marquee, .link-row:focus-visible .marquee{ opacity: 1; transform: translateY(0); }
 
-  @media (max-width: 640px){
-    .link-row{ height: 3.5rem; }
-  }
-
   /* ---------- FOOTER ---------- */
 
   footer{
@@ -424,17 +392,25 @@
 
   /* ---------- RESPONSIVE ---------- */
 
-  @media (max-width: 900px){
-    .wrap{ padding: 0 24px; }
-    .hero-copy{ margin-left: 0; }
-    nav.links{ display:none; }
-    .info-row{ gap: 48px; margin-top: 140px; }
-    .watermark{ top: 160px; }
+  /* Large screens */
+  @media (min-width: 1600px){
+    .wrap{ max-width: 1400px; }
   }
 
+  /* Tablet */
+  @media (max-width: 900px){
+    .wrap{ padding: 0 24px; }
+    nav.links{ display:none; }
+  }
+
+  /* Mobile */
   @media (max-width: 520px){
-    .make-request{ padding: 10px 16px; font-size: 13.5px; }
+    .wrap{ padding: 0 18px; }
     .brand img{ height: 34px; }
+    .make-request{ padding: 10px 16px; font-size: 12px; }
+    .hero-actions{ flex-direction: column; align-items: stretch; }
+    .hero-btn{ justify-content: center; }
+    footer .wrap{ flex-direction: column; text-align: center; }
   }
 </style>
 </head>
@@ -448,10 +424,12 @@
       <img src="images/icon-1.png" alt="AJN Studio logo">
     </div>
     <nav class="links">
+      <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="project.html">Projects</a></li>
         <li><a href="contact.html">Contact</a></li>
+      </ul>
     </nav>
     <a href="mailto:info@ajnstudio.com" class="make-request">Contact us</a>
   </div>
@@ -574,6 +552,58 @@
       resizeTimer = setTimeout(build, 200);
     });
     if (!reduce) requestAnimationFrame(frame);
+  })();
+
+  /* ---------- Smooth scroll with momentum (mouse wheel, desktop) ---------- */
+  (function(){
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
+
+    var html = document.documentElement;
+    html.classList.add('smooth-scroll');
+
+    var GAIN = 0.085;      // how much push each wheel tick gives
+    var FRICTION = 0.94;   // closer to 1 = glides longer after you stop (0.90 short, 0.96 long)
+    var MAX_V = 90;        // top speed limit (px per frame)
+
+    var pos = window.scrollY, vel = 0, raf = null, last = 0;
+
+    function maxScroll(){ return Math.max(0, html.scrollHeight - window.innerHeight); }
+
+    function loop(now){
+      var dt = last ? Math.min(Math.max((now - last) / 16.667, 0), 3) : 1;   // frame-rate independent
+      last = now;
+
+      pos += vel * dt;
+      var max = maxScroll();
+      if (pos <= 0){ pos = 0; vel = 0; }
+      else if (pos >= max){ pos = max; vel = 0; }
+
+      vel *= Math.pow(FRICTION, dt);                 // gradual slow-down
+      window.scrollTo(0, pos);
+
+      if (Math.abs(vel) < 0.05){ vel = 0; raf = null; return; }
+      raf = requestAnimationFrame(loop);
+    }
+
+    window.addEventListener('wheel', function(e){
+      if (e.ctrlKey) return;         // let browser zoom work
+      e.preventDefault();
+      var d = e.deltaY;
+      if (e.deltaMode === 1) d *= 32;
+      else if (e.deltaMode === 2) d *= window.innerHeight;
+      vel = Math.max(-MAX_V, Math.min(MAX_V, vel + d * GAIN));
+      if (!raf){
+        pos = window.scrollY;
+        last = 0;
+        raf = requestAnimationFrame(loop);
+      }
+    }, { passive: false });
+
+    // keep in sync when scrolling by keyboard, scrollbar drag or anchor jump
+    window.addEventListener('scroll', function(){
+      if (!raf) pos = window.scrollY;
+    }, { passive: true });
   })();
 
   /* ---------- Custom cursor ---------- */
