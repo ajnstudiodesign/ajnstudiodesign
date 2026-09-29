@@ -158,12 +158,16 @@
   .slide::after{content:"";position:absolute;inset:0;background:none;}
   .hero-content{position:absolute;left:0;right:0;bottom:100px;z-index:5;color:var(--ivory);}
   .hero-quote-text{
-    font-family:'Helvetica Neue Light','HelveticaNeue-Light','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300;font-size:clamp(34px,6.4vw,84px);
+    font-family:'Jost',sans-serif;font-weight:300;font-size:clamp(44px,7vw,84px);
     line-height:1.05;letter-spacing:.005em;max-width:900px;color:#ffffff;
   }
-  .hero-content.wrap{padding-left:38px;}
-  @media(max-width:1024px){.hero-content.wrap{padding-left:20px;}}
-  @media(max-width:720px){.hero-content.wrap{padding-left:10px;}}
+  /* left edge lines up with the header logo at every screen size */
+  .hero-content.wrap{padding-left:48px;}
+  @media(max-width:1024px){.hero-content.wrap{padding-left:34px;}}
+  @media(max-width:720px){
+    .hero-content.wrap{padding-left:22px;padding-right:22px;}
+    .hero-quote-text{font-size:clamp(40px,12.5vw,64px);}
+  }
 
   .hero-controls{position:absolute;right:48px;bottom:120px;z-index:6;display:flex;align-items:center;gap:18px;color:var(--ivory);}
   .hero-controls button{
@@ -319,6 +323,20 @@
   }
   @media(max-width:800px){.foot-grid{grid-template-columns:1fr;gap:36px;}}
 
+  /* small screens: keep header + footer readable and tappable */
+  @media(max-width:720px){
+    .logo img{height:44px;}
+    .nav-right{gap:14px;}
+    .btn-line{padding:9px 14px;font-size:12.5px;}
+    .burger{padding:8px 4px;}
+    .burger span{width:26px;}
+    .foot-logo img{height:32px;}
+    .foot-grid h4{font-size:20px;}
+    .foot-grid p,.foot-links a,.foot-contact p,.foot-contact .phone{font-size:16px;}
+    .socials a{width:44px;height:44px;}
+    .foot-bottom{font-size:13px;}
+  }
+
   .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease, transform .8s ease;}
   .reveal.in{opacity:1;transform:none;}
   @media (prefers-reduced-motion: reduce){
@@ -326,6 +344,66 @@
     .reveal{opacity:1;transform:none;transition:none;}
     .slide{transition:none;}
     #intro img{animation:none;opacity:1;}
+  }
+
+  /* ===== LARGE / ZOOMED-OUT SCREENS =====
+     Above 1500px everything scales with the screen width (1vw = 1% of width),
+     so header, hero quote, headings and footer never look tiny. */
+  @media(min-width:1500px){
+    .wrap{max-width:91.7vw;padding:0 3.33vw;}
+
+    header{padding:1.8vw 0;}
+    header.scrolled{padding:1.1vw 0;}
+    .logo img{height:3.6vw;}
+    nav ul{gap:2.8vw;}
+    nav a{font-size:.97vw;}
+    .nav-right{gap:1.95vw;}
+    .btn-line{font-size:.9vw;padding:.7vw 1.5vw;}
+
+    .hero-content{bottom:6.9vw;}
+    .hero-content.wrap{padding-left:3.33vw;}
+    .hero-quote-text{font-size:5.8vw;max-width:62.5vw;}
+    .hero-controls{right:3.33vw;bottom:8.3vw;gap:1.25vw;}
+    .hero-controls button{width:2.8vw;height:2.8vw;}
+    .hero-index{font-size:.97vw;}
+    .hero-track{width:4.9vw;}
+
+    .intro-sec{padding:8.3vw 0 6.9vw;}
+    .intro-statement h3{font-size:4.2vw;}
+    .intro-video-wrap{margin-top:4.4vw;}
+
+    .bm-services-sec{padding:8.3vw 0 2.8vw;}
+    .bm-wrap{max-width:81.9vw;}
+    .bm-heading-main{font-size:3.6vw;margin-bottom:5.6vw;}
+    .bm-item{margin-bottom:2.1vw;}
+    .bm-sq{width:38.2vw;height:17.4vw;padding:2.2vw;}
+    .bm-sq .bm-title{font-size:2.1vw;}
+    .bm-desc-box{height:17.4vw;}
+    .bm-item.active .bm-desc-box{width:38.2vw;}
+    .bm-desc-box .bm-icon{width:2.5vw;height:2.5vw;margin-bottom:1.4vw;}
+    .bm-desc-box p{font-size:1.08vw;max-width:27.8vw;}
+
+    .sv-cover{padding:1vw 1.1vw;}
+    .sv-title{font-size:1.05vw;}
+    .sv-more{font-size:.69vw;}
+
+    .cta{padding:9vw 0;}
+    .cta h2{font-size:4vw;margin-bottom:1.5vw;}
+    .cta p{font-size:1.04vw;margin-bottom:2.8vw;}
+    .btn-solid{padding:1.1vw 2.8vw;font-size:.97vw;}
+
+    footer{padding:5.6vw 0 2.4vw;}
+    .foot-grid{gap:2.8vw;margin-bottom:4.2vw;}
+    .foot-logo img{height:1.8vw;margin-bottom:1.4vw;}
+    .foot-grid h4{font-size:1.25vw;margin-bottom:1.4vw;}
+    .foot-grid p{font-size:1vw;max-width:23.6vw;}
+    .foot-links{gap:.85vw;}
+    .foot-links a{font-size:1vw;}
+    .foot-contact p{font-size:1vw;}
+    .foot-contact .phone{font-size:1vw;}
+    .socials{gap:.85vw;margin-top:1.4vw;}
+    .socials a{width:2.6vw;height:2.6vw;}
+    .foot-bottom{font-size:.87vw;padding-top:1.8vw;}
   }
 </style>
 </head>
