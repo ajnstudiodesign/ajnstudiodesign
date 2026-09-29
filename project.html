@@ -6,7 +6,7 @@
 <title>Projects — AJN Studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#ffffff;
@@ -117,28 +117,6 @@
     .burger{display:flex;}
   }
 
-  /* ---------- Intro strip ---------- */
-  .intro-sec{
-    background:var(--bg);padding:120px 0 100px;
-  }
-  .intro-grid{
-    display:grid;grid-template-columns:1fr 1fr 1fr 1.1fr;gap:22px;align-items:center;
-  }
-  .intro-grid img{height:340px;width:100%;object-fit:cover;filter:grayscale(.2) brightness(.9);transition:transform .6s ease, filter .6s ease;}
-  .intro-grid a{overflow:hidden;display:block;}
-  .intro-grid a:hover img{transform:scale(1.07);filter:grayscale(0) brightness(1);}
-  .intro-grid img:nth-child(2){height:400px;align-self:end;}
-  .intro-text .kicker{font-size:12px;letter-spacing:.14em;color:var(--brass);margin-bottom:18px;}
-  .intro-text h2{font-size:clamp(28px,3vw,38px);line-height:1.15;font-weight:450;color:var(--ivory);}
-  @media(max-width:1024px){
-    .intro-grid{grid-template-columns:1fr 1fr;}
-    .intro-text{grid-column:1/-1;order:-1;margin-bottom:10px;}
-  }
-  @media(max-width:600px){
-    .intro-grid{grid-template-columns:1fr;}
-    .intro-grid img,.intro-grid img:nth-child(2){height:280px;align-self:auto;}
-  }
-
   /* ---------- Project showcase ---------- */
   .project-showcase{
     background:var(--bg-raised);padding:0;
@@ -149,7 +127,7 @@
     background:#fff;color:var(--ivory);text-align:center;padding:120px 0 130px;
     position:relative;border-top:1px solid var(--line);
   }
-  .cta h2{font-size:clamp(34px,5vw,58px);margin-bottom:22px;line-height:1.08;}
+  .cta h2{font-family:'Jost',sans-serif;font-weight:500;letter-spacing:.01em;font-size:clamp(34px,5vw,58px);margin-bottom:22px;line-height:1.1;}
   .cta p{color:rgba(28,26,21,.55);font-size:15px;margin-bottom:40px;letter-spacing:.02em;}
   .btn-solid{
     position:relative;isolation:isolate;overflow:hidden;
@@ -217,53 +195,11 @@
   }
   @media(max-width:800px){.foot-grid{grid-template-columns:1fr;gap:36px;}}
 
-  .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease, transform .8s ease;}
-  .reveal.in{opacity:1;transform:none;}
-
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
-    .reveal{opacity:1;transform:none;transition:none;}
   }
 
-  /* ---------- Project images collage (framed, centered, border like reference) ---------- */
-  .pc-frame{
-    max-width:100%;margin:0;padding:0;background:#ffffff;
-  }
-  .pc-wrap{--pc-gap:6px;width:100%;max-width:100%;margin:0;padding:0;}
-  .pc-row{display:flex;gap:var(--pc-gap);margin-bottom:var(--pc-gap);align-items:stretch;}
-  .pc-row:last-child{margin-bottom:0;}
-  .pc-item{position:relative;overflow:hidden;margin:0;min-width:0;background:#efeae0;
-    flex-grow:var(--ar);flex-shrink:1;flex-basis:0;}
-  .pc-item img{display:block;width:100%;height:auto;transition:transform 1s cubic-bezier(.2,.7,.2,1);}
-  .pc-item:hover img{transform:scale(1.06);}
-  .pc-item figcaption{position:absolute;left:0;right:0;bottom:0;padding:44px 22px 18px;color:#fff;
-    font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(18px,1.8vw,24px);letter-spacing:.01em;
-    background:linear-gradient(to top,rgba(0,0,0,.72) 0%,rgba(0,0,0,.4) 45%,rgba(0,0,0,0) 100%);
-    opacity:0;transform:translateY(14px);transition:opacity .45s ease, transform .45s ease;}
-  .pc-item figcaption::before{content:"";display:block;width:30px;height:1px;background:var(--brass-light);margin-bottom:10px;
-    transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.65,0,.35,1) .1s;}
-  .pc-item:hover figcaption{opacity:1;transform:none;}
-  .pc-item:hover figcaption::before{transform:scaleX(1);}
-
-  .pc-reveal{opacity:0;transform:translateY(40px) scale(.97);
-    transition:opacity .9s ease, transform 1s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0ms);}
-  .pc-reveal.in{opacity:1;transform:none;}
-  @media(max-width:640px){
-    .pc-row{flex-direction:column;height:auto;}
-    .pc-item{flex:none;width:100%;height:280px;}
-  }
-  @media(hover:none){
-    .pc-item figcaption{opacity:1;transform:none;}
-    .pc-item figcaption::before{transform:scaleX(1);}
-  }
-  @media (prefers-reduced-motion: reduce){
-    .pc-reveal{opacity:1;transform:none;transition:none;}
-    .pc-item img{transition:none;}
-  }
-
-</style>
-
-<style>
+  /* ---------- Page banner ---------- */
   .page-banner{position:relative;height:50vh;min-height:360px;overflow:hidden;background:#fff;display:flex;align-items:center;}
   .page-banner-watermark{
     position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
@@ -291,6 +227,53 @@
   @media(max-width:900px){
     .page-banner-content{flex-direction:column;align-items:flex-start;}
     .page-banner-watermark{font-size:clamp(60px,22vw,140px);}
+  }
+</style>
+
+<!-- Services gallery styles (scoped to .our-projects) -->
+<style>
+  .sg-wrap{width:100%;max-width:none;margin:0;padding:0 0 4px;font-family:"Poppins",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;}
+  .our-projects .row{display:flex;flex-wrap:wrap;margin:0 -2px;}
+  .our-projects .col-12,
+  .our-projects .col-md-6,
+  .our-projects .col-md-4,
+  .our-projects .col-md-3,
+  .our-projects .col-6{width:100%;padding:0 2px;margin-bottom:4px;}
+  .our-projects .col-6{width:50%;}
+  @media(min-width:768px){
+    .our-projects .col-md-6{width:50%;}
+    .our-projects .col-md-4{width:33.3333%;}
+    .our-projects .col-md-3{width:25%;}
+  }
+  .our-projects .project{position:relative;overflow:hidden;box-shadow:0 2px 14px rgba(0,0,0,.08);}
+  .our-projects .project a{display:block;width:100%;height:100%;text-decoration:none;color:inherit;}
+  .our-projects .project img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.25,.8,.25,1);}
+  .our-projects .project:hover img,
+  .our-projects .project:active img,
+  .our-projects .project:focus-within img{transform:scale(1.06);}
+  .our-projects .cover-bg{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.72) 0%,rgba(0,0,0,.1) 45%,rgba(0,0,0,0) 70%);display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;padding:14px 16px;}
+  .our-projects .cover-text{margin:0 0 4px;font-family:"Poppins",sans-serif;font-size:.95rem;font-weight:500;letter-spacing:.02em;color:#fff;transform:translateY(8px);opacity:.92;transition:transform .45s ease,opacity .45s ease;}
+  .our-projects .text-lines{display:inline-block;position:relative;font-size:.62rem;color:#fff;opacity:0;text-transform:uppercase;letter-spacing:.08em;transform:translateY(6px);transition:transform .45s ease .05s,opacity .45s ease .05s;}
+  .our-projects .text-lines::after{content:"";position:absolute;left:0;bottom:-4px;height:1px;width:100%;background:#fff;transform:scaleX(0);transform-origin:left;transition:transform .5s ease .1s;}
+  .our-projects .project:hover .cover-text,
+  .our-projects .project:active .cover-text,
+  .our-projects .project:focus-within .cover-text{transform:none;opacity:1;}
+  .our-projects .project:hover .text-lines,
+  .our-projects .project:active .text-lines,
+  .our-projects .project:focus-within .text-lines{opacity:.9;transform:none;}
+  .our-projects .project:hover .text-lines::after,
+  .our-projects .project:active .text-lines::after,
+  .our-projects .project:focus-within .text-lines::after{transform:scaleX(1);}
+  @media(hover:none){
+    .our-projects .text-lines{opacity:.9;transform:none;}
+    .our-projects .text-lines::after{transform:scaleX(1);}
+    .our-projects .cover-text{transform:none;opacity:1;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .our-projects .project img,
+    .our-projects .cover-text,
+    .our-projects .text-lines,
+    .our-projects .text-lines::after{transition:none;}
   }
 </style>
 </head>
@@ -331,60 +314,26 @@
   </div>
 </section>
 
-<!-- PROJECT SHOWCASE (full list) -->
+<!-- PROJECT SHOWCASE (services gallery) -->
 <section class="project-showcase" style="padding-top:70px;padding-bottom:0;">
-  <!-- PROJECT IMAGES COLLAGE — framed & centered, uniform columns, bordered auto-scroll strip -->
-  <div class="pc-frame">
-  <div class="pc-wrap" id="pcGallery">
-  <div class="pc-row">
-    <figure class="pc-item pc-reveal" style="--ar:1.7778">
-      <img src="images/room-full-1.jpg" alt="Master Bedroom" loading="lazy">
-      <figcaption>Master Bedroom</figcaption>
-    </figure>
+  <div class="sg-wrap">
+    <section class="our-projects">
+      <div class="row">
+        <div class="col-12"><div class="project" style="aspect-ratio:16/9"><a href="#"><img loading="lazy" src="img/services/01_16x9_living.jpg" alt="Living room interior"><div class="cover-bg"><h4 class="cover-text">Living Room</h4><span class="text-lines">see full project</span></div></a></div></div>
+        <div class="col-md-6 col-12"><div class="project" style="aspect-ratio:1/1"><a href="#"><img loading="lazy" src="img/services/02a_1x1_dining.jpg" alt="Round dining area"><div class="cover-bg"><h4 class="cover-text">Dining Area</h4><span class="text-lines">see full project</span></div></a></div></div>
+        <div class="col-md-6 col-12"><div class="project" style="aspect-ratio:1/1"><a href="#"><img loading="lazy" src="img/services/02b_1x1_walnut.jpg" alt="Walnut living room"><div class="cover-bg"><h4 class="cover-text">Walnut Residence</h4><span class="text-lines">see full project</span></div></a></div></div>
+        <div class="col-12"><div class="project" style="aspect-ratio:16/9"><a href="#"><img loading="lazy" src="img/services/03_16x9_lounge.jpg" alt="Family lounge interior"><div class="cover-bg"><h4 class="cover-text">Family Lounge</h4><span class="text-lines">see full project</span></div></a></div></div>
+        <div class="col-md-6 col-12"><div class="project" style="aspect-ratio:4/5"><a href="#"><img loading="lazy" src="img/services/04b_1x1_kitchen.jpg" alt="Modern kitchen"><div class="cover-bg"><h4 class="cover-text">Kitchen</h4><span class="text-lines">see full project</span></div></a></div></div>
+        <div class="col-md-6 col-12"><div class="project" style="aspect-ratio:4/5"><a href="#"><img loading="lazy" src="img/services/04c_1x1_kitchen-warm.jpg" alt="Warm contemporary kitchen"><div class="cover-bg"><h4 class="cover-text">Contemporary Kitchen</h4><span class="text-lines">see full project</span></div></a></div></div>
+        <div class="col-12"><div class="project" style="aspect-ratio:16/9"><a href="#"><img loading="lazy" src="img/services/05_16x9_dining-living.jpg" alt="Open plan dining and living"><div class="cover-bg"><h4 class="cover-text">Dining &amp; Living</h4><span class="text-lines">see full project</span></div></a></div></div>
+        <div class="col-md-6 col-12"><div class="project" style="aspect-ratio:4/5"><a href="#"><img loading="lazy" src="img/services/06a_4x5_bathroom.jpg" alt="Bathroom"><div class="cover-bg"><h4 class="cover-text">Bathroom</h4><span class="text-lines">see full project</span></div></a></div></div>
+        <div class="col-md-6 col-12"><div class="project" style="aspect-ratio:4/5"><a href="#"><img loading="lazy" src="img/services/06b_4x5_living-detail.jpg" alt="Coffee table detail"><div class="cover-bg"><h4 class="cover-text">Living Details</h4><span class="text-lines">see full project</span></div></a></div></div>
+        <div class="col-md-6 col-12"><div class="project" style="aspect-ratio:4/5"><a href="#"><img loading="lazy" src="img/services/06c_4x5_bedroom.jpg" alt="Bedroom"><div class="cover-bg"><h4 class="cover-text">Bedroom</h4><span class="text-lines">see full project</span></div></a></div></div>
+        <div class="col-md-6 col-12"><div class="project" style="aspect-ratio:4/5"><a href="#"><img loading="lazy" src="img/services/06d_4x5_extra.jpg" alt="Dark kitchen island detail"><div class="cover-bg"><h4 class="cover-text">Kitchen Island</h4><span class="text-lines">see full project</span></div></a></div></div>
+        <div class="col-12"><div class="project" style="aspect-ratio:16/9"><a href="#"><img loading="lazy" src="img/services/07_16x9_master.jpg" alt="Master bedroom"><div class="cover-bg"><h4 class="cover-text">Master Suite</h4><span class="text-lines">see full project</span></div></a></div></div>
+      </div>
+    </section>
   </div>
-  <div class="pc-row">
-    <figure class="pc-item pc-reveal" style="--ar:1">
-      <img src="images/dining-square.jpg" alt="Dining Room" loading="lazy">
-      <figcaption>Dining Room</figcaption>
-        <a href="project.html">See Full Project</a>
-    </figure>
-    <figure class="pc-item pc-reveal" style="--ar:1">
-      <img src="images/living-square.jpg" alt="Living Room" loading="lazy">
-      <figcaption>Living Room</figcaption>
-    </figure>
-  </div>
-  <div class="pc-row">
-    <figure class="pc-item pc-reveal" style="--ar:1.5">
-      <img src="images/room-full-2.jpg" alt="Guest Bedroom" loading="lazy">
-      <figcaption>Guest Bedroom</figcaption>
-    </figure>
-  </div>
-  <div class="pc-row">
-    <figure class="pc-item pc-reveal" style="--ar:1">
-      <img src="images/kids-square.jpg" alt="Kids Bedroom" loading="lazy">
-      <figcaption>Kids Bedroom</figcaption>
-    </figure>
-    <figure class="pc-item pc-reveal" style="--ar:1">
-      <img src="images/kitchen-square.jpg" alt="Walnut Kitchen" loading="lazy">
-      <figcaption>Walnut Kitchen</figcaption>
-    </figure>
-  </div>
-  <div class="pc-row">
-    <figure class="pc-item pc-reveal" style="--ar:1.3333">
-      <img src="images/room-full-3.jpg" alt="Living Area" loading="lazy">
-      <figcaption>Living Area</figcaption>
-    </figure>
-  </div>
-  <div class="pc-row">
-    <figure class="pc-item pc-reveal" style="--ar:1.7778">
-      <img src="images/room-full-4.jpg" alt="TV Lounge" loading="lazy">
-      <figcaption>TV Lounge</figcaption>
-    </figure>
-  </div>
-
-  </div>
-  </div>
-
 </section>
 
 <!-- CTA -->
@@ -452,12 +401,6 @@
     }
   });
 
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
-  }, {threshold:0.12});
-  revealEls.forEach(el=>io.observe(el));
-
   if(window.matchMedia('(pointer: fine)').matches){
     document.body.classList.add('glow-on');
     const glow = document.getElementById('glow');
@@ -488,23 +431,6 @@
       el.addEventListener('mouseleave', ()=>ring.classList.remove('hover'));
     });
   }
-</script>
-
-<script>
-  (function(){
-    var root=document.getElementById('pcGallery'); if(!root) return;
-    var items=root.querySelectorAll('.pc-reveal');
-    root.querySelectorAll('.pc-row').forEach(function(row){
-      row.querySelectorAll('.pc-reveal').forEach(function(el,i){ el.style.setProperty('--d',(i*150)+'ms'); });
-    });
-    if(!('IntersectionObserver' in window)){ items.forEach(function(el){el.classList.add('in');}); }
-    else{
-      var o=new IntersectionObserver(function(es){
-        es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); o.unobserve(e.target);} });
-      },{threshold:0.12,rootMargin:'0px 0px -6% 0px'});
-      items.forEach(function(el){o.observe(el);});
-    }
-  })();
 </script>
 
 </body>
