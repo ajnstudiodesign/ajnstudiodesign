@@ -55,7 +55,9 @@
     gap: 20px;
   }
   header.site .brand { justify-self: start; display: flex; align-items: center; }
-  header.site .brand img { height: 40px; width: auto; display: block; filter: brightness(0); }
+  header.site .brand a { display: block; line-height: 0; }
+  /* logo is already black on white, so no filter */
+  header.site .brand img { height: 40px; width: auto; display: block; }
   header.site nav.links {
     display: flex;
     align-items: center;
@@ -403,7 +405,7 @@
 <div class="progress" id="progress"></div>
 
 <header class="site">
-  <div class="brand"><img src="images/ajn-logo.png" alt="AJN Studio logo"></div>
+  <div class="brand"><a href="index.html" aria-label="AJN Studio home"><img src="<img src="images/ajn-logo.png" alt="AJN Studio logo"" alt="AJN Studio logo" width="237" height="96"></a></div>
   <nav class="links">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
