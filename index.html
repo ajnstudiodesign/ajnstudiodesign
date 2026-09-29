@@ -59,7 +59,8 @@
     --line: rgba(28,26,21,.12);--line-strong: rgba(28,26,21,.22);
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  /* smooth scrolling is handled by the script at the bottom, so native smooth is off */
+  html{scroll-behavior:auto;-webkit-text-size-adjust:100%;}
   ::selection{background:var(--brass);color:#fff;}
   :focus-visible{outline:1px solid var(--brass-light);outline-offset:3px;}
   a,button{-webkit-tap-highlight-color:transparent;}
@@ -127,11 +128,11 @@
   body.loading{overflow:hidden;height:100vh;}
 
   header{
-    position:fixed;top:0;left:0;right:0;z-index:100;padding:26px 0;
+    position:fixed;top:0;left:0;right:0;z-index:100;padding:calc(26px + env(safe-area-inset-top,0px)) 0 26px;
     transition:background .4s ease, padding .4s ease, border-color .4s ease;
     border-bottom:1px solid transparent;
   }
-  header.scrolled{background:rgba(255,255,255,.86);backdrop-filter:blur(10px);padding:16px 0;border-bottom:1px solid var(--line);}
+  header.scrolled{background:rgba(255,255,255,.86);backdrop-filter:blur(10px);padding:calc(16px + env(safe-area-inset-top,0px)) 0 16px;border-bottom:1px solid var(--line);}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;}
   .logo{display:flex;align-items:center;}
   .logo img{height:52px;width:auto;transition:transform .4s ease;filter:brightness(0);}
@@ -158,14 +159,18 @@
   .slide::after{content:"";position:absolute;inset:0;background:none;}
   .hero-content{position:absolute;left:0;right:0;bottom:100px;z-index:5;color:var(--ivory);}
   .hero-quote-text{
-    font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
-    font-weight:200;
+    font-family:'Jost','Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-weight:300;
+    font-synthesis:none;
+    -webkit-font-smoothing:antialiased;
     font-size:clamp(44px,7vw,84px);
-    line-height:1.05;
-    letter-spacing:.005em;
+    line-height:1.08;
+    letter-spacing:0;
     max-width:900px;
     color:#ffffff;
     text-align:left;
+    margin:0;
+    text-shadow:0 1px 18px rgba(0,0,0,.18);
   }
   /* left edge lines up with the header logo at every screen size */
   .hero-content.wrap{padding-left:48px;}
@@ -413,6 +418,35 @@
     .socials a{width:2.6vw;height:2.6vw;}
     .foot-bottom{font-size:.87vw;padding-top:1.8vw;}
   }
+
+  /* ===== EXTRA RESPONSIVE FIXES ===== */
+
+  /* laptop 1025 - 1499 */
+  @media(min-width:1025px) and (max-width:1499px){
+    .hero-quote-text{font-size:clamp(56px,6.2vw,84px);}
+  }
+
+  /* tablet */
+  @media(min-width:721px) and (max-width:1024px){
+    .hero-quote-text{font-size:clamp(48px,8vw,72px);}
+    .bm-heading-main{letter-spacing:.1em;}
+  }
+
+  /* very small phones */
+  @media(max-width:380px){
+    .btn-line{padding:8px 10px;font-size:12px;}
+    .logo img{height:38px;}
+    .hero-quote-text{font-size:38px;}
+  }
+
+  /* phone in landscape */
+  @media(max-height:520px) and (orientation:landscape) and (max-width:1024px){
+    .hero{min-height:100vh;}
+    .hero-content{bottom:40px;}
+    .hero-quote-text{font-size:clamp(30px,7vh,48px);}
+    .hero-controls{top:80px;bottom:auto;}
+    .intro-sec,.cta{padding:50px 0;}
+  }
 </style>
 </head>
 <body class="loading">
@@ -634,6 +668,16 @@
       nav.querySelector('ul').style.flexDirection='column';nav.querySelector('ul').style.gap='16px';
     }
   });
+  /* close the mobile menu after tapping a link */
+  document.querySelectorAll('#mainNav a').forEach(a=>{
+    a.addEventListener('click', ()=>{
+      if(window.innerWidth <= 900){
+        nav.removeAttribute('style');
+        const ul = nav.querySelector('ul');
+        if(ul){ ul.removeAttribute('style'); }
+      }
+    });
+  });
   window.addEventListener('resize', ()=>{
     if(window.innerWidth > 900){
       nav.removeAttribute('style');
@@ -802,6 +846,59 @@
   }
   measure();
   requestAnimationFrame(tick);
+})();
+</script>
+
+<!-- SMOOTH MOUSE-WHEEL SCROLL -->
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(!matchMedia('(pointer: fine)').matches) return; /* touch devices keep native scrolling */
+
+  let target = window.scrollY, current = target, running = false;
+  const EASE = 0.085; /* lower = smoother/slower, higher = faster */
+  const maxY = () => document.documentElement.scrollHeight - window.innerHeight;
+
+  function loop(){
+    current += (target - current) * EASE;
+    if(Math.abs(target - current) < 0.5){
+      current = target; running = false;
+      window.scrollTo(0, current);
+      return;
+    }
+    window.scrollTo(0, current);
+    requestAnimationFrame(loop);
+  }
+  function start(){
+    if(!running){ current = window.scrollY; running = true; requestAnimationFrame(loop); }
+  }
+
+  window.addEventListener('wheel', e => {
+    if(e.ctrlKey || document.body.classList.contains('loading')) return;
+    if(Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+    e.preventDefault();
+    let dy = e.deltaY;
+    if(e.deltaMode === 1) dy *= 32;
+    else if(e.deltaMode === 2) dy *= window.innerHeight;
+    target = Math.max(0, Math.min(maxY(), target + dy));
+    start();
+  }, {passive:false});
+
+  /* keep in sync when the user drags the scrollbar or uses the keyboard */
+  window.addEventListener('scroll', () => { if(!running){ target = current = window.scrollY; } });
+
+  /* #home, #services etc. glide smoothly too */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if(id.length < 2) return;
+      const el = document.querySelector(id);
+      if(!el) return;
+      e.preventDefault();
+      target = Math.min(maxY(), el.getBoundingClientRect().top + window.scrollY);
+      start();
+    });
+  });
 })();
 </script>
 </body>
