@@ -54,8 +54,8 @@
     -webkit-backdrop-filter: blur(10px);
     gap: 20px;
   }
-  header.site .brand { justify-self: start; }
-  header.site .brand img { height: 40px; width: auto; display: block; }
+  header.site .brand { justify-self: start; display: flex; align-items: center; }
+  header.site .brand img { height: 40px; width: auto; display: block; filter: brightness(0); }
   header.site nav.links {
     display: flex;
     align-items: center;
@@ -193,50 +193,6 @@
     .grid-row { grid-template-columns: 1fr; }
   }
 
-  /* collage layout — tall left image, stacked right images, full-width pair below */
-  .collage {
-    width: 100%;
-    margin: 10px 0 0;
-    padding: 0;
-  }
-  .collage .top {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 3px;
-    margin-bottom: 3px;
-    align-items: start;
-  }
-  .collage .right-stack {
-    display: grid;
-    gap: 3px;
-  }
-  .collage .bottom {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3px;
-  }
-  .collage .cell {
-    overflow: hidden;
-  }
-  .collage .cell img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transform: scale(1.05);
-    opacity: 0;
-    transition: transform 1.2s cubic-bezier(.16,.74,.24,1), opacity 1s ease;
-  }
-  .collage .top.in-view .cell img,
-  .collage .bottom.in-view .cell img { transform: scale(1); opacity: 1; }
-  .collage .top.in-view .right-stack .cell:nth-child(2) img { transition-delay: 0.12s; }
-  .collage .bottom.in-view .cell:nth-child(2) img { transition-delay: 0.12s; }
-
-  @media (max-width: 700px) {
-    .collage .top,
-    .collage .bottom { grid-template-columns: 1fr; }
-    .collage .top .tall { grid-row: auto; }
-  }
-
   /* centered gallery rows, natural image ratio (no crop) */
   .split-row {
     display: grid;
@@ -268,90 +224,22 @@
     .title-wrap { padding: 56px 7vw 80px; }
   }
 
-  /* closing detail image, shown at its natural aspect ratio */
-  .portrait-wrap {
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 100px 6vw 0;
-  }
-  .portrait-frame {
-    overflow: hidden;
-    border-radius: 4px;
-  }
-  .portrait-frame img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transform: scale(1.06);
-    opacity: 0;
-    transition: transform 1.3s cubic-bezier(.16,.74,.24,1), opacity 1.1s ease;
-  }
-  .portrait-wrap.in-view .portrait-frame img { transform: scale(1); opacity: 1; }
-
-  /* closing hero — "See the space" section */
-  .final-cta {
-    text-align: center;
-    padding: 130px 6vw 150px;
-  }
-  .final-cta h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    font-size: clamp(30px, 5.6vw, 60px);
-    line-height: 1.15;
-    letter-spacing: 0.01em;
-    color: var(--ink);
-    margin: 0;
-    text-transform: uppercase;
-  }
-  .final-cta p.sub {
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    color: var(--ink-soft);
-    margin: 24px auto 0;
-    max-width: 560px;
-  }
-  .final-cta .indicator {
-    width: 32px;
-    height: 32px;
-    border: 1px solid var(--ink-soft);
-    border-radius: 50%;
-    margin: 40px auto 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .final-cta .indicator span {
-    width: 5px;
-    height: 5px;
-    background: var(--ink);
-    border-radius: 50%;
-  }
-  .final-cta .btn {
-    display: inline-block;
-    font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    color: var(--ink);
-    padding: 16px 40px;
-    border: 1px solid var(--brass);
-    transition: background 0.2s ease, color 0.2s ease;
-  }
-  .final-cta .btn:hover {
-    background: var(--brass);
-    color: #fff;
-  }
-
   /* footer */
   footer.site {
     background: #FFFFFF;
     color: var(--ink-soft);
   }
-  .link-rows {}
+
+  /* social links section */
+  .social-links { border-top: 1px solid var(--rule); }
   .link-row {
     position: relative;
     display: block;
-    height: 4.6rem;
+    height: 4rem;
     border-bottom: 1px solid var(--rule);
     overflow: hidden;
+    text-decoration: none;
+    color: inherit;
   }
   .link-row .static {
     position: absolute;
@@ -374,6 +262,7 @@
     color: #FFFFFF;
     display: flex;
     align-items: center;
+    overflow: hidden;
     opacity: 0;
     transform: translateY(6%);
     transition: opacity 0.25s ease, transform 0.3s ease;
@@ -381,11 +270,10 @@
   }
   .marquee-track {
     display: flex;
+    flex: none;
     white-space: nowrap;
     width: max-content;
     will-change: transform;
-    animation: marqueeScroll 30s linear infinite;
-    animation-play-state: paused;
   }
   .marquee-track span {
     flex-shrink: 0;
@@ -398,14 +286,9 @@
     gap: 1.6rem;
   }
   .marquee-track span::after { content: '↗'; font-size: 1rem; }
-  @keyframes marqueeScroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); } /* moves left, loops seamlessly */
-  }
-  .link-row:hover .static { opacity: 0; }
-  .link-row:hover .arrow { transform: translate(3px,-3px); }
-  .link-row:hover .marquee { opacity: 1; transform: translateY(0); }
-  .link-row:hover .marquee-track { animation-play-state: running; }
+  .link-row:hover .static, .link-row:focus-visible .static { opacity: 0; }
+  .link-row:hover .arrow, .link-row:focus-visible .arrow { transform: translate(3px,-3px); }
+  .link-row:hover .marquee, .link-row:focus-visible .marquee { opacity: 1; transform: translateY(0); }
 
   .footer-bar {
     display: flex;
@@ -420,12 +303,11 @@
   .footer-bar a:hover { color: var(--ink); }
 
   @media (max-width: 640px) {
-    .link-row { height: 3.9rem; }
-    .portrait-wrap { padding-top: 60px; }
+    .link-row { height: 3.5rem; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero img, .plate img, .portrait-frame img {
+    .hero img, .plate img {
       transition-duration: 0.01ms !important;
       transform: none;
       opacity: 1;
@@ -464,48 +346,6 @@
   @media (hover: none), (pointer: coarse) {
     .cursor-ring { display: none; }
   }
-  /* brand hero — big statement + subtext */
-  .brand-hero {
-    text-align: center;
-    padding: 120px 6vw 90px;
-    background: radial-gradient(ellipse at center, rgba(169,137,90,0.08) 0%, rgba(169,137,90,0) 60%);
-  }
-  .brand-hero h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: clamp(30px, 5.2vw, 58px);
-    line-height: 1.15;
-    letter-spacing: 0.01em;
-    color: var(--ink);
-    margin: 0;
-    text-transform: uppercase;
-  }
-  .brand-hero p {
-    margin: 26px auto 0;
-    max-width: 620px;
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    color: var(--ink-soft);
-  }
-  .brand-hero .scroll-dot {
-    margin: 34px auto 0;
-    width: 34px;
-    height: 34px;
-    border: 1px solid var(--rule);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .brand-hero .scroll-dot::after {
-    content: '';
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--ink);
-  }
-
-
 
   /* CTA section */
   .cta-section {
@@ -546,7 +386,14 @@
     border: 1px solid var(--brass);
     transition: background 0.2s ease, color 0.2s ease;
   }
-  .cta-section .cta-btn:hover { background: var(--brass); color: #fff; }
+  .cta-section a.cta-btn:hover,
+  .cta-section a.cta-btn:focus,
+  .cta-section a.cta-btn:active,
+  .cta-section a.cta-btn:visited:hover {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fff;
+  }
 </style>
 </head>
 <body>
@@ -556,12 +403,12 @@
 <div class="progress" id="progress"></div>
 
 <header class="site">
-  <div></div>
+  <div class="brand"><img src="images/ajn-logo.png" alt="AJN Studio logo"></div>
   <nav class="links">
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Projects</a>
-    <a href="#">Contact</a>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="project.html">Projects</a>
+    <a href="contact.html">Contact</a>
   </nav>
   <a class="hdr-btn" href="mailto:ajnstudiodesign@gmail.com">Contact us</a>
 </header>
@@ -590,6 +437,29 @@
     <p>Have a project in mind? Let’s talk about your requirements, references and visual direction.</p>
     <a class="cta-btn" href="mailto:ajnstudiodesign@gmail.com">Start a project</a>
   </section>
+
+  <section class="social-links">
+    <nav aria-label="Social links">
+      <a class="link-row" href="https://www.instagram.com/ajnstudio.design/" target="_blank" rel="noopener">
+        <div class="static"><span>Instagram</span><span class="arrow">↗</span></div>
+        <div class="marquee"><div class="marquee-track" data-marquee>
+          <span>Instagram</span><span>Instagram</span><span>Instagram</span><span>Instagram</span>
+        </div></div>
+      </a>
+      <a class="link-row" href="https://www.behance.net/ajnstudio" target="_blank" rel="noopener">
+        <div class="static"><span>Behance</span><span class="arrow">↗</span></div>
+        <div class="marquee"><div class="marquee-track" data-marquee>
+          <span>Behance</span><span>Behance</span><span>Behance</span><span>Behance</span>
+        </div></div>
+      </a>
+      <a class="link-row" href="https://www.linkedin.com/in/nejmal-v-k/" target="_blank" rel="noopener">
+        <div class="static"><span>Linkedin</span><span class="arrow">↗</span></div>
+        <div class="marquee"><div class="marquee-track" data-marquee>
+          <span>Linkedin</span><span>Linkedin</span><span>Linkedin</span><span>Linkedin</span>
+        </div></div>
+      </a>
+    </nav>
+  </section>
   <div class="footer-bar">
     <span>© 2026 AJN Studio. All rights reserved.</span>
     <a href="mailto:ajnstudiodesign@gmail.com">ajnstudiodesign@gmail.com</a>
@@ -608,7 +478,7 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  var targets = document.querySelectorAll('.plate, .hero, .grid-row, .collage .top, .collage .bottom, .split-row');
+  var targets = document.querySelectorAll('.plate, .hero, .grid-row, .split-row');
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
@@ -645,6 +515,54 @@
       requestAnimationFrame(tick);
     })();
   }
+})();
+
+(function(){
+  /* seamless infinite marquee, scrolls to the right, never ends */
+  var SPEED = 90; // pixels per second
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var tracks = Array.prototype.slice.call(document.querySelectorAll('[data-marquee]'));
+  var state = tracks.map(function(t){ return { el: t, x: 0, half: 0 }; });
+
+  function build(){
+    state.forEach(function(s){
+      var track = s.el;
+      if (!track.dataset.base) track.dataset.base = track.innerHTML;
+      track.innerHTML = track.dataset.base;
+      var guard = 0;
+      while (track.scrollWidth < window.innerWidth * 1.2 && guard < 60){
+        track.insertAdjacentHTML('beforeend', track.dataset.base);
+        guard++;
+      }
+      var half = track.innerHTML;
+      track.innerHTML = half + half;
+      s.half = track.scrollWidth / 2;
+      s.x = -s.half;
+    });
+  }
+
+  var last = performance.now();
+  function frame(now){
+    var dt = Math.min((now - last) / 1000, 0.05);
+    last = now;
+    state.forEach(function(s){
+      if (!s.half) return;
+      s.x += SPEED * dt;
+      if (s.x >= 0) s.x -= s.half;
+      s.el.style.transform = 'translate3d(' + s.x + 'px,0,0)';
+    });
+    requestAnimationFrame(frame);
+  }
+
+  var resizeTimer;
+  build();
+  window.addEventListener('load', build);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
+  window.addEventListener('resize', function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(build, 200);
+  });
+  if (!reduce) requestAnimationFrame(frame);
 })();
 </script>
 
