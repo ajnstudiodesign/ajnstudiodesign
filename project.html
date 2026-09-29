@@ -139,7 +139,7 @@
   }
   .btn-solid::before{
     content:"";position:absolute;inset:0;z-index:-2;
-    background:linear-gradient(125deg,var(--brass) 0%,var(--brass-light) 55%,var(--brass) 100%);
+    background:linear-gradient(125deg,#000 0%,#1c1a15 55%,#000 100%);
     transform:translateY(101%);
     transition:transform .55s cubic-bezier(.65,0,.35,1);
   }
@@ -165,8 +165,8 @@
     transform:translateY(-50%) rotate(45deg);
   }
   .btn-solid:hover{
-    color:#ffffff;border-color:var(--brass-light);transform:translateY(-3px);
-    box-shadow:0 16px 38px -14px rgba(169,116,63,.6),0 0 0 1px rgba(169,116,63,.25);
+    color:#ffffff;border-color:#000;transform:translateY(-3px);
+    box-shadow:0 16px 38px -14px rgba(0,0,0,.45),0 0 0 1px rgba(0,0,0,.2);
   }
   .btn-solid:hover .arw{width:22px;}
   .btn-solid:active{transform:translateY(-1px);}
@@ -275,7 +275,28 @@
     .our-projects .text-lines,
     .our-projects .text-lines::after{transition:none;}
   }
+
+  /* ---------- See more ---------- */
+  .our-projects .sg-more{display:none;}
+  .our-projects .sg-more.open{display:flex;}
+  .our-projects .sg-more.open .col-12,
+  .our-projects .sg-more.open .col-md-6{animation:sgFadeUp .8s cubic-bezier(.2,.7,.2,1) both;}
+  .our-projects .sg-more.open > :nth-child(2){animation-delay:.12s;}
+  .our-projects .sg-more.open > :nth-child(3){animation-delay:.2s;}
+  .our-projects .sg-more.open > :nth-child(n+4){animation-delay:.28s;}
+  @keyframes sgFadeUp{from{opacity:0;transform:translateY(34px);}to{opacity:1;transform:none;}}
+  .sg-more-wrap{display:flex;justify-content:center;padding:56px 0 30px;}
+  .sg-more-wrap.hide{display:none;}
+  .sg-more-wrap .btn-solid{cursor:pointer;font-family:'Jost',sans-serif;}
+  body.glow-on .sg-more-wrap .btn-solid{cursor:none;}
+  .sg-more-wrap .btn-solid::before{background:#000;}
+  .sg-more-wrap .btn-solid:hover{color:#fff;border-color:#000;box-shadow:0 16px 38px -14px rgba(0,0,0,.45),0 0 0 1px rgba(0,0,0,.2);}
+  @media (prefers-reduced-motion: reduce){
+    .our-projects .sg-more.open .col-12,
+    .our-projects .sg-more.open .col-md-6{animation:none;}
+  }
 </style>
+<noscript><style>.our-projects .sg-more{display:flex;}.sg-more-wrap{display:none;}</style></noscript>
 </head>
 
 <body>
@@ -325,12 +346,17 @@
         <div class="col-12"><div class="project" style="aspect-ratio:16/9"><a href="#"><img loading="lazy" src="img/services/03_16x9_lounge.jpg" alt="Family lounge interior"><div class="cover-bg"><h4 class="cover-text">Family Lounge</h4><span class="text-lines">see full project</span></div></a></div></div>
         <div class="col-md-6 col-12"><div class="project" style="aspect-ratio:4/5"><a href="#"><img loading="lazy" src="img/services/04b_1x1_kitchen.jpg" alt="Modern kitchen"><div class="cover-bg"><h4 class="cover-text">Kitchen</h4><span class="text-lines">see full project</span></div></a></div></div>
         <div class="col-md-6 col-12"><div class="project" style="aspect-ratio:4/5"><a href="#"><img loading="lazy" src="img/services/04c_1x1_kitchen-warm.jpg" alt="Warm contemporary kitchen"><div class="cover-bg"><h4 class="cover-text">Contemporary Kitchen</h4><span class="text-lines">see full project</span></div></a></div></div>
+        </div>
+      <div class="row sg-more" id="sgMore" aria-hidden="true">
         <div class="col-12"><div class="project" style="aspect-ratio:16/9"><a href="#"><img loading="lazy" src="img/services/05_16x9_dining-living.jpg" alt="Open plan dining and living"><div class="cover-bg"><h4 class="cover-text">Dining &amp; Living</h4><span class="text-lines">see full project</span></div></a></div></div>
         <div class="col-md-6 col-12"><div class="project" style="aspect-ratio:4/5"><a href="#"><img loading="lazy" src="img/services/06a_4x5_bathroom.jpg" alt="Bathroom"><div class="cover-bg"><h4 class="cover-text">Bathroom</h4><span class="text-lines">see full project</span></div></a></div></div>
         <div class="col-md-6 col-12"><div class="project" style="aspect-ratio:4/5"><a href="#"><img loading="lazy" src="img/services/06b_4x5_living-detail.jpg" alt="Coffee table detail"><div class="cover-bg"><h4 class="cover-text">Living Details</h4><span class="text-lines">see full project</span></div></a></div></div>
         <div class="col-md-6 col-12"><div class="project" style="aspect-ratio:4/5"><a href="#"><img loading="lazy" src="img/services/06c_4x5_bedroom.jpg" alt="Bedroom"><div class="cover-bg"><h4 class="cover-text">Bedroom</h4><span class="text-lines">see full project</span></div></a></div></div>
         <div class="col-md-6 col-12"><div class="project" style="aspect-ratio:4/5"><a href="#"><img loading="lazy" src="img/services/06d_4x5_extra.jpg" alt="Dark kitchen island detail"><div class="cover-bg"><h4 class="cover-text">Kitchen Island</h4><span class="text-lines">see full project</span></div></a></div></div>
         <div class="col-12"><div class="project" style="aspect-ratio:16/9"><a href="#"><img loading="lazy" src="img/services/07_16x9_master.jpg" alt="Master bedroom"><div class="cover-bg"><h4 class="cover-text">Master Suite</h4><span class="text-lines">see full project</span></div></a></div></div>
+      </div>
+      <div class="sg-more-wrap" id="sgMoreWrap">
+        <button type="button" class="btn-solid" id="sgMoreBtn" aria-expanded="false" aria-controls="sgMore"><span>See More</span><span class="arw" aria-hidden="true"></span></button>
       </div>
     </section>
   </div>
@@ -431,6 +457,21 @@
       el.addEventListener('mouseleave', ()=>ring.classList.remove('hover'));
     });
   }
+</script>
+
+<script>
+  (function(){
+    var btn=document.getElementById('sgMoreBtn');
+    var more=document.getElementById('sgMore');
+    var wrap=document.getElementById('sgMoreWrap');
+    if(!btn||!more) return;
+    btn.addEventListener('click',function(){
+      more.classList.add('open');
+      more.removeAttribute('aria-hidden');
+      btn.setAttribute('aria-expanded','true');
+      wrap.classList.add('hide');
+    });
+  })();
 </script>
 
 </body>
