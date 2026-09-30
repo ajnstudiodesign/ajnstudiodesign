@@ -1,16 +1,13 @@
-## Hi there 👋
+# AJN Studio Design – Website
 
-<!--
-**ajnstudiodesign/ajnstudiodesign** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Interior design portfolio website.
 
-Here are some ideas to get you started:
+Live site: https://ajnstudiodesign.com/
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## Tech
+HTML, CSS, (static site, GitHub Pages)
+
+## How to Update
+1. Open the `.html` file → click → edit → **Commit changes**
+2. Images: upload to `images/` folder with the same file name
+3. Site updates in 1–2 minutes
