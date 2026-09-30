@@ -6,3 +6,4 @@
   opacity:0;animation:svcRise .7s cubic-bezier(.22,1,.36,1) forwards;
   transition:width .6s cubic-bezier(.22,1,.36,1);
 }
+.project-detail .gallery img{border:5px solid #000}
