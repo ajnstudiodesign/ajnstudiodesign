@@ -5,13 +5,16 @@
 :root{--bg:#ffffff;--fg:#161514;--mute:#5d5a56;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:Montserrat,"Helvetica Neue",Arial,sans-serif}
-.hero{height:calc(100svh - 73px)}.hero img{height:100%;aspect-ratio:auto}
-.intro{padding:100px 24px 90px;text-align:center}
+.hero{height:auto;line-height:0}.hero img{width:100%;height:auto;object-fit:contain;display:block}
+.meta{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px 40px;padding:28px 24px 0;text-align:center;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.meta b{font-weight:600;color:var(--fg);margin-left:4px}
+.intro{padding:70px 24px 90px;text-align:center}
 h1{font-weight:300;font-size:clamp(30px,4.4vw,52px);letter-spacing:.03em;margin:0 0 56px}
 .intro p{max-width:720px;margin:0 auto;font-size:13px;line-height:1.9;color:var(--mute)}
 section{display:grid;gap:5px;max-width:1200px;margin:0 auto 5px;padding:0 24px}
-.two{grid-template-columns:1fr 1fr}.three{grid-template-columns:repeat(3,1fr)}
+.two{grid-template-columns:1fr 1fr;align-items:start}.three{grid-template-columns:repeat(3,1fr)}
 img{width:100%;height:auto;object-fit:cover;display:block}
+.gallery img{object-fit:contain}
 .cta{text-align:center;padding:80px 24px 70px;font-family:Jost,"Helvetica Neue",Arial,sans-serif}
 .cta h2{font-weight:500;font-size:clamp(26px,3.6vw,44px);line-height:1.15;letter-spacing:.01em;color:#1c1b18;margin:0 0 20px}
 .cta p{max-width:520px;margin:0 auto 32px;font-size:15px;font-weight:300;line-height:1.7;color:#8d8d94}
@@ -70,10 +73,13 @@ a:focus-visible{outline:3px solid currentColor;outline-offset:3px}
     <a href="mailto:ajnstudiodesign@gmail.com" class="make-request">Contact us</a>
   </div>
 </header>
-<div class="hero"><img src="images/oak_marble_kitchen_1.jpg" alt="Oak Marble Kitchen"  loading="lazy"></div>
+<div class="hero"><img src="images/oak_marble_kitchen_1.jpg" alt="Oak Marble Kitchen"></div>
 <div class="meta"><span>Location: <b>United Kingdom</b></span><span>Year: <b>2026</b></span><span>Visualization: <b>AJN Studio</b></span></div>
 <div class="intro"><h1>OAK MARBLE KITCHEN</h1><p>A warm contemporary residence shaped by soft neutral tones, natural wood, tactile textures and carefully balanced lighting. The visualization focuses on creating a calm, refined atmosphere while highlighting the materiality and character of each space</p></div>
-<section class="full"><img src="images/oak_marble_kitchen_2.jpg" alt="Oak Marble Kitchen" style="aspect-ratio:1/1" loading="lazy"></section>
+<section class="two gallery">
+  <img src="images/oak_marble_kitchen_1.jpg" alt="Oak Marble Kitchen view 1" loading="lazy">
+  <img src="images/oak_marble_kitchen_2.jpg" alt="Oak Marble Kitchen view 2" loading="lazy">
+</section>
 <div class="cta"><h2>LET’S VISUALIZE<br>YOUR NEXT PROJECT.</h2><p>Have a project in mind? Let’s talk about your requirements, references and visual direction.</p><a class="btn" href="#">START A PROJECT</a></div>
 <section class="cta-section">
   <nav aria-label="Social links">
