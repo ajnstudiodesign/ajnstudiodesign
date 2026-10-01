@@ -1,162 +1,73 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Quiet Umber</title><link rel="icon" type="image/jpeg" href="images/favicon.png">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Quiet Umber</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="apple-touch-icon" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Jost:wght@300;400;500&family=Poppins:wght@400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#ffffff;--fg:#161514;--mute:#5d5a56;--ink-soft:#6E6E6E;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--bg:#fff;--fg:#161514;--mute:#5d5a56;--ink-soft:#6E6E6E;--ink:#000;--line:#00000014;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:Montserrat,"Helvetica Neue",Arial,sans-serif}
-.hero{height:calc(100svh - 73px)}.hero img{height:100%;aspect-ratio:auto}
-
-/* meta row (Location / Year / Visualization) - same style as Little Haven */
-.meta{max-width:1200px;margin:0 auto;padding:26px 6vw 0;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px 22px;font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);text-align:center}
-.meta b{color:#171717;font-weight:600;letter-spacing:.03em}
+img{width:100%;height:auto;display:block}
+.hero img{height:auto}
+.meta{max-width:1200px;margin:0 auto;padding:26px 6vw 0;display:flex;flex-wrap:wrap;justify-content:center;gap:14px 22px;font:13px Inter,Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);text-align:center}
+.meta b{color:#171717;font-weight:600}
 @media(max-width:640px){.meta{font-size:11.5px;gap:10px 14px;padding-top:20px}}
-
 .intro{padding:100px 24px 90px;text-align:center}
 h1{font-weight:300;font-size:clamp(30px,4.4vw,52px);letter-spacing:.03em;margin:0 0 56px}
 .intro p{max-width:720px;margin:0 auto;font-size:13px;line-height:1.9;color:var(--mute)}
-section{display:grid;gap:5px;max-width:1200px;margin:0 auto 5px;padding:0 24px;align-items:start}
+section.g{display:grid;gap:5px;max-width:1200px;margin:0 auto 5px;padding:0 24px;align-items:start}
 .one{grid-template-columns:1fr}.two{grid-template-columns:1fr 1fr}.three{grid-template-columns:repeat(3,1fr)}
-img{width:100%;height:auto;display:block}
-/* gallery images are shown uncropped at their natural ratio */
-section img{height:auto;aspect-ratio:auto;object-fit:contain}
-.cta{text-align:center;padding:80px 24px 70px;font-family:Jost,"Helvetica Neue",Arial,sans-serif}
-.cta h2{font-weight:500;font-size:clamp(26px,3.6vw,44px);line-height:1.15;letter-spacing:.01em;color:#1c1b18;margin:0 0 20px}
-.cta p{max-width:520px;margin:0 auto 32px;font-size:15px;font-weight:300;line-height:1.7;color:#8d8d94}
-.btn{display:inline-block;padding:10px 24px;background:transparent;color:#1c1b18;border:1px solid #a9783f;font:300 12px Jost,Arial,sans-serif;letter-spacing:.04em;text-decoration:none;transition:background .3s,color .3s,border-color .3s}
-.btn:hover,.btn:focus-visible{background:#000;border-color:#000;color:#fff}
-footer{padding:70px 24px;text-align:center;font-size:12px;color:var(--mute)}
 @media(max-width:700px){.two,.three{grid-template-columns:1fr}}
-/* ---------- Header (AJN Studio) ---------- */
-:root{--ink:#000;--line:#00000014}
-header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;border-bottom:1px solid var(--line);background:color-mix(in srgb, var(--bg) 95%, transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;max-width:1240px;margin:0 auto}
-.brand{display:flex;align-items:center;gap:12px}
-.brand a{display:block;line-height:0}
-.brand img{height:40px;width:auto;display:block}
-nav.links ul{display:flex;align-items:center;gap:38px;list-style:none;padding:0;margin:0}
-nav.links li{list-style:none}
-nav.links a{font-family:'Montserrat',sans-serif;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);position:relative;padding-bottom:4px;text-decoration:none}
-nav.links a::after{content:'';position:absolute;left:0;bottom:0;height:1px;width:0;background:currentColor;transition:width .3s ease}
-nav.links a:hover{color:var(--ink)}
-nav.links a:hover::after{width:100%}
-.make-request{font-family:'Montserrat',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--ink);padding:12px 26px;border-radius:999px;white-space:nowrap;transition:background .15s ease,color .15s ease;color:inherit;text-decoration:none}
-.make-request:hover{background:var(--ink);color:var(--bg)}
-a:focus-visible{outline:3px solid currentColor;outline-offset:3px}
-
-/* ---------- Social links section ---------- */
-.cta-section{display:block;max-width:none;margin:0;padding:0;border-top:1px solid var(--line);background:var(--bg)}
+.cta{text-align:center;padding:80px 24px 70px;font-family:Jost,Arial,sans-serif}
+.cta h2{font-weight:500;font-size:clamp(26px,3.6vw,44px);line-height:1.15;color:#1c1b18;margin:0 0 20px}
+.cta p{max-width:520px;margin:0 auto 32px;font-size:15px;font-weight:300;line-height:1.7;color:#8d8d94}
+.btn{display:inline-block;padding:10px 24px;color:#1c1b18;border:1px solid #a9783f;font:300 12px Jost,Arial,sans-serif;letter-spacing:.04em;text-decoration:none;transition:.3s}
+.btn:hover{background:#000;border-color:#000;color:#fff}
+footer{padding:70px 24px;text-align:center;font-size:12px;color:var(--mute)}
+header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:60;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:14px 6vw;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);gap:20px}
+header.site .brand{justify-self:start;display:flex;align-items:center}
+header.site .brand a{display:block;line-height:0}
+header.site .brand img{height:40px;width:auto;display:block}
+header.site nav.links{display:flex;align-items:center;justify-self:center;gap:40px}
+header.site nav.links a{font-family:Montserrat,sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);padding-bottom:3px;border-bottom:1px solid transparent;transition:color .2s,border-color .2s;white-space:nowrap;text-decoration:none}
+header.site nav.links a:hover,header.site nav.links a.current{color:var(--ink);border-color:var(--ink)}
+header.site .hdr-btn{justify-self:end;font-family:Montserrat,sans-serif;font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--ink);padding:11px 24px;border-radius:999px;white-space:nowrap;transition:background .2s,color .2s;color:inherit;text-decoration:none}
+header.site .hdr-btn:hover{background:var(--ink);color:#fff}
+@media(max-width:760px){header.site{grid-template-columns:auto 1fr auto}header.site nav.links{display:none}header.site .hdr-btn{padding:9px 16px;font-size:11px}}
+.cta-section{border-top:1px solid var(--line)}
 .link-row{position:relative;display:block;height:73px;border-bottom:1px solid var(--line);overflow:hidden;text-decoration:none;color:inherit}
-.link-row .static{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(24px,6vw,48px);font-family:'Poppins',sans-serif;font-size:clamp(18px,2.4vw,24px);font-weight:400;color:var(--ink);transition:opacity .25s ease}
-.link-row .arrow{color:var(--ink);font-size:1.2rem;transition:transform .3s ease}
-.link-row .marquee{position:absolute;inset:0;background:var(--ink);color:var(--bg);display:flex;align-items:center;overflow:hidden;opacity:0;transform:translateY(6%);transition:opacity .25s ease,transform .3s ease;pointer-events:none}
-.marquee-track{display:flex;flex:none;width:max-content;white-space:nowrap;will-change:transform}
-.marquee-track span{flex:none;font-family:'Poppins',sans-serif;font-weight:400;font-size:clamp(18px,2.4vw,24px);padding:0 1.75rem;display:flex;align-items:center;gap:1.75rem}
-.marquee-track span::after{content:'↗';font-size:1.05rem}
-.link-row:hover .static,.link-row:focus-visible .static{opacity:0}
-.link-row:hover .arrow,.link-row:focus-visible .arrow{transform:translate(3px,-3px)}
-.link-row:hover .marquee,.link-row:focus-visible .marquee{opacity:1;transform:translateY(0)}
-@media(max-width:600px){.nav{padding:16px}nav.links{display:none}.make-request{padding:10px 16px;font-size:13.5px}}
+.static{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(24px,6vw,48px);font:clamp(18px,2.4vw,24px) Poppins,sans-serif;transition:opacity .25s}
+.arrow{transition:transform .3s}
+.marquee{position:absolute;inset:0;background:var(--ink);color:#fff;display:flex;align-items:center;overflow:hidden;opacity:0;transform:translateY(6%);transition:.3s;pointer-events:none}
+.marquee-track{display:flex;width:max-content;white-space:nowrap}
+.marquee-track span{font:clamp(18px,2.4vw,24px) Poppins,sans-serif;padding:0 1.75rem;display:flex;align-items:center;gap:1.75rem}
+.marquee-track span::after{content:'↗'}
+.link-row:hover .static{opacity:0}.link-row:hover .marquee{opacity:1;transform:none}
 </style></head><body>
-<header class="top">
-  <div class="nav">
-    <div class="brand">
-      <a href="index.html" aria-label="AJN Studio home">
-        <img src="images/final logo.png" alt="AJN Studio logo"
-             onerror="var s=this.dataset.step|0; var f=['images/ajn-logo.jpg','images/ajn-logo.jpeg']; if(s<f.length){this.dataset.step=s+1; this.src=f[s];} else {this.onerror=null;}">
-      </a>
-    </div>
-    <nav class="links">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="project.html">Projects</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    <a href="contact.html" class="make-request">Contact us</a>
-  </div>
+<header class="site">
+<div class="brand"><a href="index.html" aria-label="AJN Studio home"><img src="images/final logo.png" alt="AJN Studio logo" width="237" height="96" onerror="var s=this.dataset.step|0; var f=['images/ajn-logo.jpg','images/ajn-logo.jpeg']; if(s<f.length){this.dataset.step=s+1; this.src=f[s];} else {this.onerror=null;}"></a></div>
+<nav class="links"><a href="index.html">Home</a><a href="project.html">Projects</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+<a class="hdr-btn" href="contact.html">Contact us</a>
 </header>
-
-<div class="hero"><img src="images/Quiet Umber 1.png" alt="Quiet Umber"  loading="lazy"></div>
-
+<div class="hero"><img src="images/quiet-umber-1.jpg" alt="Quiet Umber living room"></div>
 <div class="meta"><span>Location: <b>UNITED STATE</b></span><span>Year: <b>2026</b></span><span>Visualization: <b>AJN Studio</b></span></div>
 <div class="intro"><h1>QUIET UMBER</h1><p>A calm composition of warm timber, soft neutral tones and deep charcoal flooring. Clean-lined cabinetry, generous glazing and carefully placed lighting give the living and kitchen spaces a quiet, contemporary character, while subtle material contrasts add depth without overwhelming the simplicity of the design.</p></div>
-
-<!-- Grid 1: Umber 2 + Cam 9 (new) -->
-<section class="two"><img src="images/Quiet_Umber_2.jpg" alt="Quiet Umber kitchen" loading="lazy"><img src="images/Quiet_Umber_9.jpg" alt="Quiet Umber living detail" loading="lazy"></section>
-
-<!-- Grid 2: Cam 5 + Cam 3 (single full-width image section removed) -->
-<section class="two"><img src="images/Quiet Umber 5.png" alt="Quiet Umber sink detail" loading="lazy"><img src="images/Quiet Umber 3.png" alt="Quiet Umber kitchen island" loading="lazy"></section>
-
-<section class="three"><img src="images/Quiet Umber 6.png" alt="Quiet Umber kitchen detail" loading="lazy"><img src="images/Quiet_Umber_7.jpg" alt="Quiet Umber dining counter" loading="lazy"><img src="images/Quiet_Umber_8.jpg" alt="Quiet Umber table detail" loading="lazy"></section>
-<section class="one"><img src="images/Quiet Umber 4.png" alt="Quiet Umber kitchen wall" loading="lazy"></section>
-
+<section class="g two"><img src="images/quiet-umber-2.jpg" alt="Quiet Umber living"><img src="images/quiet-umber-9.jpg" alt="Quiet Umber sofa detail"></section>
+<section class="g two"><img src="images/quiet-umber-5.jpg" alt="Quiet Umber kitchen"><img src="images/quiet-umber-3.jpg" alt="Quiet Umber kitchen island"></section>
+<section class="g three"><img src="images/quiet-umber-6.jpg" alt="Quiet Umber tap detail"><img src="images/quiet-umber-7.jpg" alt="Quiet Umber dining counter"><img src="images/quiet-umber-8.jpg" alt="Quiet Umber table detail"></section>
+<section class="g one"><img src="images/quiet-umber-4.jpg" alt="Quiet Umber kitchen island view"></section>
 <div class="cta"><h2>LET’S VISUALIZE<br>YOUR NEXT PROJECT.</h2><p>Have a project in mind? Let’s talk about your requirements, references and visual direction.</p><a class="btn" href="#">START A PROJECT</a></div>
-<section class="cta-section">
-  <nav aria-label="Social links">
-    <a class="link-row" href="https://www.instagram.com/ajnstudio.design/" target="_blank" rel="noopener">
-      <div class="static"><span>Instagram</span><span class="arrow">↗</span></div>
-      <div class="marquee"><div class="marquee-track" data-marquee>
-        <span>Instagram</span><span>Instagram</span><span>Instagram</span><span>Instagram</span>
-      </div></div>
-    </a>
-    <a class="link-row" href="https://www.behance.net/ajnstudio" target="_blank" rel="noopener">
-      <div class="static"><span>Behance</span><span class="arrow">↗</span></div>
-      <div class="marquee"><div class="marquee-track" data-marquee>
-        <span>Behance</span><span>Behance</span><span>Behance</span><span>Behance</span>
-      </div></div>
-    </a>
-    <a class="link-row" href="https://www.linkedin.com/in/nejmal-v-k/" target="_blank" rel="noopener">
-      <div class="static"><span>Linkedin</span><span class="arrow">↗</span></div>
-      <div class="marquee"><div class="marquee-track" data-marquee>
-        <span>Linkedin</span><span>Linkedin</span><span>Linkedin</span><span>Linkedin</span>
-      </div></div>
-    </a>
-  </nav>
-</section>
+<section class="cta-section"><nav aria-label="Social links">
+<a class="link-row" href="https://www.instagram.com/ajnstudio.design/" target="_blank" rel="noopener"><div class="static"><span>Instagram</span><span class="arrow">↗</span></div><div class="marquee"><div class="marquee-track" data-m><span>Instagram</span></div></div></a>
+<a class="link-row" href="https://www.behance.net/ajnstudio" target="_blank" rel="noopener"><div class="static"><span>Behance</span><span class="arrow">↗</span></div><div class="marquee"><div class="marquee-track" data-m><span>Behance</span></div></div></a>
+<a class="link-row" href="https://www.linkedin.com/in/nejmal-v-k/" target="_blank" rel="noopener"><div class="static"><span>Linkedin</span><span class="arrow">↗</span></div><div class="marquee"><div class="marquee-track" data-m><span>Linkedin</span></div></div></a>
+</nav></section>
 <footer>© 2026 AJN Studio. All rights reserved.</footer>
 <script>
-(function(){
-  var SPEED = 90;
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var tracks = Array.prototype.slice.call(document.querySelectorAll('[data-marquee]'));
-  var state = tracks.map(function(t){ return { el: t, x: 0, half: 0 }; });
-  function build(){
-    state.forEach(function(s){
-      var track = s.el;
-      if (!track.dataset.base) track.dataset.base = track.innerHTML;
-      track.innerHTML = track.dataset.base;
-      var guard = 0;
-      while (track.scrollWidth < window.innerWidth * 1.2 && guard < 60){
-        track.insertAdjacentHTML('beforeend', track.dataset.base);
-        guard++;
-      }
-      var half = track.innerHTML;
-      track.innerHTML = half + half;
-      s.half = track.scrollWidth / 2;
-      s.x = -s.half;
-    });
-  }
-  var last = performance.now();
-  function frame(now){
-    var dt = Math.min((now - last) / 1000, 0.05);
-    last = now;
-    state.forEach(function(s){
-      if (!s.half) return;
-      s.x += SPEED * dt;
-      if (s.x >= 0) s.x -= s.half;
-      s.el.style.transform = 'translate3d(' + s.x + 'px,0,0)';
-    });
-    requestAnimationFrame(frame);
-  }
-  var resizeTimer;
-  build();
-  window.addEventListener('load', build);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
-  window.addEventListener('resize', function(){ clearTimeout(resizeTimer); resizeTimer = setTimeout(build, 200); });
-  if (!reduce) requestAnimationFrame(frame);
-})();
-</script>
-</body></html>
+(function(){var S=90,R=matchMedia('(prefers-reduced-motion: reduce)').matches,T=[].slice.call(document.querySelectorAll('[data-m]')).map(function(t){return{e:t,x:0,h:0,b:t.innerHTML}});
+function build(){T.forEach(function(s){var t=s.e;t.innerHTML=s.b;var g=0;while(t.scrollWidth<innerWidth*1.2&&g++<60)t.insertAdjacentHTML('beforeend',s.b);t.innerHTML+=t.innerHTML;s.h=t.scrollWidth/2;s.x=-s.h})}
+var l=performance.now();function f(n){var d=Math.min((n-l)/1e3,.05);l=n;T.forEach(function(s){if(!s.h)return;s.x+=S*d;if(s.x>=0)s.x-=s.h;s.e.style.transform='translate3d('+s.x+'px,0,0)'});requestAnimationFrame(f)}
+build();addEventListener('load',build);if(document.fonts)document.fonts.ready.then(build);var r;addEventListener('resize',function(){clearTimeout(r);r=setTimeout(build,200)});if(!R)requestAnimationFrame(f)})();
+</script></body></html>
