@@ -105,6 +105,29 @@
   /* Solenne page content */
   .hero { height: auto; }
   .hero img { width: 100%; height: auto; object-fit: contain; aspect-ratio: auto; }
+
+  /* meta row (Location / Year / Visualization) - same style as Little Haven */
+  .meta {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 26px 6vw 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 14px 22px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+  .meta b { color: var(--ink); font-weight: 600; letter-spacing: 0.03em; }
+  @media (max-width: 640px) {
+    .meta { font-size: 11.5px; gap: 10px 14px; padding-top: 20px; }
+  }
+
   .intro { padding: 100px 24px 90px; text-align: center; }
   h1 { font-weight: 300; font-size: clamp(30px, 4.4vw, 52px); letter-spacing: .03em; margin: 0 0 56px; }
   .intro p { max-width: 720px; margin: 0 auto; font-size: 13px; line-height: 1.9; color: var(--mute); }
@@ -303,7 +326,7 @@
 </header>
 
 <div class="hero"><img src="images/quiet_luxurya_warm_1.jpg" alt="Solenne Residence"></div>
-<div class="meta" style="display:flex;justify-content:center;gap:24px;flex-wrap:wrap;text-align:center"><span>Location: <b>Bangalore</b></span><span>Year: <b>2026</b></span><span>Visualization: <b>AJN Studio</b></span></div>
+<div class="meta"><span>Location: <b>Bangalore</b></span><span>Year: <b>2026</b></span><span>Visualization: <b>AJN Studio</b></span></div>
 <div class="intro"><h1>SOLENNE RESIDENCE</h1><p>A warm contemporary residence shaped by soft neutral tones, natural wood, tactile textures and carefully balanced lighting. The visualization focuses on creating a calm, refined atmosphere while highlighting the materiality and character of each space</p></div>
 
 <section class="gallery two"><img src="images/quiet_luxury_warm_3.jpg" alt="Solenne Residence interior" style="aspect-ratio:4/5" loading="lazy"><img src="images/quiet_luxury_warm_4.jpg" alt="Solenne Residence interior" style="aspect-ratio:4/5" loading="lazy"></section>
