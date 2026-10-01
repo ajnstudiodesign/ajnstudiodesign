@@ -860,7 +860,7 @@
   if(!matchMedia('(pointer: fine)').matches) return; /* touch devices keep native scrolling */
 
   let target = window.scrollY, current = target, running = false;
-  const EASE = 0.085; /* lower = smoother/slower, higher = faster */
+  const EASE = 0.15; /* lower = smoother/slower, higher = faster */
   const maxY = () => document.documentElement.scrollHeight - window.innerHeight;
 
   function loop(){
