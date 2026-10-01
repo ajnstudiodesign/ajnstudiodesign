@@ -6,24 +6,21 @@
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:Montserrat,"Helvetica Neue",Arial,sans-serif}
 .hero{height:calc(100svh - 73px)}.hero img{height:100%;aspect-ratio:auto}
+section{display:grid;gap:5px;max-width:1200px;margin:0 auto 5px;padding:0 24px}
+img{width:100%;height:auto;object-fit:cover;display:block}
 .intro{padding:100px 24px 90px;text-align:center}
 h1{font-weight:300;font-size:clamp(30px,4.4vw,52px);letter-spacing:.03em;margin:0 0 56px}
 .intro p{max-width:720px;margin:0 auto;font-size:13px;line-height:1.9;color:var(--mute)}
-section{display:grid;gap:5px;max-width:1200px;margin:0 auto 5px;padding:0 24px}
-.two{grid-template-columns:1fr 1fr}.three{grid-template-columns:repeat(3,1fr)}
-img{width:100%;height:auto;object-fit:cover;display:block}
 .cta{text-align:center;padding:80px 24px 70px;font-family:Jost,"Helvetica Neue",Arial,sans-serif}
 .cta h2{font-weight:500;font-size:clamp(26px,3.6vw,44px);line-height:1.15;letter-spacing:.01em;color:#1c1b18;margin:0 0 20px}
 .cta p{max-width:520px;margin:0 auto 32px;font-size:15px;font-weight:300;line-height:1.7;color:#8d8d94}
 .btn{display:inline-block;padding:10px 24px;background:transparent;color:#1c1b18;border:1px solid #a9783f;font:300 12px Jost,Arial,sans-serif;letter-spacing:.04em;text-decoration:none;transition:background .3s,color .3s,border-color .3s}
 .btn:hover,.btn:focus-visible{background:#000;border-color:#000;color:#fff}
 footer{padding:70px 24px;text-align:center;font-size:12px;color:var(--mute)}
-@media(max-width:700px){.two,.three{grid-template-columns:1fr}}
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 95%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;max-width:1240px;margin:0 auto}
 .brand{display:flex;align-items:center}
 .brand a{display:block;line-height:0;text-decoration:none}
-/* logo is already black on white, so no filter */
 .brand img{height:40px;width:auto;display:block}
 nav.links ul{display:flex;align-items:center;gap:38px;list-style:none;padding:0;margin:0}
 nav.links a{font-family:Montserrat,sans-serif;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);position:relative;padding-bottom:4px;text-decoration:none}
@@ -44,21 +41,41 @@ a:focus-visible{outline:3px solid currentColor;outline-offset:3px}
 .link-row:hover .arrow{transform:translate(3px,-3px)}
 .link-row:hover .marquee,.link-row:focus-visible .marquee{opacity:1;transform:translateY(0)}
 @media(max-width:600px){.nav{padding:16px}nav.links{display:none}.make-request{padding:10px 16px;font-size:13.5px}}
-</style></head><body>
+.gal{max-width:1200px;margin:5px auto;padding:0 24px;display:grid;gap:5px}
+.gal img{display:block;width:100%;height:auto}
+.gal .pair{display:flex;gap:5px}
+.gal .pair img{flex:var(--r) 1 0;min-width:0}
+.gal .full{width:100vw;margin-left:calc(50% - 50vw)}
+body{overflow-x:clip}
+@media(max-width:700px){.gal .pair{flex-direction:column}.gal .pair img{flex:none;width:100%}}
+.js .gal img{opacity:0;transform:translateY(36px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.js .gal img.in{opacity:1;transform:none}
+.js .gal .pair img:nth-child(2){transition-delay:.12s}
+@media(prefers-reduced-motion:reduce){.js .gal img{opacity:1;transform:none;transition:none}}
+</style><script>document.documentElement.classList.add("js")</script></head><body>
 <header class="top"><div class="nav"><div class="brand"><a href="index.html" aria-label="AJN Studio home"><img src="images/final logo.png" alt="AJN Studio logo" width="237" height="96" onerror="var s=this.dataset.step|0; var f=['images/ajn-logo.jpg','images/ajn-logo.jpeg']; if(s<f.length){this.dataset.step=s+1; this.src=f[s];} else {this.onerror=null;}"></a></div>
 <nav class="links"><ul><li><a href="#">Home</a></li><li><a href="#">Projects</a></li><li><a href="#">About</a></li><li><a href="#">Contact</a></li></ul></nav>
 <a href="mailto:ajnstudiodesign@gmail.com" class="make-request">Contact us</a></div></header>
 <div class="hero"><img src="images/verde-01-hero.jpg" alt="Verde Monument living room"></div>
 <div class="meta" style="display:flex;justify-content:center;gap:24px;flex-wrap:wrap;text-align:center;font-size:13px;padding-top:24px"><span>Location: <b>BANGALORE</b></span><span>Year: <b>2026</b></span><span>Visualization: <b>AJN Studio</b></span></div>
 <div class="intro"><h1>VERDE MONUMENT</h1><p>Rich walnut surfaces, sculptural furniture and deep green stone give this residence a strong visual identity. The open living and dining spaces are tied together by a custom timber screen, while the marble-framed openings and layered lighting add depth throughout. Softer seating, natural textures and carefully placed artwork keep the bold materials balanced, creating a home that feels expressive without becoming overwhelming.</p></div>
-<section class="two"><img loading="lazy" src="images/verde-02-dining-detail.jpg" alt="Dining detail" style="aspect-ratio:4/5"><img loading="lazy" src="images/verde-03-bathroom.jpg" alt="Bathroom vanity" style="aspect-ratio:4/5"></section>
-<section class="full"><img loading="lazy" src="images/verde-04-living-dining.jpg" alt="Living and dining" style="aspect-ratio:16/9"></section>
-<section class="three"><img loading="lazy" src="images/verde-05-kitchen-island.jpg" alt="Kitchen island" style="aspect-ratio:4/5"><img loading="lazy" src="images/verde-06-kitchen-arch.jpg" alt="Kitchen arch" style="aspect-ratio:4/5"><img loading="lazy" src="images/verde-07-round-table.jpg" alt="Round dining table" style="aspect-ratio:4/5"></section>
-<section class="two"><img loading="lazy" src="images/verde-08-media-room.jpg" alt="Media room" style="aspect-ratio:4/5"><img loading="lazy" src="images/verde-09-coffee-table.jpg" alt="Lounge detail" style="aspect-ratio:4/5"></section>
-<section class="three"><img loading="lazy" src="images/verde-10-monument.jpg" alt="Verde Monument detail 1" style="aspect-ratio:4/5"><img loading="lazy" src="images/verde-11-monument.jpg" alt="Verde Monument detail 2" style="aspect-ratio:4/5"><img loading="lazy" src="images/verde-12-monument.jpg" alt="Verde Monument detail 3" style="aspect-ratio:4/5"></section>
+<div class="gal"><div class="single"><img src="images/verde-02-tv-wall.jpg" width="3200" height="1800" style="--r:1.7778" alt="Living area TV wall with green marble side tables" loading="lazy"></div>
+<div class="pair"><img src="images/verde-03-armchairs.jpg" width="3200" height="3200" style="--r:1.0000" alt="Seating area with four boucle armchairs" loading="lazy"><img src="images/verde-04-armchair-detail.jpg" width="3200" height="3200" style="--r:1.0000" alt="Armchairs and stone coffee table detail" loading="lazy"></div>
+<div class="full"><img src="images/verde-05-living-dining.jpg" width="3200" height="1800" style="--r:1.7778" alt="Dining and living space with fluted timber wall" loading="lazy"></div>
+<div class="pair"><img src="images/verde-06-kitchen-island.jpg" width="3200" height="3200" style="--r:1.0000" alt="Kitchen with green marble island" loading="lazy"><img src="images/verde-07-kitchen-arch.jpg" width="3200" height="3200" style="--r:1.0000" alt="Kitchen seen through marble arch" loading="lazy"></div>
+<div class="single"><img src="images/verde-08-round-dining.jpg" width="3200" height="2533" style="--r:1.2633" alt="Round dining table with brass base" loading="lazy"></div>
+<div class="single"><img src="images/verde-09-coffee-table-top.jpg" width="2048" height="1536" style="--r:1.3333" alt="Top view of marble coffee table" loading="lazy"></div>
+<div class="single"><img src="images/verde-10-living-balcony.jpg" width="3200" height="2400" style="--r:1.3333" alt="Living room with leather sofa and balcony" loading="lazy"></div>
+<div class="pair"><img src="images/verde-11-dining-detail.jpg" width="2400" height="3200" style="--r:0.7500" alt="Dining table with teal stone top" loading="lazy"><img src="images/verde-12-vanity.jpg" width="2262" height="3200" style="--r:0.7069" alt="Green fluted marble vanity" loading="lazy"></div></div>
 <div class="cta"><h2>LET’S VISUALIZE<br>YOUR NEXT PROJECT.</h2><p>Have a project in mind? Let’s talk about your requirements, references and visual direction.</p><a class="btn" href="mailto:ajnstudiodesign@gmail.com">START A PROJECT</a></div>
 <section class="cta-section"><nav aria-label="Social links"><a class="link-row" href="https://www.instagram.com/ajnstudio.design/" target="_blank" rel="noopener"><div class="static"><span>Instagram</span><span class="arrow">↗</span></div><div class="marquee"><div class="marquee-track" data-marquee><span>Instagram</span><span>Instagram</span><span>Instagram</span><span>Instagram</span></div></div></a><a class="link-row" href="https://www.behance.net/ajnstudio" target="_blank" rel="noopener"><div class="static"><span>Behance</span><span class="arrow">↗</span></div><div class="marquee"><div class="marquee-track" data-marquee><span>Behance</span><span>Behance</span><span>Behance</span><span>Behance</span></div></div></a><a class="link-row" href="https://www.linkedin.com/in/nejmal-v-k/" target="_blank" rel="noopener"><div class="static"><span>Linkedin</span><span class="arrow">↗</span></div><div class="marquee"><div class="marquee-track" data-marquee><span>Linkedin</span><span>Linkedin</span><span>Linkedin</span><span>Linkedin</span></div></div></a></nav></section>
 <footer>© 2026 AJN Studio. All rights reserved.</footer>
+<script>
+(function(){var im=[].slice.call(document.querySelectorAll('.gal img'));
+if(!('IntersectionObserver' in window)){im.forEach(function(i){i.classList.add('in')});return}
+var o=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');o.unobserve(x.target)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+im.forEach(function(i){o.observe(i)})})();
+</script>
 <script>
 (function(){var SPEED=90,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 var st=[].slice.call(document.querySelectorAll('[data-marquee]')).map(function(t){return{el:t,x:0,half:0}});
