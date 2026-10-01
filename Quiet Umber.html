@@ -1,11 +1,17 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Quiet Umber</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Jost:wght@300;400;500&family=Poppins:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Jost:wght@300;400;500&family=Poppins:wght@400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#ffffff;--fg:#161514;--mute:#5d5a56;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--bg:#ffffff;--fg:#161514;--mute:#5d5a56;--ink-soft:#6E6E6E;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:Montserrat,"Helvetica Neue",Arial,sans-serif}
 .hero{height:calc(100svh - 73px)}.hero img{height:100%;aspect-ratio:auto}
+
+/* meta row (Location / Year / Visualization) - same style as Little Haven */
+.meta{max-width:1200px;margin:0 auto;padding:26px 6vw 0;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px 22px;font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);text-align:center}
+.meta b{color:#171717;font-weight:600;letter-spacing:.03em}
+@media(max-width:640px){.meta{font-size:11.5px;gap:10px 14px;padding-top:20px}}
+
 .intro{padding:100px 24px 90px;text-align:center}
 h1{font-weight:300;font-size:clamp(30px,4.4vw,52px);letter-spacing:.03em;margin:0 0 56px}
 .intro p{max-width:720px;margin:0 auto;font-size:13px;line-height:1.9;color:var(--mute)}
@@ -71,10 +77,9 @@ a:focus-visible{outline:3px solid currentColor;outline-offset:3px}
 </header>
 
 <div class="hero"><img src="images/Quiet Umber 1.png" alt="Quiet Umber"  loading="lazy"></div>
-</div>
 
-  
-<div class="meta" style="justify-content:center;text-align:center;font-family:'Montserrat',sans-serif;font-weight:500;"><span> Location: <b>Bangalore</b></span><span> Year: <b>2026</b></span><span> Visualization: <b>AJN Studio</b></span></div><div class="intro"><h1>QUIET UMBER</h1><p>A calm composition of warm timber, soft neutral tones and deep charcoal flooring. Clean-lined cabinetry, generous glazing and carefully placed lighting give the living and kitchen spaces a quiet, contemporary character, while subtle material contrasts add depth without overwhelming the simplicity of the design.</p></div>
+<div class="meta"><span>Location: <b>Bangalore</b></span><span>Year: <b>2026</b></span><span>Visualization: <b>AJN Studio</b></span></div>
+<div class="intro"><h1>QUIET UMBER</h1><p>A calm composition of warm timber, soft neutral tones and deep charcoal flooring. Clean-lined cabinetry, generous glazing and carefully placed lighting give the living and kitchen spaces a quiet, contemporary character, while subtle material contrasts add depth without overwhelming the simplicity of the design.</p></div>
 <section class="two"><img src="images/Quiet_Umber_2.jpg" alt="Quiet Umber kitchen" style="aspect-ratio:4/5" loading="lazy"><img src="images/Quiet Umber 5.png" alt="Quiet Umber sink detail" style="aspect-ratio:4/5" loading="lazy"></section>
 <section class="full"><img src="images/Quiet Umber 3.png" alt="Quiet Umber kitchen island" style="aspect-ratio:16/9;object-position:center 55%" loading="lazy"></section>
 <section class="three"><img src="images/Quiet Umber 6.png" alt="Quiet Umber kitchen detail" style="aspect-ratio:4/5" loading="lazy"><img src="images/Quiet_Umber_7.jpg" alt="Quiet Umber dining counter" style="aspect-ratio:4/5" loading="lazy"><img src="images/Quiet_Umber_8.jpg" alt="Quiet Umber table detail" style="aspect-ratio:4/5" loading="lazy"></section>
