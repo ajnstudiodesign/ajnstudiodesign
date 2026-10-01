@@ -16,9 +16,11 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}
 .intro{padding:100px 24px 90px;text-align:center}
 h1{font-weight:300;font-size:clamp(30px,4.4vw,52px);letter-spacing:.03em;margin:0 0 56px}
 .intro p{max-width:720px;margin:0 auto;font-size:13px;line-height:1.9;color:var(--mute)}
-section{display:grid;gap:5px;max-width:1200px;margin:0 auto 5px;padding:0 24px}
-.two{grid-template-columns:1fr 1fr}.three{grid-template-columns:repeat(3,1fr)}
-img{width:100%;height:auto;object-fit:cover;display:block}
+section{display:grid;gap:5px;max-width:1200px;margin:0 auto 5px;padding:0 24px;align-items:start}
+.one{grid-template-columns:1fr}.two{grid-template-columns:1fr 1fr}.three{grid-template-columns:repeat(3,1fr)}
+img{width:100%;height:auto;display:block}
+/* gallery images are shown uncropped at their natural ratio */
+section img{height:auto;aspect-ratio:auto;object-fit:contain}
 .cta{text-align:center;padding:80px 24px 70px;font-family:Jost,"Helvetica Neue",Arial,sans-serif}
 .cta h2{font-weight:500;font-size:clamp(26px,3.6vw,44px);line-height:1.15;letter-spacing:.01em;color:#1c1b18;margin:0 0 20px}
 .cta p{max-width:520px;margin:0 auto 32px;font-size:15px;font-weight:300;line-height:1.7;color:#8d8d94}
@@ -81,10 +83,16 @@ a:focus-visible{outline:3px solid currentColor;outline-offset:3px}
 
 <div class="meta"><span>Location: <b>UNITED STATE</b></span><span>Year: <b>2026</b></span><span>Visualization: <b>AJN Studio</b></span></div>
 <div class="intro"><h1>QUIET UMBER</h1><p>A calm composition of warm timber, soft neutral tones and deep charcoal flooring. Clean-lined cabinetry, generous glazing and carefully placed lighting give the living and kitchen spaces a quiet, contemporary character, while subtle material contrasts add depth without overwhelming the simplicity of the design.</p></div>
-<section class="two"><img src="images/Quiet_Umber_2.jpg" alt="Quiet Umber kitchen" style="aspect-ratio:4/5" loading="lazy"><img src="images/Quiet Umber 5.png" alt="Quiet Umber sink detail" style="aspect-ratio:4/5" loading="lazy"></section>
-<section class="full"><img src="images/Quiet Umber 3.png" alt="Quiet Umber kitchen island" style="aspect-ratio:16/9;object-position:center 55%" loading="lazy"></section>
-<section class="three"><img src="images/Quiet Umber 6.png" alt="Quiet Umber kitchen detail" style="aspect-ratio:4/5" loading="lazy"><img src="images/Quiet_Umber_7.jpg" alt="Quiet Umber dining counter" style="aspect-ratio:4/5" loading="lazy"><img src="images/Quiet_Umber_8.jpg" alt="Quiet Umber table detail" style="aspect-ratio:4/5" loading="lazy"></section>
-<section class="two"><img src="images/Quiet Umber 4.png" alt="Quiet Umber kitchen wall" style="aspect-ratio:4/5" loading="lazy"><img src="images/Quiet_Umber_9.jpg" alt="Quiet Umber living detail" style="aspect-ratio:4/5" loading="lazy"></section>
+
+<!-- Grid 1: Umber 2 + Cam 9 (new) -->
+<section class="two"><img src="images/Quiet_Umber_2.jpg" alt="Quiet Umber kitchen" loading="lazy"><img src="images/Quiet_Umber_9.jpg" alt="Quiet Umber living detail" loading="lazy"></section>
+
+<!-- Grid 2: Cam 5 + Cam 3 (single full-width image section removed) -->
+<section class="two"><img src="images/Quiet Umber 5.png" alt="Quiet Umber sink detail" loading="lazy"><img src="images/Quiet Umber 3.png" alt="Quiet Umber kitchen island" loading="lazy"></section>
+
+<section class="three"><img src="images/Quiet Umber 6.png" alt="Quiet Umber kitchen detail" loading="lazy"><img src="images/Quiet_Umber_7.jpg" alt="Quiet Umber dining counter" loading="lazy"><img src="images/Quiet_Umber_8.jpg" alt="Quiet Umber table detail" loading="lazy"></section>
+<section class="one"><img src="images/Quiet Umber 4.png" alt="Quiet Umber kitchen wall" loading="lazy"></section>
+
 <div class="cta"><h2>LET’S VISUALIZE<br>YOUR NEXT PROJECT.</h2><p>Have a project in mind? Let’s talk about your requirements, references and visual direction.</p><a class="btn" href="#">START A PROJECT</a></div>
 <section class="cta-section">
   <nav aria-label="Social links">
