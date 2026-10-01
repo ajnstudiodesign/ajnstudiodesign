@@ -44,34 +44,38 @@
   .wrap{max-width:1320px;margin:0 auto;padding:0 48px;}
   @media(max-width:720px){.wrap{padding:0 22px;}}
 
-  /* ---------- Torch light + custom cursor ---------- */
-  #glow{
-    position:fixed;top:0;left:0;width:640px;height:640px;border-radius:50%;
-    background:radial-gradient(circle, rgba(255,255,255,.38) 0%, rgba(255,255,255,.14) 38%, rgba(255,255,255,0) 70%);
-    pointer-events:none;z-index:5;transform:translate(-50%,-50%);
-    transition:opacity .3s ease;opacity:0;
-    mix-blend-mode:normal;
+  /* ---------- Custom cursor ---------- */
+  .cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 22px;
+    height: 22px;
+    border: 1px solid var(--ivory);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+    opacity: 0;
+    will-change: left, top;
   }
-  body.glow-on #glow{opacity:1;}
-  body.glow-on{cursor:none;}
-  body.glow-on a, body.glow-on button{cursor:none;}
-  .cursor-dot{
-    position:fixed;top:0;left:0;width:4px;height:4px;border-radius:50%;
-    background:var(--brass-light);pointer-events:none;z-index:1001;
-    transform:translate(-50%,-50%);transition:opacity .3s ease;opacity:0;
+  .cursor-ring::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3px;
+    height: 3px;
+    background: var(--ivory);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
   }
-  .cursor-ring{
-    position:fixed;top:0;left:0;width:22px;height:22px;border-radius:50%;
-    border:1px solid rgba(28,26,21,.55);pointer-events:none;z-index:1001;
-    transform:translate(-50%,-50%);
-    transition:width .25s ease, height .25s ease, border-color .25s ease, opacity .3s ease, background .25s ease;
-    opacity:0;
+  .cursor-ring.active { opacity: 1; }
+  html.custom-cursor, html.custom-cursor * { cursor: none !important; }
+  @media (hover: none), (pointer: coarse) {
+    .cursor-ring { display: none; }
   }
-  body.glow-on .cursor-dot,body.glow-on .cursor-ring{opacity:1;}
-  .cursor-ring.hover{
-    width:36px;height:36px;border-color:var(--brass-light);background:rgba(169,116,63,.12);
-  }
-  @media(max-width:900px){#glow,.cursor-dot,.cursor-ring{display:none;}body.glow-on{cursor:auto;}}
 
   /* ---------- Nav ---------- */
   header{
@@ -100,7 +104,7 @@
     transition:width .35s ease;
   }
   nav a:hover::after{width:100%;}
-  nav a:hover{color:#fff;}
+  nav a:hover{color:var(--brass-light);}
   .nav-right{display:flex;align-items:center;gap:28px;}
   .btn-line{
     border:1px solid var(--line-strong);color:var(--ivory);
@@ -109,7 +113,7 @@
     white-space:nowrap;
     display:inline-block;
   }
-  .btn-line:hover{background:var(--brass);color:#ffffff;border-color:var(--brass);transform:translateY(-2px);}
+  .btn-line:hover{background:#000;color:#ffffff;border-color:#000;transform:translateY(-2px);}
   .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
   .burger span{width:24px;height:1px;background:var(--ivory);}
   @media(max-width:900px){
@@ -288,7 +292,6 @@
   .sg-more-wrap{display:flex;justify-content:center;padding:56px 0 30px;}
   .sg-more-wrap.hide{display:none;}
   .sg-more-wrap .btn-solid{cursor:pointer;font-family:'Jost',sans-serif;}
-  body.glow-on .sg-more-wrap .btn-solid{cursor:none;}
   .sg-more-wrap .btn-solid::before{background:#000;}
   .sg-more-wrap .btn-solid:hover{color:#fff;border-color:#000;box-shadow:0 16px 38px -14px rgba(0,0,0,.45),0 0 0 1px rgba(0,0,0,.2);}
   @media (prefers-reduced-motion: reduce){
@@ -301,8 +304,6 @@
 
 <body>
 
-<div id="glow"></div>
-<div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
 <header id="siteHeader">
@@ -427,35 +428,27 @@
     }
   });
 
-  if(window.matchMedia('(pointer: fine)').matches){
-    document.body.classList.add('glow-on');
-    const glow = document.getElementById('glow');
-    const dot = document.getElementById('cursorDot');
-    const ring = document.getElementById('cursorRing');
-    let ringX = window.innerWidth/2, ringY = window.innerHeight/2;
-    let targetX = ringX, targetY = ringY;
+  // custom cursor
+  if (!window.matchMedia('(hover: none), (pointer: coarse)').matches) {
+    document.documentElement.classList.add('custom-cursor');
+    var ring = document.getElementById('cursorRing');
+    var mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+    var ringX = mouseX, ringY = mouseY;
 
-    window.addEventListener('mousemove', (e)=>{
-      targetX = e.clientX; targetY = e.clientY;
-      glow.style.left = targetX + 'px';
-      glow.style.top = targetY + 'px';
-      dot.style.left = targetX + 'px';
-      dot.style.top = targetY + 'px';
+    window.addEventListener('mousemove', function(e){
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      ring.classList.add('active');
     });
+    document.addEventListener('mouseleave', function(){ ring.classList.remove('active'); });
 
-    function animateRing(){
-      ringX += (targetX - ringX) * 0.18;
-      ringY += (targetY - ringY) * 0.18;
+    (function tick(){
+      ringX += (mouseX - ringX) * 0.18;
+      ringY += (mouseY - ringY) * 0.18;
       ring.style.left = ringX + 'px';
       ring.style.top = ringY + 'px';
-      requestAnimationFrame(animateRing);
-    }
-    animateRing();
-
-    document.querySelectorAll('a, button').forEach(el=>{
-      el.addEventListener('mouseenter', ()=>ring.classList.add('hover'));
-      el.addEventListener('mouseleave', ()=>ring.classList.remove('hover'));
-    });
+      requestAnimationFrame(tick);
+    })();
   }
 </script>
 
