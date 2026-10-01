@@ -111,6 +111,27 @@
   }
   .hero.in-view img { transform: scale(1); opacity: 1; }
 
+  /* meta row (Location / Year / Visualization) - same style as Little Haven */
+  .meta {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 26px 6vw 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 14px 22px;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+  .meta b { color: var(--ink); font-weight: 600; letter-spacing: 0.03em; }
+  @media (max-width: 640px) {
+    .meta { font-size: 11.5px; gap: 10px 14px; padding-top: 20px; }
+  }
+
   /* title + description, centered like reference */
   .title-wrap {
     max-width: 1400px;
@@ -361,8 +382,8 @@
 
 <div class="hero" id="heroPlate">
   <img src="images/living-room (1).jpg" width="4000" height="4000" alt="Minimal living room, front view">
-  <div class="meta" style="display:flex;justify-content:center;gap:24px;flex-wrap:wrap;text-align:center"><span>Location: <b>Bangalore</b></span><span>Year: <b>2026</b></span><span>Visualization: <b>AJN Studio</b></span></div>
 </div>
+<div class="meta"><span>Location: <b>Bangalore</b></span><span>Year: <b>2026</b></span><span>Visualization: <b>AJN Studio</b></span></div>
 
 <div class="title-wrap">
   <h1 class="title">MINIMAL LIVING ROOM VISUALIZATION</h1>
