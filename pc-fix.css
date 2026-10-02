@@ -1,0 +1,63 @@
+/* pc-fix.css : desktop / laptop only, mobile is not affected */
+@charset "UTF-8";
+
+@media (min-width: 1024px) {
+
+  :root {
+    --page-max: 1400px;
+    --page-pad: 4vw;
+  }
+
+  /* 1) Widen gallery / project content */
+  .gallery,
+  .project-gallery,
+  .project-images,
+  .project-content,
+  .project-detail,
+  .project-grid {
+    width: 100%;
+    max-width: var(--page-max);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--page-pad);
+    padding-right: var(--page-pad);
+    box-sizing: border-box;
+  }
+
+  /* 2) Align header content with the same width */
+  header .nav-inner,
+  header nav,
+  .header-inner,
+  .navbar {
+    max-width: var(--page-max);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--page-pad);
+    padding-right: var(--page-pad);
+    box-sizing: border-box;
+  }
+
+  /* 3) Images fill their container */
+  .gallery img,
+  .project-gallery img,
+  .project-images img,
+  .project-content img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* 4) Gap between grid images */
+  .gallery,
+  .project-gallery,
+  .project-images {
+    gap: 8px;
+  }
+}
+
+/* Very large screens (1700px and above) */
+@media (min-width: 1700px) {
+  :root {
+    --page-max: 1600px;
+  }
+}
