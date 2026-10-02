@@ -277,42 +277,30 @@
     .link-row { height: 3.5rem; }
   }
 
-  /* custom cursor */
-  .cursor-ring {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 22px;
-    height: 22px;
-    border: 1px solid var(--ink);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease, opacity 0.3s ease, background 0.3s ease;
-    opacity: 0;
-    will-change: left, top;
-  }
-  .cursor-ring::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 3px;
-    height: 3px;
-    background: var(--ink);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .cursor-ring.active { opacity: 1; }
-  html.custom-cursor, html.custom-cursor * { cursor: none !important; }
-  @media (hover: none), (pointer: coarse) {
-    .cursor-ring { display: none; }
-  }
+  /* ===== CURSOR ===== */
+  #glow{position:fixed;top:0;left:0;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle, rgba(28,26,21,.09) 0%, rgba(28,26,21,.04) 40%, rgba(28,26,21,0) 72%);pointer-events:none;z-index:60;transform:translate(-50%,-50%);transition:opacity .3s ease;opacity:0;mix-blend-mode:multiply}
+  .cursor-dot{position:fixed;top:0;left:0;width:5px;height:5px;border-radius:50%;background:#1c1a15;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:opacity .3s ease, background .2s ease;opacity:0}
+  .cursor-ring{position:fixed;top:0;left:0;width:26px;height:26px;border-radius:50%;border:1px solid rgba(28,26,21,.7);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:opacity .3s ease, border-color .2s ease;opacity:0}
+  body.glow-on{cursor:none}
+  body.glow-on a, body.glow-on button{cursor:none}
+  body.glow-on #glow, body.glow-on .cursor-dot, body.glow-on .cursor-ring{opacity:1}
+  @media(max-width:900px){#glow,.cursor-dot,.cursor-ring{display:none}body.glow-on{cursor:auto}}
+  /* dark hover areas: social rows, buttons -> cursor turns white */
+  body.glow-on:has(.link-row:hover) .cursor-dot,
+  body.glow-on:has(.cta-btn:hover) .cursor-dot,
+  body.glow-on:has(.hdr-btn:hover) .cursor-dot{background:#fff}
+  body.glow-on:has(.link-row:hover) .cursor-ring,
+  body.glow-on:has(.cta-btn:hover) .cursor-ring,
+  body.glow-on:has(.hdr-btn:hover) .cursor-ring{border-color:rgba(255,255,255,.85)}
+  body.glow-on:has(.link-row:hover) #glow,
+  body.glow-on:has(.cta-btn:hover) #glow,
+  body.glow-on:has(.hdr-btn:hover) #glow{opacity:0}
 </style>
 </head>
 <body>
 
+<div id="glow"></div>
+<div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 <div class="progress" id="progress"></div>
 
@@ -394,25 +382,6 @@
   } else {
     reveals.forEach(function(t){ t.classList.add('in-view'); });
   }
-
-  if (!window.matchMedia('(hover: none), (pointer: coarse)').matches) {
-    document.documentElement.classList.add('custom-cursor');
-    var ring = document.getElementById('cursorRing');
-    var mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
-    var ringX = mouseX, ringY = mouseY;
-    window.addEventListener('mousemove', function(e){
-      mouseX = e.clientX; mouseY = e.clientY;
-      ring.classList.add('active');
-    });
-    document.addEventListener('mouseleave', function(){ ring.classList.remove('active'); });
-    (function tick(){
-      ringX += (mouseX - ringX) * 0.18;
-      ringY += (mouseY - ringY) * 0.18;
-      ring.style.left = ringX + 'px';
-      ring.style.top = ringY + 'px';
-      requestAnimationFrame(tick);
-    })();
-  }
 })();
 
 (function(){
@@ -460,6 +429,70 @@
     resizeTimer = setTimeout(build, 200);
   });
   if (!reduce) requestAnimationFrame(frame);
+})();
+</script>
+
+<!-- CURSOR SCRIPT -->
+<script>
+if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
+  document.body.classList.add('glow-on');
+  const glow = document.getElementById('glow');
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  let ringX = window.innerWidth/2, ringY = window.innerHeight/2;
+  let targetX = ringX, targetY = ringY;
+  let firstMove = true;
+  window.addEventListener('mousemove', (e)=>{
+    targetX = e.clientX; targetY = e.clientY;
+    if(firstMove){ ringX = targetX; ringY = targetY; firstMove = false; }
+    glow.style.left = targetX + 'px';
+    glow.style.top = targetY + 'px';
+    dot.style.left = targetX + 'px';
+    dot.style.top = targetY + 'px';
+  });
+  function animateRing(){
+    ringX += (targetX - ringX) * 0.22;
+    ringY += (targetY - ringY) * 0.22;
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+}
+</script>
+
+<!-- SMOOTH MOUSE-WHEEL SCROLL -->
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(!matchMedia('(pointer: fine)').matches) return;
+  let target = window.scrollY, current = target, running = false;
+  const EASE = 0.05;
+  const maxY = () => document.documentElement.scrollHeight - window.innerHeight;
+  function loop(){
+    current += (target - current) * EASE;
+    if(Math.abs(target - current) < 0.5){
+      current = target; running = false;
+      window.scrollTo(0, current);
+      return;
+    }
+    window.scrollTo(0, current);
+    requestAnimationFrame(loop);
+  }
+  function start(){
+    if(!running){ current = window.scrollY; running = true; requestAnimationFrame(loop); }
+  }
+  window.addEventListener('wheel', e => {
+    if(e.ctrlKey) return;
+    if(Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+    e.preventDefault();
+    let dy = e.deltaY;
+    if(e.deltaMode === 1) dy *= 32;
+    else if(e.deltaMode === 2) dy *= window.innerHeight;
+    target = Math.max(0, Math.min(maxY(), target + dy));
+    start();
+  }, {passive:false});
+  window.addEventListener('scroll', () => { if(!running){ target = current = window.scrollY; } });
 })();
 </script>
 
