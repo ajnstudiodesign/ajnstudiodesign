@@ -29,6 +29,10 @@ main section.three{grid-template-columns:repeat(3,1fr)}
 main img{width:100%;height:auto;display:block}
 @media(max-width:700px){main section.two,main section.three{grid-template-columns:1fr}}
 
+/* walkthrough video - keeps native 16:9 ratio, never cropped */
+main section.video{display:block}
+main section.video video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#000}
+
 /* ---------- progress bar ---------- */
 .progress{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:2px;width:0%;background:var(--brass);z-index:100;transition:width .08s linear}
 
@@ -103,6 +107,7 @@ html.custom-cursor,html.custom-cursor *{cursor:none !important}
 <div class="intro"><h1>WALNUT &amp; MARBLE RESIDENCE</h1><p>Rich walnut joinery forms the main character of this residence, balanced by expressive marble surfaces and soft, neutral furnishings. From the detailed kitchen and dining spaces to the quieter reading corner and living area, the interiors bring together classic detailing with a more contemporary sense of comfort. Carefully layered lighting, arched elements and herringbone flooring add depth throughout, giving the home a refined look without making it feel overly formal.</p></div>
 
 <main>
+<section class="video"><video controls playsinline preload="metadata" width="1920" height="1080" aria-label="Walnut and Marble Residence walkthrough"><source src="videos/Walnut & Marble Residence.mp4" type="video/mp4"></video></section>
 <section class="two"><img src="images/walnut___marble_2.jpg" alt="Walnut and Marble Residence interior" loading="lazy"><img src="images/walnut___marble_3.jpg" alt="Walnut and Marble Residence interior" loading="lazy"></section>
 <section class="full"><img src="images/walnut___marble_4.jpg" alt="Walnut and Marble Residence interior" loading="lazy"></section>
 <section class="three"><img src="images/walnut___marble_5.jpg" alt="Walnut and Marble Residence interior" loading="lazy"><img src="images/walnut___marble_6.jpg" alt="Walnut and Marble Residence interior" loading="lazy"><img src="images/walnut___marble_7.jpg" alt="Walnut and Marble Residence interior" loading="lazy"></section>
