@@ -21,7 +21,8 @@
     --wm:clamp(26px,9vw,130px); /* about watermark size */
   }
   *{ margin:0; padding:0; box-sizing:border-box; }
-  html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+  /* scroll-behavior must stay auto: the JS wheel smoothing below handles easing */
+  html{ scroll-behavior:auto; -webkit-text-size-adjust:100%; }
   body{ background:var(--bg); color:var(--ink); font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
   img{ max-width:100%; }
   a{ color:inherit; text-decoration:none; }
@@ -240,17 +241,42 @@
     font-size:12.5px; color:var(--stone-dim); flex-wrap:wrap; gap:10px;
   }
 
-  /* ---------- CURSOR ---------- */
-  .cursor-ring{
-    position:fixed; top:0; left:0; width:22px; height:22px; border:1px solid var(--ink); border-radius:50%;
-    pointer-events:none; z-index:9999; transform:translate(-50%,-50%); opacity:0; will-change:left,top;
-    box-shadow:0 0 12px 2px rgba(20,20,15,.15), 0 0 26px 5px rgba(20,20,15,.06);
-    transition:opacity .3s ease;
+  /* ===== CURSOR (same as Morrow House / index) ===== */
+  #glow{
+    position:fixed;top:0;left:0;width:420px;height:420px;border-radius:50%;
+    background:radial-gradient(circle, rgba(28,26,21,.09) 0%, rgba(28,26,21,.04) 40%, rgba(28,26,21,0) 72%);
+    pointer-events:none;z-index:60;transform:translate(-50%,-50%);
+    transition:opacity .3s ease;opacity:0;mix-blend-mode:multiply;
   }
-  .cursor-ring::after{ content:''; position:absolute; top:50%; left:50%; width:3px; height:3px; background:var(--ink); border-radius:50%; transform:translate(-50%,-50%); }
-  .cursor-ring.active{ opacity:1; }
-  html.custom-cursor, html.custom-cursor *{ cursor:none !important; }
-  @media (hover:none),(pointer:coarse){ .cursor-ring{ display:none; } }
+  .cursor-dot{
+    position:fixed;top:0;left:0;width:5px;height:5px;border-radius:50%;
+    background:#1c1a15;pointer-events:none;z-index:9999;
+    transform:translate(-50%,-50%);transition:opacity .3s ease, background .2s ease;opacity:0;
+  }
+  .cursor-ring{
+    position:fixed;top:0;left:0;width:26px;height:26px;border-radius:50%;
+    border:1px solid rgba(28,26,21,.7);pointer-events:none;z-index:9999;
+    transform:translate(-50%,-50%);transition:opacity .3s ease, border-color .2s ease;opacity:0;
+  }
+  body.glow-on{cursor:none;}
+  body.glow-on a, body.glow-on button{cursor:none;}
+  body.glow-on .team-card{cursor:none;}
+  body.glow-on #glow, body.glow-on .cursor-dot, body.glow-on .cursor-ring{opacity:1;}
+  @media(max-width:900px){#glow,.cursor-dot,.cursor-ring{display:none;}body.glow-on{cursor:auto;}}
+
+  /* black / dark hover areas: cursor turns white */
+  body.glow-on:has(.btn-solid:hover) .cursor-dot,
+  body.glow-on:has(.btn-line:hover) .cursor-dot,
+  body.glow-on:has(.socials a:hover) .cursor-dot,
+  body.glow-on:has(.why-section:hover) .cursor-dot{background:#fff;}
+  body.glow-on:has(.btn-solid:hover) .cursor-ring,
+  body.glow-on:has(.btn-line:hover) .cursor-ring,
+  body.glow-on:has(.socials a:hover) .cursor-ring,
+  body.glow-on:has(.why-section:hover) .cursor-ring{border-color:rgba(255,255,255,.85);}
+  body.glow-on:has(.btn-solid:hover) #glow,
+  body.glow-on:has(.btn-line:hover) #glow,
+  body.glow-on:has(.socials a:hover) #glow,
+  body.glow-on:has(.why-section:hover) #glow{opacity:0;}
 
   /* =====================================================
      RESPONSIVE
@@ -364,6 +390,8 @@
 </head>
 <body>
 
+<div id="glow"></div>
+<div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
 <header id="siteHeader">
@@ -507,25 +535,6 @@
 </footer>
 
 <script>
-  /* Custom cursor (mouse only) */
-  (function(){
-    if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
-    document.documentElement.classList.add('custom-cursor');
-    var ring = document.getElementById('cursorRing');
-    var mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
-    var ringX = mouseX, ringY = mouseY;
-    window.addEventListener('mousemove', function(e){ mouseX = e.clientX; mouseY = e.clientY; ring.classList.add('active'); });
-    document.addEventListener('mouseleave', function(){ ring.classList.remove('active'); });
-    function tick(){
-      ringX += (mouseX - ringX) * 0.12;
-      ringY += (mouseY - ringY) * 0.12;
-      ring.style.left = ringX + 'px';
-      ring.style.top = ringY + 'px';
-      requestAnimationFrame(tick);
-    }
-    tick();
-  })();
-
   /* Header + mobile/tablet menu */
   (function(){
     var header = document.getElementById('siteHeader');
@@ -550,6 +559,77 @@
     });
     window.addEventListener('resize', function(){ if (window.innerWidth > 900) setMenu(false); });
   })();
+</script>
+
+<!-- CURSOR SCRIPT (same as Morrow House / index) -->
+<script>
+if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
+  document.body.classList.add('glow-on');
+  const glow = document.getElementById('glow');
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  let ringX = window.innerWidth/2, ringY = window.innerHeight/2;
+  let targetX = ringX, targetY = ringY;
+  let firstMove = true;
+
+  window.addEventListener('mousemove', (e)=>{
+    targetX = e.clientX; targetY = e.clientY;
+    if(firstMove){ ringX = targetX; ringY = targetY; firstMove = false; }
+    glow.style.left = targetX + 'px';
+    glow.style.top = targetY + 'px';
+    dot.style.left = targetX + 'px';
+    dot.style.top = targetY + 'px';
+  });
+
+  function animateRing(){
+    ringX += (targetX - ringX) * 0.22;
+    ringY += (targetY - ringY) * 0.22;
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+}
+</script>
+
+<!-- SMOOTH MOUSE-WHEEL SCROLL (same as Morrow House / index) -->
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(!matchMedia('(pointer: fine)').matches) return; /* touch devices keep native scrolling */
+
+  let target = window.scrollY, current = target, running = false;
+  const EASE = 0.05; /* lower = smoother/slower, higher = faster */
+  const maxY = () => document.documentElement.scrollHeight - window.innerHeight;
+
+  function loop(){
+    current += (target - current) * EASE;
+    if(Math.abs(target - current) < 0.5){
+      current = target; running = false;
+      window.scrollTo(0, current);
+      return;
+    }
+    window.scrollTo(0, current);
+    requestAnimationFrame(loop);
+  }
+  function start(){
+    if(!running){ current = window.scrollY; running = true; requestAnimationFrame(loop); }
+  }
+
+  window.addEventListener('wheel', e => {
+    if(e.ctrlKey) return;
+    if(Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+    e.preventDefault();
+    let dy = e.deltaY;
+    if(e.deltaMode === 1) dy *= 32;
+    else if(e.deltaMode === 2) dy *= window.innerHeight;
+    target = Math.max(0, Math.min(maxY(), target + dy));
+    start();
+  }, {passive:false});
+
+  /* keep in sync when the user drags the scrollbar or uses the keyboard */
+  window.addEventListener('scroll', () => { if(!running){ target = current = window.scrollY; } });
+})();
 </script>
 
 </body>
