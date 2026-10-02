@@ -29,10 +29,6 @@ main section.three{grid-template-columns:repeat(3,1fr)}
 main img{width:100%;height:auto;display:block}
 @media(max-width:700px){main section.two,main section.three{grid-template-columns:1fr}}
 
-/* walkthrough video - native square ratio (black side bars trimmed from the file), centered */
-main section.video{display:block}
-main section.video video{display:block;width:100%;max-width:min(100%,85vh);height:auto;aspect-ratio:1/1;object-fit:contain;margin:0 auto;background:transparent}
-
 /* ---------- progress bar ---------- */
 .progress{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:2px;width:0%;background:var(--brass);z-index:100;transition:width .08s linear}
 
@@ -113,7 +109,6 @@ html.custom-cursor,html.custom-cursor *{cursor:none !important}
 <section class="full"><img src="images/walnut___marble_8.jpg" alt="Walnut and Marble Residence interior" loading="lazy"></section>
 <section class="two"><img src="images/walnut___marble_9.jpg" alt="Walnut and Marble Residence interior" loading="lazy"><img src="images/walnut___marble_10.jpg" alt="Walnut and Marble Residence interior" loading="lazy"></section>
 <section class="full"><img src="images/walnut___marble_11.jpg" alt="Walnut and Marble Residence interior" loading="lazy"></section>
-<section class="video"><video controls playsinline preload="metadata" width="1080" height="1080" aria-label="Walnut and Marble Residence walkthrough"><source src="videos/Walnut & Marble Residence.mp4" type="video/mp4"></video></section>
 </main>
 
 <footer class="site">
