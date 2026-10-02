@@ -53,7 +53,28 @@ body{overflow-x:clip}
 .js .gal img.in{opacity:1;transform:none}
 .js .gal .pair img:nth-child(2){transition-delay:.12s}
 @media(prefers-reduced-motion:reduce){.js .gal img{opacity:1;transform:none;transition:none}}
+
+/* ===== CURSOR ===== */
+#glow{position:fixed;top:0;left:0;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle, rgba(28,26,21,.09) 0%, rgba(28,26,21,.04) 40%, rgba(28,26,21,0) 72%);pointer-events:none;z-index:60;transform:translate(-50%,-50%);transition:opacity .3s ease;opacity:0;mix-blend-mode:multiply}
+.cursor-dot{position:fixed;top:0;left:0;width:5px;height:5px;border-radius:50%;background:#1c1a15;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:opacity .3s ease, background .2s ease;opacity:0}
+.cursor-ring{position:fixed;top:0;left:0;width:26px;height:26px;border-radius:50%;border:1px solid rgba(28,26,21,.7);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:opacity .3s ease, border-color .2s ease;opacity:0}
+body.glow-on{cursor:none}
+body.glow-on a, body.glow-on button{cursor:none}
+body.glow-on #glow, body.glow-on .cursor-dot, body.glow-on .cursor-ring{opacity:1}
+@media(max-width:900px){#glow,.cursor-dot,.cursor-ring{display:none}body.glow-on{cursor:auto}}
+body.glow-on:has(.link-row:hover) .cursor-dot,
+body.glow-on:has(.btn:hover) .cursor-dot,
+body.glow-on:has(.make-request:hover) .cursor-dot{background:#fff}
+body.glow-on:has(.link-row:hover) .cursor-ring,
+body.glow-on:has(.btn:hover) .cursor-ring,
+body.glow-on:has(.make-request:hover) .cursor-ring{border-color:rgba(255,255,255,.85)}
+body.glow-on:has(.link-row:hover) #glow,
+body.glow-on:has(.btn:hover) #glow,
+body.glow-on:has(.make-request:hover) #glow{opacity:0}
 </style><script>document.documentElement.classList.add("js")</script></head><body>
+<div id="glow"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 <header class="top"><div class="nav"><div class="brand"><a href="index.html" aria-label="AJN Studio home"><img src="images/final logo.png" alt="AJN Studio logo" width="237" height="96" onerror="var s=this.dataset.step|0; var f=['images/ajn-logo.jpg','images/ajn-logo.jpeg']; if(s<f.length){this.dataset.step=s+1; this.src=f[s];} else {this.onerror=null;}"></a></div>
 <nav class="links"><ul><li><a href="index.html">Home</a></li><li><a href="project.html">Projects</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
 <a href="contact.html" class="make-request">Contact us</a></div></header>
@@ -87,4 +108,69 @@ var last=performance.now();
 function frame(n){var dt=Math.min((n-last)/1000,.05);last=n;st.forEach(function(s){if(!s.half)return;s.x+=SPEED*dt;if(s.x>=0)s.x-=s.half;s.el.style.transform='translate3d('+s.x+'px,0,0)'});requestAnimationFrame(frame)}
 var rt;build();addEventListener('load',build);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(build);
 addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(build,200)});if(!reduce)requestAnimationFrame(frame)})();
-</script></body></html>
+</script>
+
+<!-- CURSOR SCRIPT -->
+<script>
+if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
+  document.body.classList.add('glow-on');
+  const glow = document.getElementById('glow');
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  let ringX = window.innerWidth/2, ringY = window.innerHeight/2;
+  let targetX = ringX, targetY = ringY;
+  let firstMove = true;
+  window.addEventListener('mousemove', (e)=>{
+    targetX = e.clientX; targetY = e.clientY;
+    if(firstMove){ ringX = targetX; ringY = targetY; firstMove = false; }
+    glow.style.left = targetX + 'px';
+    glow.style.top = targetY + 'px';
+    dot.style.left = targetX + 'px';
+    dot.style.top = targetY + 'px';
+  });
+  function animateRing(){
+    ringX += (targetX - ringX) * 0.22;
+    ringY += (targetY - ringY) * 0.22;
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+}
+</script>
+
+<!-- SMOOTH MOUSE-WHEEL SCROLL -->
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(!matchMedia('(pointer: fine)').matches) return;
+  let target = window.scrollY, current = target, running = false;
+  const EASE = 0.05;
+  const maxY = () => document.documentElement.scrollHeight - window.innerHeight;
+  function loop(){
+    current += (target - current) * EASE;
+    if(Math.abs(target - current) < 0.5){
+      current = target; running = false;
+      window.scrollTo(0, current);
+      return;
+    }
+    window.scrollTo(0, current);
+    requestAnimationFrame(loop);
+  }
+  function start(){
+    if(!running){ current = window.scrollY; running = true; requestAnimationFrame(loop); }
+  }
+  window.addEventListener('wheel', e => {
+    if(e.ctrlKey) return;
+    if(Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+    e.preventDefault();
+    let dy = e.deltaY;
+    if(e.deltaMode === 1) dy *= 32;
+    else if(e.deltaMode === 2) dy *= window.innerHeight;
+    target = Math.max(0, Math.min(maxY(), target + dy));
+    start();
+  }, {passive:false});
+  window.addEventListener('scroll', () => { if(!running){ target = current = window.scrollY; } });
+})();
+</script>
+</body></html>
