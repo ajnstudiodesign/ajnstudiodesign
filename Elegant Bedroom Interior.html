@@ -5,9 +5,9 @@
 <link rel="icon" type="image/jpeg" href="images/favicon.png">
 <link rel="apple-touch-icon" href="images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Poppins:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Poppins:wght@400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fff;--ink:#000;--mute:#444;--line:#00000014;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--bg:#fff;--ink:#000;--mute:#444;--line:#00000014;--brass:#A9895A;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box;margin:0}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 body{background:var(--bg);color:var(--ink);font:400 17px/1.7 Montserrat,Helvetica,Arial,sans-serif}
@@ -40,6 +40,13 @@ h1{font-weight:300;font-size:clamp(36px,6.5vw,76px);line-height:1.08;text-transf
 .gallery{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:0 10.5% 4px;align-items:start}
 .last{grid-column:1}
 
+/* ---------- CTA section ---------- */
+.cta-block{text-align:center;padding:110px 24px 90px;background:radial-gradient(ellipse 40% 45% at 50% 0%,rgba(0,0,0,0.06) 0%,rgba(0,0,0,0) 100%)}
+.cta-block h2{font-family:'Jost','Montserrat',sans-serif;font-weight:500;font-size:clamp(34px,5.2vw,70px);line-height:1.1;letter-spacing:.02em;text-transform:uppercase;color:var(--ink);margin:0}
+.cta-block p{font-family:'Jost','Montserrat',sans-serif;font-weight:300;font-size:clamp(14px,1.3vw,17px);letter-spacing:.03em;color:#6E6E6E;margin:26px auto 0;max-width:560px;line-height:1.6}
+.cta-block .cta-btn{display:inline-block;margin-top:40px;font-family:'Jost','Montserrat',sans-serif;font-weight:400;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);padding:18px 44px;border:1px solid var(--brass);text-decoration:none;transition:background .2s ease,color .2s ease,border-color .2s ease}
+.cta-block a.cta-btn:hover,.cta-block a.cta-btn:focus-visible{background:var(--ink);border-color:var(--ink);color:#fff}
+
 /* ---------- Social links section ---------- */
 .cta-section{border-top:1px solid var(--line);background:var(--bg)}
 .link-row{position:relative;display:block;height:73px;border-bottom:1px solid var(--line);overflow:hidden;text-decoration:none;color:inherit}
@@ -55,7 +62,7 @@ h1{font-weight:300;font-size:clamp(36px,6.5vw,76px);line-height:1.08;text-transf
 
 footer{padding:48px 24px;text-align:center;font-size:14px;color:var(--mute)}
 
-@media (max-width:600px){.nav{padding:16px}nav.links{display:none}.gallery{grid-template-columns:1fr;padding:0 16px 4px}.last{grid-column:1}.make-request{padding:10px 16px;font-size:13.5px}.brand img{height:40px}}
+@media (max-width:600px){.nav{padding:16px}nav.links{display:none}.gallery{grid-template-columns:1fr;padding:0 16px 4px}.last{grid-column:1}.make-request{padding:10px 16px;font-size:13.5px}.brand img{height:40px}.cta-block{padding:80px 24px 70px}}
 
 /* ===== CURSOR (same as index) ===== */
 #glow{
@@ -79,10 +86,13 @@ body.glow-on a, body.glow-on button{cursor:none;}
 body.glow-on #glow, body.glow-on .cursor-dot, body.glow-on .cursor-ring{opacity:1;}
 @media(max-width:900px){#glow,.cursor-dot,.cursor-ring{display:none;}body.glow-on{cursor:auto;}}
 
-/* black hover area (Instagram / Behance / Linkedin rows): cursor turns white */
-body.glow-on:has(.link-row:hover) .cursor-dot{background:#fff;}
-body.glow-on:has(.link-row:hover) .cursor-ring{border-color:rgba(255,255,255,.85);}
-body.glow-on:has(.link-row:hover) #glow{opacity:0;}
+/* black hover areas (social rows, CTA button): cursor turns white */
+body.glow-on:has(.link-row:hover) .cursor-dot,
+body.glow-on:has(.cta-btn:hover) .cursor-dot{background:#fff;}
+body.glow-on:has(.link-row:hover) .cursor-ring,
+body.glow-on:has(.cta-btn:hover) .cursor-ring{border-color:rgba(255,255,255,.85);}
+body.glow-on:has(.link-row:hover) #glow,
+body.glow-on:has(.cta-btn:hover) #glow{opacity:0;}
 </style></head><body>
 
 <div id="glow"></div>
@@ -117,6 +127,12 @@ body.glow-on:has(.link-row:hover) #glow{opacity:0;}
 <p>Warm neutral tones, soft textures and clean lines give this bedroom a calm and inviting character. The upholstered bed creates a simple focal point, complemented by the detailed wardrobe and integrated lighting. A dedicated study corner adds function to the room while maintaining the understated, contemporary feel of the overall interior.</p></section>
 <section class="gallery" aria-label="Gallery"><figure class=""><img src="images/bedroom-1.jpg" width="1400" height="1400" alt="Bedroom with upholstered bed and wardrobe" loading="lazy"></figure><figure class=""><img src="images/bedroom-2.jpg" width="1400" height="1400" alt="Bed and fluted wardrobe from an angle" loading="lazy"></figure><figure class=""><img src="images/bedroom-3.jpg" width="1400" height="1633" alt="Study corner with wooden desk and shelving" loading="lazy"></figure><figure class=""><img src="images/bedroom-4.jpg" width="1400" height="1633" alt="Bedside detail at the window, daylight" loading="lazy"></figure><figure class="last"><img src="images/bedroom-5.jpg" width="1400" height="1633" alt="Bedside detail at the window, evening" loading="lazy"></figure></section>
 </main>
+
+<section class="cta-block">
+  <h2>Let’s visualize<br>your next project.</h2>
+  <p>Have a project in mind? Let’s talk about your requirements, references and visual direction.</p>
+  <a class="cta-btn" href="mailto:ajnstudiodesign@gmail.com">Start a project</a>
+</section>
 
 <section class="cta-section">
   <nav aria-label="Social links">
