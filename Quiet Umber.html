@@ -6,9 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Jost:wght@300;400;500&family=Poppins:wght@400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fff;--fg:#161514;--mute:#5d5a56;--ink-soft:#6E6E6E;--ink:#000;--line:#00000014;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--bg:#fff;--fg:#161514;--mute:#5d5a56;--ink-soft:#6E6E6E;--ink:#171717;--rule:rgba(0,0,0,0.1);--line:#00000014;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:Montserrat,"Helvetica Neue",Arial,sans-serif}
+a{color:inherit;text-decoration:none}
 img{width:100%;height:auto;display:block}
 .hero img{height:auto}
 .meta{max-width:1200px;margin:0 auto;padding:26px 6vw 0;display:flex;flex-wrap:wrap;justify-content:center;gap:14px 22px;font:13px Inter,Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);text-align:center}
@@ -25,7 +26,8 @@ section.g{display:grid;gap:5px;max-width:1200px;margin:0 auto 5px;padding:0 24px
 .cta p{max-width:520px;margin:0 auto 32px;font-size:15px;font-weight:300;line-height:1.7;color:#8d8d94}
 .btn{display:inline-block;padding:10px 24px;color:#1c1b18;border:1px solid #a9783f;font:300 12px Jost,Arial,sans-serif;letter-spacing:.04em;text-decoration:none;transition:.3s}
 .btn:hover{background:#000;border-color:#000;color:#fff}
-footer{padding:70px 24px;text-align:center;font-size:12px;color:var(--mute)}
+
+/* header / nav */
 header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:60;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:14px 6vw;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);gap:20px}
 header.site .brand{justify-self:start;display:flex;align-items:center}
 header.site .brand a{display:block;line-height:0}
@@ -36,15 +38,26 @@ header.site nav.links a:hover,header.site nav.links a.current{color:var(--ink);b
 header.site .hdr-btn{justify-self:end;font-family:Montserrat,sans-serif;font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--ink);padding:11px 24px;border-radius:999px;white-space:nowrap;transition:background .2s,color .2s;color:inherit;text-decoration:none}
 header.site .hdr-btn:hover{background:var(--ink);color:#fff}
 @media(max-width:760px){header.site{grid-template-columns:auto 1fr auto}header.site nav.links{display:none}header.site .hdr-btn{padding:9px 16px;font-size:11px}}
-.cta-section{border-top:1px solid var(--line)}
-.link-row{position:relative;display:block;height:73px;border-bottom:1px solid var(--line);overflow:hidden;text-decoration:none;color:inherit}
-.static{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(24px,6vw,48px);font:clamp(18px,2.4vw,24px) Poppins,sans-serif;transition:opacity .25s}
-.arrow{transition:transform .3s}
-.marquee{position:absolute;inset:0;background:var(--ink);color:#fff;display:flex;align-items:center;overflow:hidden;opacity:0;transform:translateY(6%);transition:.3s;pointer-events:none}
-.marquee-track{display:flex;width:max-content;white-space:nowrap}
-.marquee-track span{font:clamp(18px,2.4vw,24px) Poppins,sans-serif;padding:0 1.75rem;display:flex;align-items:center;gap:1.75rem}
-.marquee-track span::after{content:'↗'}
-.link-row:hover .static{opacity:0}.link-row:hover .marquee{opacity:1;transform:none}
+
+/* footer */
+footer.site{background:#FFFFFF;color:var(--ink-soft)}
+
+/* social links section */
+.social-links{border-top:1px solid var(--rule)}
+.link-row{position:relative;display:block;height:4rem;border-bottom:1px solid var(--rule);overflow:hidden;text-decoration:none;color:inherit}
+.link-row .static{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 6vw;font-family:'Poppins',sans-serif;font-size:clamp(16px,2.2vw,21px);font-weight:400;color:var(--ink);transition:opacity .25s ease}
+.link-row .arrow{color:var(--ink);font-size:1.1rem;transition:transform .3s ease}
+.link-row .marquee{position:absolute;inset:0;background:var(--ink);color:#FFFFFF;display:flex;align-items:center;overflow:hidden;opacity:0;transform:translateY(6%);transition:opacity .25s ease,transform .3s ease;pointer-events:none}
+.marquee-track{display:flex;flex:none;white-space:nowrap;width:max-content;will-change:transform}
+.marquee-track span{flex-shrink:0;font-family:'Poppins',sans-serif;font-weight:400;font-size:clamp(16px,2.2vw,21px);padding:0 1.6rem;display:flex;align-items:center;gap:1.6rem}
+.marquee-track span::after{content:'↗';font-size:1rem}
+.link-row:hover .static,.link-row:focus-visible .static{opacity:0}
+.link-row:hover .arrow,.link-row:focus-visible .arrow{transform:translate(3px,-3px)}
+.link-row:hover .marquee,.link-row:focus-visible .marquee{opacity:1;transform:translateY(0)}
+
+.footer-bar{display:flex;justify-content:space-between;align-items:center;padding:22px 6vw 30px;font-size:13px;flex-wrap:wrap;gap:10px;border-top:1px solid var(--rule)}
+.footer-bar a:hover{color:var(--ink)}
+@media(max-width:640px){.link-row{height:3.5rem}}
 
 /* ===== CURSOR ===== */
 #glow{position:fixed;top:0;left:0;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle, rgba(28,26,21,.09) 0%, rgba(28,26,21,.04) 40%, rgba(28,26,21,0) 72%);pointer-events:none;z-index:60;transform:translate(-50%,-50%);transition:opacity .3s ease;opacity:0;mix-blend-mode:multiply}
@@ -81,18 +94,85 @@ body.glow-on:has(.hdr-btn:hover) #glow{opacity:0}
 <section class="g two"><img src="images/quiet-umber-7.jpg" alt="Quiet Umber dining counter"><img src="images/quiet-umber-8.jpg" alt="Quiet Umber table detail"></section>
 <section class="g two"><img src="images/quiet-umber-6.jpg" alt="Quiet Umber washbasin tap detail"><img src="images/quiet-umber-10.jpg" alt="Quiet Umber lamp detail"></section>
 <section class="g one"><img src="images/quiet-umber-4.jpg" alt="Quiet Umber kitchen island view"></section>
-<div class="cta"><h2>LET’S VISUALIZE<br>YOUR NEXT PROJECT.</h2><p>Have a project in mind? Let’s talk about your requirements, references and visual direction.</p><a class="btn" href="#">START A PROJECT</a></div>
-<section class="cta-section"><nav aria-label="Social links">
-<a class="link-row" href="https://www.instagram.com/ajnstudio.design/" target="_blank" rel="noopener"><div class="static"><span>Instagram</span><span class="arrow">↗</span></div><div class="marquee"><div class="marquee-track" data-m><span>Instagram</span></div></div></a>
-<a class="link-row" href="https://www.behance.net/ajnstudio" target="_blank" rel="noopener"><div class="static"><span>Behance</span><span class="arrow">↗</span></div><div class="marquee"><div class="marquee-track" data-m><span>Behance</span></div></div></a>
-<a class="link-row" href="https://www.linkedin.com/in/nejmal-v-k/" target="_blank" rel="noopener"><div class="static"><span>Linkedin</span><span class="arrow">↗</span></div><div class="marquee"><div class="marquee-track" data-m><span>Linkedin</span></div></div></a>
-</nav></section>
-<footer>© 2026 AJN Studio. All rights reserved.</footer>
+<div class="cta"><h2>LET’S VISUALIZE<br>YOUR NEXT PROJECT.</h2><p>Have a project in mind? Let’s talk about your requirements, references and visual direction.</p><a class="btn" href="mailto:ajnstudiodesign@gmail.com">START A PROJECT</a></div>
+
+<footer class="site">
+  <section class="social-links">
+    <nav aria-label="Social links">
+      <a class="link-row" href="https://www.instagram.com/ajnstudio.design/" target="_blank" rel="noopener">
+        <div class="static"><span>Instagram</span><span class="arrow">↗</span></div>
+        <div class="marquee"><div class="marquee-track" data-marquee>
+          <span>Instagram</span><span>Instagram</span><span>Instagram</span><span>Instagram</span>
+        </div></div>
+      </a>
+      <a class="link-row" href="https://www.behance.net/ajnstudio" target="_blank" rel="noopener">
+        <div class="static"><span>Behance</span><span class="arrow">↗</span></div>
+        <div class="marquee"><div class="marquee-track" data-marquee>
+          <span>Behance</span><span>Behance</span><span>Behance</span><span>Behance</span>
+        </div></div>
+      </a>
+      <a class="link-row" href="https://www.linkedin.com/in/nejmal-v-k/" target="_blank" rel="noopener">
+        <div class="static"><span>Linkedin</span><span class="arrow">↗</span></div>
+        <div class="marquee"><div class="marquee-track" data-marquee>
+          <span>Linkedin</span><span>Linkedin</span><span>Linkedin</span><span>Linkedin</span>
+        </div></div>
+      </a>
+    </nav>
+  </section>
+  <div class="footer-bar">
+    <span>© 2026 AJN Studio. All rights reserved.</span>
+    <a href="mailto:ajnstudiodesign@gmail.com">ajnstudiodesign@gmail.com</a>
+  </div>
+</footer>
+
 <script>
-(function(){var S=90,R=matchMedia('(prefers-reduced-motion: reduce)').matches,T=[].slice.call(document.querySelectorAll('[data-m]')).map(function(t){return{e:t,x:0,h:0,b:t.innerHTML}});
-function build(){T.forEach(function(s){var t=s.e;t.innerHTML=s.b;var g=0;while(t.scrollWidth<innerWidth*1.2&&g++<60)t.insertAdjacentHTML('beforeend',s.b);t.innerHTML+=t.innerHTML;s.h=t.scrollWidth/2;s.x=-s.h})}
-var l=performance.now();function f(n){var d=Math.min((n-l)/1e3,.05);l=n;T.forEach(function(s){if(!s.h)return;s.x+=S*d;if(s.x>=0)s.x-=s.h;s.e.style.transform='translate3d('+s.x+'px,0,0)'});requestAnimationFrame(f)}
-build();addEventListener('load',build);if(document.fonts)document.fonts.ready.then(build);var r;addEventListener('resize',function(){clearTimeout(r);r=setTimeout(build,200)});if(!R)requestAnimationFrame(f)})();
+(function(){
+  /* seamless infinite marquee, scrolls to the right, never ends */
+  var SPEED = 90; // pixels per second
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var tracks = Array.prototype.slice.call(document.querySelectorAll('[data-marquee]'));
+  var state = tracks.map(function(t){ return { el: t, x: 0, half: 0 }; });
+
+  function build(){
+    state.forEach(function(s){
+      var track = s.el;
+      if (!track.dataset.base) track.dataset.base = track.innerHTML;
+      track.innerHTML = track.dataset.base;
+      var guard = 0;
+      while (track.scrollWidth < window.innerWidth * 1.2 && guard < 60){
+        track.insertAdjacentHTML('beforeend', track.dataset.base);
+        guard++;
+      }
+      var half = track.innerHTML;
+      track.innerHTML = half + half;
+      s.half = track.scrollWidth / 2;
+      s.x = -s.half;
+    });
+  }
+
+  var last = performance.now();
+  function frame(now){
+    var dt = Math.min((now - last) / 1000, 0.05);
+    last = now;
+    state.forEach(function(s){
+      if (!s.half) return;
+      s.x += SPEED * dt;
+      if (s.x >= 0) s.x -= s.half;
+      s.el.style.transform = 'translate3d(' + s.x + 'px,0,0)';
+    });
+    requestAnimationFrame(frame);
+  }
+
+  var resizeTimer;
+  build();
+  window.addEventListener('load', build);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
+  window.addEventListener('resize', function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(build, 200);
+  });
+  if (!reduce) requestAnimationFrame(frame);
+})();
 </script>
 
 <!-- CURSOR SCRIPT -->
