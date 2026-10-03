@@ -17,7 +17,6 @@ header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;border-bo
 .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;max-width:1240px;margin:0 auto}
 .brand{display:flex;align-items:center;gap:12px}
 .brand a{display:block;line-height:0}
-/* Logo has a white background, so no brightness filter here */
 .brand img{height:40px;width:auto;display:block}
 nav.links ul{display:flex;align-items:center;gap:38px;list-style:none;padding:0}
 nav.links li{list-style:none}
@@ -37,8 +36,16 @@ img{display:block;width:100%;height:auto}
 .intro{max-width:920px;margin:0 auto;padding:72px 24px 88px;text-align:center}
 h1{font-weight:300;font-size:clamp(36px,6.5vw,76px);line-height:1.08;text-transform:uppercase;margin-bottom:56px}
 .intro p{color:var(--mute)}
-.gallery{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:0 10.5% 4px;align-items:start}
-.last{grid-column:1}
+
+/* ---------- Gallery ---------- */
+.gallery{display:grid;grid-template-columns:1fr;gap:6px;padding:0 16px 6px;align-items:start}
+
+/* PC view: row 1 = 3 portraits (bedroom-3,4,5), row 2 = 2 wide images (bedroom-1,2) */
+@media (min-width:601px){
+  .gallery{grid-template-columns:repeat(6,1fr);padding:0 9.5% 6px}
+  .gallery figure:nth-child(n+3){grid-column:span 2;order:1}
+  .gallery figure:nth-child(-n+2){grid-column:span 3;order:2}
+}
 
 /* ---------- CTA section ---------- */
 .cta-block{text-align:center;padding:110px 24px 90px;background:radial-gradient(ellipse 40% 45% at 50% 0%,rgba(0,0,0,0.06) 0%,rgba(0,0,0,0) 100%)}
@@ -62,7 +69,7 @@ h1{font-weight:300;font-size:clamp(36px,6.5vw,76px);line-height:1.08;text-transf
 
 footer{padding:48px 24px;text-align:center;font-size:14px;color:var(--mute)}
 
-@media (max-width:600px){.nav{padding:16px}nav.links{display:none}.gallery{grid-template-columns:1fr;padding:0 16px 4px}.last{grid-column:1}.make-request{padding:10px 16px;font-size:13.5px}.brand img{height:40px}.cta-block{padding:80px 24px 70px}}
+@media (max-width:600px){.nav{padding:16px}nav.links{display:none}.make-request{padding:10px 16px;font-size:13.5px}.brand img{height:40px}.cta-block{padding:80px 24px 70px}}
 
 /* ===== CURSOR (same as index) ===== */
 #glow{
@@ -86,7 +93,6 @@ body.glow-on a, body.glow-on button{cursor:none;}
 body.glow-on #glow, body.glow-on .cursor-dot, body.glow-on .cursor-ring{opacity:1;}
 @media(max-width:900px){#glow,.cursor-dot,.cursor-ring{display:none;}body.glow-on{cursor:auto;}}
 
-/* black hover areas (social rows, CTA button): cursor turns white */
 body.glow-on:has(.link-row:hover) .cursor-dot,
 body.glow-on:has(.cta-btn:hover) .cursor-dot{background:#fff;}
 body.glow-on:has(.link-row:hover) .cursor-ring,
@@ -103,7 +109,6 @@ body.glow-on:has(.cta-btn:hover) #glow{opacity:0;}
   <div class="nav">
     <div class="brand">
       <a href="index.html" aria-label="AJN Studio home">
-        <!-- Tries .png first; if not found, automatically falls back to .jpg / .jpeg -->
         <img src="images/final logo.png" alt="AJN Studio logo"
              onerror="var s=this.dataset.step|0; var f=['images/ajn-logo.jpg','images/ajn-logo.jpeg']; if(s<f.length){this.dataset.step=s+1; this.src=f[s];} else {this.onerror=null;}">
       </a>
@@ -125,7 +130,7 @@ body.glow-on:has(.cta-btn:hover) #glow{opacity:0;}
 <div class="meta"><span>Location: <b>Bangalore</b></span><span>Year: <b>2026</b></span><span>Visualization: <b>AJN Studio</b></span></div>
 <section class="intro"><h1>Elegant Bedroom Interior</h1>
 <p>Warm neutral tones, soft textures and clean lines give this bedroom a calm and inviting character. The upholstered bed creates a simple focal point, complemented by the detailed wardrobe and integrated lighting. A dedicated study corner adds function to the room while maintaining the understated, contemporary feel of the overall interior.</p></section>
-<section class="gallery" aria-label="Gallery"><figure class=""><img src="images/bedroom-1.jpg" width="1400" height="1400" alt="Bedroom with upholstered bed and wardrobe" loading="lazy"></figure><figure class=""><img src="images/bedroom-2.jpg" width="1400" height="1400" alt="Bed and fluted wardrobe from an angle" loading="lazy"></figure><figure class=""><img src="images/bedroom-3.jpg" width="1400" height="1633" alt="Study corner with wooden desk and shelving" loading="lazy"></figure><figure class=""><img src="images/bedroom-4.jpg" width="1400" height="1633" alt="Bedside detail at the window, daylight" loading="lazy"></figure><figure class="last"><img src="images/bedroom-5.jpg" width="1400" height="1633" alt="Bedside detail at the window, evening" loading="lazy"></figure></section>
+<section class="gallery" aria-label="Gallery"><figure><img src="images/bedroom-1.jpg" width="1400" height="1400" alt="Bedroom with upholstered bed and wardrobe" loading="lazy"></figure><figure><img src="images/bedroom-2.jpg" width="1400" height="1400" alt="Bed and fluted wardrobe from an angle" loading="lazy"></figure><figure><img src="images/bedroom-3.jpg" width="1400" height="1633" alt="Study corner with wooden desk and shelving" loading="lazy"></figure><figure><img src="images/bedroom-4.jpg" width="1400" height="1633" alt="Bedside detail at the window, daylight" loading="lazy"></figure><figure><img src="images/bedroom-5.jpg" width="1400" height="1633" alt="Bedside detail at the window, evening" loading="lazy"></figure></section>
 </main>
 
 <section class="cta-block">
@@ -189,7 +194,7 @@ body.glow-on:has(.cta-btn:hover) #glow{opacity:0;}
     last = now;
     state.forEach(function(s){
       if (!s.half) return;
-      s.x += SPEED * dt;           // scroll to the right
+      s.x += SPEED * dt;
       if (s.x >= 0) s.x -= s.half;
       s.el.style.transform = 'translate3d(' + s.x + 'px,0,0)';
     });
@@ -208,7 +213,6 @@ body.glow-on:has(.cta-btn:hover) #glow{opacity:0;}
 })();
 </script>
 
-<!-- CURSOR SCRIPT (same as index) -->
 <script>
 if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
   document.body.classList.add('glow-on');
@@ -237,15 +241,14 @@ if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
 }
 </script>
 
-<!-- SMOOTH MOUSE-WHEEL SCROLL (same as index) -->
 <script>
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if(!matchMedia('(pointer: fine)').matches) return; /* touch devices keep native scrolling */
+  if(!matchMedia('(pointer: fine)').matches) return;
 
   let target = window.scrollY, current = target, running = false;
-  const EASE = 0.05;  /* glide: lower = smoother/slower, higher = faster */
-  const WHEEL = 1;    /* scroll distance: 1 = normal, 1.5 to 2 = faster */
+  const EASE = 0.05;
+  const WHEEL = 1;
   const maxY = () => document.documentElement.scrollHeight - window.innerHeight;
 
   function loop(){
@@ -274,10 +277,8 @@ if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
     start();
   }, {passive:false});
 
-  /* keep in sync when the user drags the scrollbar or uses the keyboard */
   window.addEventListener('scroll', () => { if(!running){ target = current = window.scrollY; } });
 
-  /* #anchor links glide smoothly too */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const id = a.getAttribute('href');
