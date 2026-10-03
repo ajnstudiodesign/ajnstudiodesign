@@ -3,17 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>AJN Studio — Contact</title>
-<link rel="icon" type="image/jpeg" href="images/favicon.png">
+<title>Contact | AJN Studio</title>
+<meta name="description" content="Contact AJN Studio, an architectural visualization studio in Kerala. Send your drawings, references or brief and let's start building the visual.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://www.ajnstudiodesign.com/contact.html">
+<link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="apple-touch-icon" href="images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Baloo+2:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&family=Poppins:wght@400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&family=Poppins:wght@400&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#ffffff; --bg-soft:#f7f6f2; --panel:#ffffff; --line:#00000014;
     --ink:#14140f; --ink-dim:#6b6d64; --brass:#c69a5b; --brass-dim:#c69a5b55;
-    --head:'Space Grotesk','Baloo 2',sans-serif;
+    --head:'Space Grotesk',sans-serif;
     --pad: 48px;
+    --wrapmax:1240px;
+    --wm-size:clamp(34px,12.5vw,190px);
   }
   *{ box-sizing:border-box; }
   html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
@@ -24,7 +31,8 @@
     overflow-x:hidden; min-height:100vh; min-height:100dvh;
     display:flex; flex-direction:column;
   }
-  main{ flex:1 0 auto; }
+  /* main fills the screen: hero grows, social rows sit just above the footer */
+  main{ flex:1 0 auto; display:flex; flex-direction:column; }
   img{ max-width:100%; }
   a{ color:inherit; text-decoration:none; }
   button,input,select,textarea{ font-family:inherit; }
@@ -34,7 +42,7 @@
   }
 
   .wrap{
-    max-width:1240px; margin:0 auto;
+    max-width:var(--wrapmax); margin:0 auto;
     padding-left:max(var(--pad), env(safe-area-inset-left));
     padding-right:max(var(--pad), env(safe-area-inset-right));
   }
@@ -49,7 +57,8 @@
   }
   .nav{ display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px; gap:16px; }
   .brand{ display:flex; align-items:center; gap:12px; flex:none; }
-  .brand img{ height:42px; width:auto; display:block; filter:brightness(0); }
+  .brand img{ height:42px; width:auto; display:block; filter:brightness(0); transition:transform .4s ease; }
+  .brand:hover img{ transform:scale(1.05); }
 
   nav.links ul{
     display:flex; align-items:center; gap:clamp(20px,3vw,38px);
@@ -66,6 +75,8 @@
   }
   nav.links a:hover{ color:var(--ink); }
   nav.links a:hover::after{ width:100%; }
+  nav.links a[aria-current="page"]{ color:var(--ink); }
+  nav.links a[aria-current="page"]::after{ width:100%; }
 
   .nav-actions{ display:flex; align-items:center; gap:12px; flex:none; }
 
@@ -77,7 +88,6 @@
   }
   .make-request:hover{ background:var(--ink); color:var(--bg); }
 
-  /* hamburger (shown on tablet + mobile) */
   .nav-toggle{
     display:none; width:44px; height:44px; padding:0;
     border:1px solid var(--ink); border-radius:50%;
@@ -94,7 +104,7 @@
 
   /* ---------- HERO ---------- */
   .hero{
-    position:relative;
+    position:relative; flex:1 0 auto;
     padding:clamp(48px,8vw,96px) 0 clamp(56px,9vw,110px);
     overflow:hidden;
   }
@@ -132,16 +142,16 @@
   .watermark{
     position:absolute; left:0; right:0; top:clamp(48px,8vw,96px); z-index:1;
     display:flex; justify-content:space-between; align-items:flex-start; width:100%;
-    padding:0 clamp(8px,3vw,40px); pointer-events:none;
+    padding:0 max(var(--pad), calc((100% - var(--wrapmax))/2 + var(--pad))); pointer-events:none;
   }
   .watermark span{
-    font-family:var(--head); font-weight:400;
-    font-size:clamp(34px,12.5vw,190px);
+    font-family:var(--head); font-weight:500;
+    font-size:var(--wm-size);
     color:var(--ink); opacity:.05; line-height:.8;
   }
 
   /* ---------- LINK ROWS ---------- */
-  .cta-section{ border-top:1px solid var(--line); background:var(--bg); }
+  .cta-section{ border-top:1px solid var(--line); background:var(--bg); flex:none; }
   .link-row{
     position:relative; display:block; height:73px;
     border-bottom:1px solid var(--line); overflow:hidden;
@@ -149,7 +159,7 @@
   }
   .link-row .static{
     position:absolute; inset:0; display:flex; align-items:center; justify-content:space-between;
-    padding:0 max(clamp(20px,6vw,48px), env(safe-area-inset-left));
+    padding:0 max(var(--pad), env(safe-area-inset-left), calc((100% - var(--wrapmax))/2 + var(--pad)));
     font-family:'Poppins',sans-serif; font-size:clamp(18px,2.4vw,24px); font-weight:400;
     color:var(--ink); transition:opacity .25s ease;
   }
@@ -182,7 +192,7 @@
   }
 
   /* ---------- FOOTER ---------- */
-  footer{ padding:34px 0; padding-bottom:calc(34px + env(safe-area-inset-bottom)); border-top:1px solid var(--line); }
+  footer{ padding:34px 0; padding-bottom:calc(34px + env(safe-area-inset-bottom)); border-top:1px solid var(--line); flex:none; }
   footer .wrap{
     display:flex; justify-content:space-between; align-items:center;
     color:var(--ink-dim); font-size:13.5px; flex-wrap:wrap; gap:10px;
@@ -190,7 +200,7 @@
   footer a{ overflow-wrap:anywhere; }
   footer a:hover{ color:var(--ink); }
 
-  /* ---------- CURSOR ---------- */
+  /* ---------- CURSOR (desktop mouse only) ---------- */
   #glow{position:fixed;top:0;left:0;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle, rgba(28,26,21,.09) 0%, rgba(28,26,21,.04) 40%, rgba(28,26,21,0) 72%);pointer-events:none;z-index:60;transform:translate(-50%,-50%);transition:opacity .3s ease;opacity:0;mix-blend-mode:multiply}
   .cursor-dot{position:fixed;top:0;left:0;width:5px;height:5px;border-radius:50%;background:#1c1a15;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:opacity .3s ease, background .2s ease;opacity:0}
   .cursor-ring{position:fixed;top:0;left:0;width:26px;height:26px;border-radius:50%;border:1px solid rgba(28,26,21,.7);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:opacity .3s ease, border-color .2s ease;opacity:0}
@@ -198,7 +208,6 @@
   body.glow-on a, body.glow-on button{cursor:none}
   body.glow-on #glow, body.glow-on .cursor-dot, body.glow-on .cursor-ring{opacity:1}
   @media(max-width:900px){#glow,.cursor-dot,.cursor-ring{display:none}body.glow-on{cursor:auto}}
-  /* dark hover areas: social rows, buttons -> cursor turns white */
   body.glow-on:has(.link-row:hover) .cursor-dot,
   body.glow-on:has(.make-request:hover) .cursor-dot,
   body.glow-on:has(.hero-btn.outline:hover) .cursor-dot{background:#fff}
@@ -210,14 +219,22 @@
   body.glow-on:has(.hero-btn.outline:hover) #glow{opacity:0}
 
   /* ---------- RESPONSIVE ---------- */
+  @media (min-width:1600px) and (max-width:1999px){
+    :root{ --wrapmax:1400px; }
+    .link-row{ height:84px; }
+    .link-row .static,.marquee-track span{ font-size:27px; }
+  }
   @media (min-width:2000px){
-    .wrap{ max-width:1600px; }
+    :root{ --wrapmax:1600px; --wm-size:220px; }
+    .brand img{ height:52px; }
+    nav.links a{ font-size:15px; }
+    .make-request{ font-size:14px; padding:14px 32px; }
     .hero h1{ font-size:96px; }
     .hero p{ font-size:21px; max-width:640px; }
-    .watermark span{ font-size:220px; }
-  }
-  @media (min-width:1600px) and (max-width:1999px){
-    .wrap{ max-width:1400px; }
+    .hero-btn{ font-size:15px; padding:18px 34px; }
+    .link-row{ height:100px; }
+    .link-row .static,.marquee-track span{ font-size:32px; }
+    footer .wrap{ font-size:15px; }
   }
   @media (max-width:1100px){
     :root{ --pad:32px; }
@@ -273,9 +290,9 @@
 
 <header class="top">
   <div class="wrap nav">
-    <div class="brand">
+    <a href="index.html" class="brand" aria-label="AJN Studio home">
       <img src="images/icon-1.png" alt="AJN Studio logo">
-    </div>
+    </a>
     <nav class="links" id="siteNav" aria-label="Main">
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -285,7 +302,7 @@
       </ul>
     </nav>
     <div class="nav-actions">
-      <a href="mailto:ajnstudiodesign@gmail.com" class="make-request">Contact us</a>
+      <a href="mailto:ajnstudiodesign@gmail.com?subject=Start%20a%20Project" class="make-request">Start a Project</a>
       <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
         <span></span><span></span><span></span>
       </button>
@@ -306,11 +323,11 @@
 
       <div class="hero-actions">
         <a class="hero-btn whatsapp" href="https://wa.me/918891230958?text=Hi%20AJN%20Studio%2C%20I%27m%20interested%20in%20your%20architectural%20visualization%20services%20and%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.14h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.37c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.55-3.7 8.24-8.25 8.24Zm4.52-6.16c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.96-.15.16-.29.18-.53.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.24-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48c-.16 0-.43.06-.65.31-.23.24-.85.83-.85 2.03s.87 2.36.99 2.52c.12.16 1.71 2.6 4.14 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.46-.6 1.66-1.17.21-.58.21-1.08.15-1.18-.06-.1-.22-.16-.47-.28Z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.14h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.37c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.55-3.7 8.24-8.25 8.24Zm4.52-6.16c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.96-.15.16-.29.18-.53.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.24-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48c-.16 0-.43.06-.65.31-.23.24-.85.83-.85 2.03s.87 2.36.99 2.52c.12.16 1.71 2.6 4.14 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.46-.6 1.66-1.17.21-.58.21-1.08.15-1.18-.06-.1-.22-.16-.47-.28Z"/></svg>
           WhatsApp
         </a>
-        <a class="hero-btn outline" href="https://mail.google.com/mail/?view=cm&fs=1&to=ajnstudiodesign@gmail.com" target="_blank" rel="noopener">
-          Contact Us
+        <a class="hero-btn outline" href="mailto:ajnstudiodesign@gmail.com?subject=Start%20a%20Project">
+          Email Us
         </a>
       </div>
     </div>
@@ -321,15 +338,15 @@
   <nav class="link-rows" aria-label="Social links">
     <a class="link-row" href="https://www.instagram.com/ajnstudio.design/" target="_blank" rel="noopener">
       <div class="static"><span>Instagram</span><span class="arrow">↗</span></div>
-      <div class="marquee"><div class="marquee-track"><span>Instagram</span><span>Instagram</span><span>Instagram</span><span>Instagram</span></div></div>
+      <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>Instagram</span><span>Instagram</span><span>Instagram</span><span>Instagram</span></div></div>
     </a>
-    <a class="link-row" href="https://www.behance.net/ajnstudio" target="_blank" rel="noopener">
+    <a class="link-row" href="https://www.behance.net/ajmalarchviz" target="_blank" rel="noopener">
       <div class="static"><span>Behance</span><span class="arrow">↗</span></div>
-      <div class="marquee"><div class="marquee-track"><span>Behance</span><span>Behance</span><span>Behance</span><span>Behance</span></div></div>
+      <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>Behance</span><span>Behance</span><span>Behance</span><span>Behance</span></div></div>
     </a>
-    <a class="link-row" href="https://www.linkedin.com/in/nejmal-v-k/" target="_blank" rel="noopener">
-      <div class="static"><span>Linkedin</span><span class="arrow">↗</span></div>
-      <div class="marquee"><div class="marquee-track"><span>Linkedin</span><span>Linkedin</span><span>Linkedin</span><span>Linkedin</span></div></div>
+    <a class="link-row" href="https://www.linkedin.com/in/ajmal-v-k/" target="_blank" rel="noopener">
+      <div class="static"><span>LinkedIn</span><span class="arrow">↗</span></div>
+      <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>LinkedIn</span><span>LinkedIn</span><span>LinkedIn</span><span>LinkedIn</span></div></div>
     </a>
   </nav>
 </section>
@@ -410,10 +427,9 @@
   })();
 </script>
 
-<!-- CURSOR SCRIPT -->
+<!-- CURSOR SCRIPT: only desktop mouse, shown after the mouse first moves -->
 <script>
 if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
-  document.body.classList.add('glow-on');
   const glow = document.getElementById('glow');
   const dot = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');
@@ -422,7 +438,10 @@ if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
   let firstMove = true;
   window.addEventListener('mousemove', (e)=>{
     targetX = e.clientX; targetY = e.clientY;
-    if(firstMove){ ringX = targetX; ringY = targetY; firstMove = false; }
+    if(firstMove){
+      ringX = targetX; ringY = targetY; firstMove = false;
+      document.body.classList.add('glow-on');
+    }
     glow.style.left = targetX + 'px';
     glow.style.top = targetY + 'px';
     dot.style.left = targetX + 'px';
@@ -444,10 +463,9 @@ if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if(!matchMedia('(pointer: fine)').matches) return;
-  /* turns off CSS scroll-behavior:smooth so it doesn't fight the script */
   document.documentElement.classList.add('smooth-scroll');
   let target = window.scrollY, current = target, running = false;
-  const EASE = 0.05;
+  const EASE = 0.1;
   const maxY = () => document.documentElement.scrollHeight - window.innerHeight;
   function loop(){
     current += (target - current) * EASE;
@@ -472,7 +490,7 @@ if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
     target = Math.max(0, Math.min(maxY(), target + dy));
     start();
   }, {passive:false});
-  window.addEventListener('scroll', () => { if(!running){ target = current = window.scrollY; } });
+  window.addEventListener('scroll', () => { if(!running){ target = current = window.scrollY; } }, {passive:true});
 })();
 </script>
 
