@@ -42,12 +42,11 @@ a:focus-visible{outline:3px solid currentColor;outline-offset:3px}
 .link-row:hover .arrow{transform:translate(3px,-3px)}
 .link-row:hover .marquee,.link-row:focus-visible .marquee{opacity:1;transform:translateY(0)}
 @media(max-width:600px){.nav{padding:16px}nav.links{display:none}.make-request{padding:10px 16px;font-size:13.5px}}
-/* GALLERY: full screen width, 24px side space */
-.gal{max-width:none;margin:5px 0;padding:0 24px;display:grid;gap:5px}
+.gal{max-width:1200px;margin:5px auto;padding:0 24px;display:grid;gap:5px}
 .gal img{display:block;width:100%;height:auto}
 .gal .pair{display:flex;gap:5px}
 .gal .pair img{flex:var(--r) 1 0;min-width:0}
-.gal .full{width:100%;margin-left:0}
+.gal .full{width:100vw;margin-left:calc(50% - 50vw)}
 body{overflow-x:clip}
 @media(max-width:700px){.gal .pair{flex-direction:column}.gal .pair img{flex:none;width:100%}}
 .js .gal img{opacity:0;transform:translateY(36px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
