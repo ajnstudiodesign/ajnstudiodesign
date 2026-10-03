@@ -28,6 +28,8 @@ main section.two{grid-template-columns:1fr 1fr}
 main section.three{grid-template-columns:repeat(3,1fr)}
 main img{width:100%;height:auto;display:block}
 @media(max-width:700px){main section.two,main section.three{grid-template-columns:1fr !important}}
+/* kitchen row: both images forced to identical 4:5 height */
+main section.kitchen img{aspect-ratio:4/5;height:auto;object-fit:cover}
 
 /* ---------- progress bar ---------- */
 .progress{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:2px;width:0%;background:var(--brass);z-index:100;transition:width .08s linear}
@@ -122,7 +124,7 @@ body.glow-on:has(.hdr-btn:hover) #glow{opacity:0}
 <section class="two" style="grid-template-columns:0.8000fr 0.8063fr"><img src="images/timber_burgundy_4.jpg" alt="Lounge chairs and coffee table by the window" width="1920" height="2400" loading="lazy"><img src="images/timber_burgundy_5.jpg" alt="Timber wall panel with wall-mounted television" width="1935" height="2400" loading="lazy"></section>
 <section class="full"><img src="images/timber_burgundy_6.jpg" alt="Dining area with burgundy-framed timber shelving" width="2400" height="1800" loading="lazy"></section>
 <section class="two" style="grid-template-columns:0.8000fr 0.8000fr"><img src="images/timber_burgundy_7.jpg" alt="Round dining table with leather chairs" width="1920" height="2400" loading="lazy"><img src="images/timber_burgundy_8.jpg" alt="Dining table detail with pendant lights" width="1920" height="2400" loading="lazy"></section>
-<section class="two" style="grid-template-columns:0.8000fr 0.8000fr"><img src="images/timber_burgundy_9.jpg" alt="Kitchen with marble island and timber cabinetry" width="1920" height="2400" loading="lazy"><img src="images/timber_burgundy_10.jpg" alt="Marble kitchen island and sculptural pendant" width="1920" height="2400" loading="lazy"></section>
+<section class="two kitchen" style="grid-template-columns:0.8000fr 0.8000fr"><img src="images/timber_burgundy_9.jpg" alt="Kitchen with marble island and timber cabinetry" width="1920" height="2400" loading="lazy"><img src="images/timber_burgundy_10.jpg" alt="Marble kitchen island and sculptural pendant" width="1920" height="2400" loading="lazy"></section>
 <section class="two" style="grid-template-columns:0.8000fr 0.8000fr"><img src="images/timber_burgundy_20.jpg" alt="Bedroom with upholstered headboard and green bedding" width="1920" height="2400" loading="lazy"><img src="images/timber_burgundy_21.jpg" alt="Bedroom seen from the window side" width="1920" height="2400" loading="lazy"></section>
 <section class="two" style="grid-template-columns:0.8000fr 0.8000fr"><img src="images/timber_burgundy_22.jpg" alt="Bedside table detail with candles" width="1920" height="2400" loading="lazy"><img src="images/timber_burgundy_25.jpg" alt="Bedroom wall with television and floor lamp" width="1920" height="2400" loading="lazy"></section>
 <section class="two" style="grid-template-columns:0.8000fr 0.8000fr"><img src="images/timber_burgundy_23.jpg" alt="Wardrobe with burl timber and burgundy shelving" width="1920" height="2400" loading="lazy"><img src="images/timber_burgundy_24.jpg" alt="Wardrobe front view with warm lighting" width="1920" height="2400" loading="lazy"></section>
