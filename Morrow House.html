@@ -224,7 +224,12 @@
   /* PC view: description and gallery share the same side margins (9.5%), 6px gaps */
   @media (min-width: 701px) {
     .title-wrap { max-width: none; padding: 110px 9.5% 110px; }
-    .split-row { width: auto; max-width: none; margin: 0 9.5% 6px; gap: 6px; }
+    .split-row { display: flex; width: auto; max-width: none; margin: 0 9.5% 6px; gap: 6px; align-items: flex-start; }
+    .split-row .cell { flex: 1 1 0; min-width: 0; }
+    .split-row .cell.sq { flex-grow: 1; }       /* square: ratio 1 */
+    .split-row .cell.pt { flex-grow: 0.707; }   /* portrait: ratio 1800/2546 */
+    .split-row.single { justify-content: center; }
+    .split-row.single .cell { flex: 0 0 calc((100% - 12px) / 2.414); } /* same width as the square above */
     footer.site { margin-top: 60px; }
   }
 
@@ -430,12 +435,12 @@
 </div>
 
 <div class="split-row">
-  <div class="cell"><img src="images/morrow-house-02-living.jpg" width="2000" height="2000" loading="lazy" alt="Living room with corner sofa, walnut wall and full-height window"></div>
-  <div class="cell"><img src="images/morrow-house-03-sideboard.jpg" width="2000" height="2000" loading="lazy" alt="Walnut sideboard against a bronze mirror wall"></div>
+  <div class="cell pt"><img src="images/morrow-house-04-dining.jpg" width="1800" height="2546" loading="lazy" alt="Dining area with sculptural chairs and brass pedestal table"></div>
+  <div class="cell pt"><img src="images/morrow-house-05-entry.jpg" width="1800" height="2546" loading="lazy" alt="Entry bench with textured wall and shoe storage"></div>
 </div>
 <div class="split-row">
-  <div class="cell"><img src="images/morrow-house-04-dining.jpg" width="1800" height="2546" loading="lazy" alt="Dining area with sculptural chairs and brass pedestal table"></div>
-  <div class="cell"><img src="images/morrow-house-05-entry.jpg" width="1800" height="2546" loading="lazy" alt="Entry bench with textured wall and shoe storage"></div>
+  <div class="cell sq"><img src="images/morrow-house-02-living.jpg" width="2000" height="2000" loading="lazy" alt="Living room with corner sofa, walnut wall and full-height window"></div>
+  <div class="cell sq"><img src="images/morrow-house-03-sideboard.jpg" width="2000" height="2000" loading="lazy" alt="Walnut sideboard against a bronze mirror wall"></div>
 </div>
 
 <footer class="site">
