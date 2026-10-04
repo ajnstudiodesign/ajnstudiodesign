@@ -21,6 +21,15 @@ h1{font-weight:300;font-size:clamp(30px,4.4vw,52px);letter-spacing:.03em;margin:
 section.g{display:grid;gap:5px;max-width:1200px;margin:0 auto 5px;padding:0 24px;align-items:start}
 .one{grid-template-columns:1fr}.two{grid-template-columns:1fr 1fr}.three{grid-template-columns:repeat(3,1fr)}
 @media(max-width:700px){.two,.three{grid-template-columns:1fr}}
+
+/* PC view: gallery uses 9.5% side margins and 6px gap (same as the other project pages) and scales with screen width.
+   Image pairs sit side by side at the SAME height, no crop (widths follow each image's ratio, set by the script below). */
+@media(min-width:701px){
+  section.g{max-width:none;margin:0 9.5% 6px;padding:0;gap:6px}
+  section.g.two{display:flex;align-items:flex-start}
+  section.g.two img{flex:1 1 0;min-width:0}
+}
+
 .cta{text-align:center;padding:80px 24px 70px;font-family:Jost,Arial,sans-serif}
 .cta h2{font-weight:500;font-size:clamp(26px,3.6vw,44px);line-height:1.15;color:#1c1b18;margin:0 0 20px}
 .cta p{max-width:520px;margin:0 auto 32px;font-size:15px;font-weight:300;line-height:1.7;color:#8d8d94}
@@ -67,7 +76,6 @@ body.glow-on{cursor:none}
 body.glow-on a, body.glow-on button{cursor:none}
 body.glow-on #glow, body.glow-on .cursor-dot, body.glow-on .cursor-ring{opacity:1}
 @media(max-width:900px){#glow,.cursor-dot,.cursor-ring{display:none}body.glow-on{cursor:auto}}
-/* dark hover areas: social rows, buttons -> cursor turns white */
 body.glow-on:has(.link-row:hover) .cursor-dot,
 body.glow-on:has(.btn:hover) .cursor-dot,
 body.glow-on:has(.hdr-btn:hover) .cursor-dot{background:#fff}
@@ -126,9 +134,24 @@ body.glow-on:has(.hdr-btn:hover) #glow{opacity:0}
 </footer>
 
 <script>
+/* PC view: make image pairs equal height without cropping.
+   Each image gets flex-grow = its own width/height ratio. */
 (function(){
-  /* seamless infinite marquee, scrolls to the right, never ends */
-  var SPEED = 90; // pixels per second
+  function setRatio(img){
+    if(img.naturalWidth && img.naturalHeight){
+      img.style.flexGrow = (img.naturalWidth / img.naturalHeight).toFixed(4);
+    }
+  }
+  document.querySelectorAll('section.g.two img').forEach(function(img){
+    if(img.complete) setRatio(img);
+    else img.addEventListener('load', function(){ setRatio(img); });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var SPEED = 90;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var tracks = Array.prototype.slice.call(document.querySelectorAll('[data-marquee]'));
   var state = tracks.map(function(t){ return { el: t, x: 0, half: 0 }; });
@@ -175,7 +198,6 @@ body.glow-on:has(.hdr-btn:hover) #glow{opacity:0}
 })();
 </script>
 
-<!-- CURSOR SCRIPT -->
 <script>
 if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
   document.body.classList.add('glow-on');
@@ -204,7 +226,6 @@ if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
 }
 </script>
 
-<!-- SMOOTH MOUSE-WHEEL SCROLL -->
 <script>
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
