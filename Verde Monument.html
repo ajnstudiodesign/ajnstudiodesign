@@ -46,7 +46,7 @@ a:focus-visible{outline:3px solid currentColor;outline-offset:3px}
 .link-row:hover .marquee,.link-row:focus-visible .marquee{opacity:1;transform:translateY(0)}
 @media(max-width:640px){.link-row{height:3.5rem}}
 @media(max-width:600px){.nav{padding:16px}nav.links{display:none}.make-request{padding:10px 16px;font-size:13.5px}}
-/* GALLERY: not full screen, 24px side space */
+/* GALLERY */
 .gal{max-width:1200px;margin:5px auto;padding:0 24px;display:grid;gap:5px}
 .gal img{display:block;width:100%;height:auto}
 .gal .pair{display:flex;gap:5px}
@@ -54,6 +54,14 @@ a:focus-visible{outline:3px solid currentColor;outline-offset:3px}
 .gal .full{width:100%;margin-left:0}
 body{overflow-x:clip}
 @media(max-width:700px){.gal .pair{flex-direction:column}.gal .pair img{flex:none;width:100%}}
+
+/* PC view: gallery uses 9.5% side margins and 6px gap (same as the other project pages) and scales with screen width.
+   Pairs already get their widths from each image's ratio (--r), so they stay the same height with no crop. */
+@media(min-width:701px){
+  .gal{max-width:none;margin:6px 9.5%;padding:0;gap:6px}
+  .gal .pair{gap:6px}
+}
+
 .js .gal img{opacity:0;transform:translateY(36px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
 .js .gal img.in{opacity:1;transform:none}
 .js .gal .pair img:nth-child(2){transition-delay:.12s}
@@ -120,7 +128,6 @@ var rt;build();addEventListener('load',build);if(document.fonts&&document.fonts.
 addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(build,200)});if(!reduce)requestAnimationFrame(frame)})();
 </script>
 
-<!-- CURSOR SCRIPT -->
 <script>
 if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
   document.body.classList.add('glow-on');
@@ -149,7 +156,6 @@ if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
 }
 </script>
 
-<!-- SMOOTH MOUSE-WHEEL SCROLL -->
 <script>
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
