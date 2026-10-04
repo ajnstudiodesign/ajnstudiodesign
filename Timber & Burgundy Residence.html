@@ -32,6 +32,12 @@ main img{width:100%;height:auto;display:block}
 /* kitchen row: both images forced to identical 4:5 height */
 main section.kitchen img{aspect-ratio:4/5;height:auto;object-fit:cover}
 
+/* PC view: gallery uses 9.5% side margins and 6px gap (same as the other project pages) and scales with screen width.
+   Rows keep their ratio-based columns (inline), so images in a row stay the same height with no crop. */
+@media(min-width:701px){
+  main section{max-width:none;margin:0 9.5% 6px;padding:0;gap:6px}
+}
+
 /* ---------- progress bar ---------- */
 .progress{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:2px;width:0%;background:var(--brass);z-index:100;transition:width .08s linear}
 
@@ -227,7 +233,6 @@ body.glow-on:has(.hdr-btn:hover) #glow{opacity:0}
 })();
 </script>
 
-<!-- CURSOR SCRIPT -->
 <script>
 if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
   document.body.classList.add('glow-on');
@@ -256,7 +261,6 @@ if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
 }
 </script>
 
-<!-- SMOOTH MOUSE-WHEEL SCROLL -->
 <script>
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
