@@ -21,7 +21,6 @@ img{width:100%;height:auto;object-fit:cover;display:block}
 .cta p{max-width:520px;margin:0 auto 32px;font-size:15px;font-weight:300;line-height:1.7;color:#8d8d94}
 .btn{display:inline-block;padding:10px 24px;background:transparent;color:#1c1b18;border:1px solid #a9783f;font:300 12px Jost,Arial,sans-serif;letter-spacing:.04em;text-decoration:none;transition:background .3s,color .3s,border-color .3s}
 .btn:hover,.btn:focus-visible{background:#000;border-color:#000;color:#fff}
-footer{padding:70px 24px;text-align:center;font-size:12px;color:var(--mute)}
 @media(max-width:700px){.two,.three{grid-template-columns:1fr}}
 
 /* ---------- Header (AJN Studio) ---------- */
@@ -41,19 +40,26 @@ nav.links a:hover::after{width:100%}
 .make-request:hover{background:var(--ink);color:var(--bg)}
 a:focus-visible{outline:3px solid currentColor;outline-offset:3px}
 
-/* ---------- Social links section ---------- */
-.cta-section{display:block;max-width:none;margin:0;padding:0;border-top:1px solid var(--line);background:var(--bg)}
-.link-row{position:relative;display:block;height:73px;border-bottom:1px solid var(--line);overflow:hidden;text-decoration:none;color:inherit}
-.link-row .static{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(24px,6vw,48px);font-family:'Poppins',sans-serif;font-size:clamp(18px,2.4vw,24px);font-weight:400;color:var(--ink);transition:opacity .25s ease}
-.link-row .arrow{color:var(--ink);font-size:1.2rem;transition:transform .3s ease}
-.link-row .marquee{position:absolute;inset:0;background:var(--ink);color:var(--bg);display:flex;align-items:center;overflow:hidden;opacity:0;transform:translateY(6%);transition:opacity .25s ease,transform .3s ease;pointer-events:none}
+/* ---------- Social links section (same as Walnut Nocturne) ---------- */
+.cta-section{display:block;max-width:none;margin:0;padding:0;border-top:1px solid rgba(0,0,0,0.1);background:var(--bg)}
+.link-row{position:relative;display:block;height:4rem;border-bottom:1px solid rgba(0,0,0,0.1);overflow:hidden;text-decoration:none;color:inherit}
+.link-row .static{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 6vw;font-family:'Poppins',sans-serif;font-size:clamp(16px,2.2vw,21px);font-weight:400;color:var(--ink);transition:opacity .25s ease}
+.link-row .arrow{color:var(--ink);font-size:1.1rem;transition:transform .3s ease}
+.link-row .marquee{position:absolute;inset:0;background:var(--ink);color:#fff;display:flex;align-items:center;overflow:hidden;opacity:0;transform:translateY(6%);transition:opacity .25s ease,transform .3s ease;pointer-events:none}
 .marquee-track{display:flex;flex:none;width:max-content;white-space:nowrap;will-change:transform}
-.marquee-track span{flex:none;font-family:'Poppins',sans-serif;font-weight:400;font-size:clamp(18px,2.4vw,24px);padding:0 1.75rem;display:flex;align-items:center;gap:1.75rem}
-.marquee-track span::after{content:'↗';font-size:1.05rem}
+.marquee-track span{flex:none;font-family:'Poppins',sans-serif;font-weight:400;font-size:clamp(16px,2.2vw,21px);padding:0 1.6rem;display:flex;align-items:center;gap:1.6rem}
+.marquee-track span::after{content:'↗';font-size:1rem}
 .link-row:hover .static,.link-row:focus-visible .static{opacity:0}
 .link-row:hover .arrow,.link-row:focus-visible .arrow{transform:translate(3px,-3px)}
 .link-row:hover .marquee,.link-row:focus-visible .marquee{opacity:1;transform:translateY(0)}
+@media(max-width:640px){.link-row{height:3.5rem}}
 @media(max-width:600px){.nav{padding:16px}nav.links{display:none}.make-request{padding:10px 16px;font-size:13.5px}}
+
+/* ---------- Footer (same as Walnut Nocturne) ---------- */
+footer.site{background:#fff;color:#6E6E6E}
+.footer-bar{display:flex;justify-content:space-between;align-items:center;padding:22px 6vw 30px;font-size:13px;text-align:left;flex-wrap:wrap;gap:10px}
+.footer-bar a{text-decoration:none;color:#000}
+.footer-bar a:hover{color:#000}
 
 /* ===== CURSOR (same as Morrow House / index) ===== */
 #glow{
@@ -117,7 +123,7 @@ body.glow-on:has(.make-request:hover) #glow{opacity:0;}
   <img src="images/oak_marble_kitchen_1.jpg" alt="Oak Marble Kitchen view 1" loading="lazy">
   <img src="images/oak_marble_kitchen_2.jpg" alt="Oak Marble Kitchen view 2" loading="lazy">
 </section>
-<div class="cta"><h2>LET’S VISUALIZE<br>YOUR NEXT PROJECT.</h2><p>Have a project in mind? Let’s talk about your requirements, references and visual direction.</p><a class="btn" href="#">START A PROJECT</a></div>
+<div class="cta"><h2>LET’S VISUALIZE<br>YOUR NEXT PROJECT.</h2><p>Have a project in mind? Let’s talk about your requirements, references and visual direction.</p><a class="btn" href="mailto:ajnstudiodesign@gmail.com">START A PROJECT</a></div>
 <section class="cta-section">
   <nav aria-label="Social links">
     <a class="link-row" href="https://www.instagram.com/ajnstudio.design/" target="_blank" rel="noopener">
@@ -140,7 +146,12 @@ body.glow-on:has(.make-request:hover) #glow{opacity:0;}
     </a>
   </nav>
 </section>
-<footer>© 2026 AJN Studio. All rights reserved.</footer>
+<footer class="site">
+  <div class="footer-bar">
+    <span>© 2026 AJN Studio. All rights reserved.</span>
+    <a href="mailto:ajnstudiodesign@gmail.com">ajnstudiodesign@gmail.com</a>
+  </div>
+</footer>
 <script>
 (function(){
   var SPEED = 90;
