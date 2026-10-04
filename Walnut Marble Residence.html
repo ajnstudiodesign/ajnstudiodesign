@@ -15,21 +15,22 @@ a{color:inherit;text-decoration:none}
 .hero{height:100vh;height:100svh}
 .hero img{width:100%;height:100%;object-fit:cover;display:block}
 
-/* meta row (Location / Year / Visualization) - same style as Little Haven */
+/* meta row (Location / Year / Visualization) */
 .meta{max-width:1200px;margin:0 auto;padding:26px 6vw 0;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px 22px;font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);text-align:center}
 .meta b{color:var(--ink);font-weight:600;letter-spacing:.03em}
 @media(max-width:640px){.meta{font-size:11.5px;gap:10px 14px;padding-top:20px}}
 
 .intro{padding:100px 24px 90px;text-align:center}
 h1{font-weight:300;font-size:clamp(30px,4.4vw,52px);letter-spacing:.03em;margin:0 0 56px}
-.intro p{max-width:720px;margin:0 auto;font-size:13px;line-height:1.9;color:var(--mute);text-align:center}
+.intro h1{text-wrap:balance}
+.intro p{max-width:720px;margin:0 auto;font-size:13px;line-height:1.9;color:var(--mute);text-align:justify;text-align-last:center;text-wrap:pretty;hyphens:none}
 main section{display:grid;gap:5px;max-width:1200px;margin:0 auto 5px;padding:0 24px}
 main section.two{grid-template-columns:1fr 1fr}
 main section.three{grid-template-columns:repeat(3,1fr)}
 main img{width:100%;height:auto;display:block}
 @media(max-width:700px){main section.two,main section.three{grid-template-columns:1fr}}
 
-/* PC view: gallery uses 9.5% side margins and 6px gap (same as the other project pages) and scales with screen width.
+/* PC view: gallery uses 9.5% side margins and 6px gap and scales with screen width.
    Images in a row sit at the SAME height, no crop (widths follow each image's ratio, set by the script below). */
 @media(min-width:701px){
   main section{max-width:none;margin:0 9.5% 6px;padding:0;gap:6px}
@@ -119,7 +120,7 @@ body.glow-on:has(.hdr-btn:hover) #glow{opacity:0}
 </header>
 
 <div class="hero"><img src="images/Cam001_hero_3.jpg" alt="Walnut and Marble Residence"></div>
-<div class="meta"><span>Location: <b>United States</b></span><span>Year: <b>2026</b></span><span>Visualization: <b>AJN Studio</b></span></div>
+<div class="meta"><span>Location: <b>UNITED STATES</b></span><span>Year: <b>2026</b></span><span>Visualization: <b>AJN Studio</b></span></div>
 <div class="intro"><h1>WALNUT &amp; MARBLE RESIDENCE</h1><p>Rich walnut joinery forms the main character of this residence, balanced by expressive marble surfaces and soft, neutral furnishings. From the detailed kitchen and dining spaces to the quieter reading corner and living area, the interiors bring together classic detailing with a more contemporary sense of comfort. Carefully layered lighting, arched elements and herringbone flooring add depth throughout, giving the home a refined look without making it feel overly formal.</p></div>
 
 <main>
