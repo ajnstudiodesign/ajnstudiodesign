@@ -72,6 +72,15 @@
   .split-row.in-view .cell:nth-child(2) img { transition-delay: 0.12s; }
   @media (max-width: 700px) { .split-row { grid-template-columns: 1fr; width: 88%; } }
 
+  /* PC view: landscape + portrait side by side, same height, no crop. 9.5% side margins, 6px gap */
+  @media (min-width: 701px) {
+    .split-row { display: flex; width: auto; max-width: none; margin: 0 9.5% 6px; gap: 6px; align-items: flex-start; }
+    .split-row .cell { flex: 1 1 0; min-width: 0; }
+    .split-row .cell.ls { flex-grow: 1.333; }  /* landscape 6667x5000 */
+    .split-row .cell.pt { flex-grow: 0.707; }  /* portrait 5500x7780 */
+    footer.site { margin-top: 60px; }
+  }
+
   /* footer */
   footer.site { background: #FFFFFF; color: var(--ink-soft); }
   .social-links { display: block; border-top: 1px solid var(--rule); }
@@ -152,11 +161,9 @@
   <p>A warm contemporary residence shaped by soft neutral tones, natural wood, tactile textures and carefully balanced lighting. The visualization focuses on creating a calm, refined atmosphere while highlighting the materiality and character of each space.</p>
 </div>
 
-<div class="split-row" style="grid-template-columns:1fr;">
-  <div class="cell"><img src="images/olive-serenity-01-hero.jpg" width="6667" height="5000" loading="lazy" alt="Olive Serenity contemporary bedroom, wide view"></div>
-</div>
-<div class="split-row" style="grid-template-columns:1fr;">
-  <div class="cell"><img src="images/olive-serenity-02-gallery.jpg" width="5500" height="7780" loading="lazy" alt="Olive Serenity bedroom detail view"></div>
+<div class="split-row">
+  <div class="cell ls"><img src="images/olive-serenity-01-hero.jpg" width="6667" height="5000" loading="lazy" alt="Olive Serenity contemporary bedroom, wide view"></div>
+  <div class="cell pt"><img src="images/olive-serenity-02-gallery.jpg" width="5500" height="7780" loading="lazy" alt="Olive Serenity bedroom detail view"></div>
 </div>
 
 <footer class="site">
@@ -216,7 +223,6 @@
 })();
 </script>
 
-<!-- CURSOR SCRIPT -->
 <script>
 if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
   document.body.classList.add('glow-on');
@@ -245,7 +251,6 @@ if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
 }
 </script>
 
-<!-- SMOOTH MOUSE-WHEEL SCROLL -->
 <script>
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
