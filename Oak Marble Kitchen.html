@@ -23,6 +23,11 @@ img{width:100%;height:auto;object-fit:cover;display:block}
 .btn:hover,.btn:focus-visible{background:#000;border-color:#000;color:#fff}
 @media(max-width:700px){.two,.three{grid-template-columns:1fr}}
 
+/* PC view: gallery uses 9.5% side margins and 6px gap (same as the other project pages), scales with screen width */
+@media(min-width:701px){
+  section.gallery{max-width:none;margin:0 9.5% 6px;padding:0;gap:6px}
+}
+
 /* ---------- Header (AJN Studio) ---------- */
 :root{--ink:#000;--line:#00000014}
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;border-bottom:1px solid var(--line);background:color-mix(in srgb, var(--bg) 95%, transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
@@ -195,7 +200,6 @@ body.glow-on:has(.make-request:hover) #glow{opacity:0;}
 })();
 </script>
 
-<!-- CURSOR SCRIPT (same as Morrow House / index) -->
 <script>
 if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
   document.body.classList.add('glow-on');
@@ -226,14 +230,13 @@ if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
 }
 </script>
 
-<!-- SMOOTH MOUSE-WHEEL SCROLL (same as Morrow House / index) -->
 <script>
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if(!matchMedia('(pointer: fine)').matches) return; /* touch devices keep native scrolling */
+  if(!matchMedia('(pointer: fine)').matches) return;
 
   let target = window.scrollY, current = target, running = false;
-  const EASE = 0.05; /* lower = smoother/slower, higher = faster */
+  const EASE = 0.05;
   const maxY = () => document.documentElement.scrollHeight - window.innerHeight;
 
   function loop(){
@@ -261,7 +264,6 @@ if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
     start();
   }, {passive:false});
 
-  /* keep in sync when the user drags the scrollbar or uses the keyboard */
   window.addEventListener('scroll', () => { if(!running){ target = current = window.scrollY; } });
 })();
 </script>
