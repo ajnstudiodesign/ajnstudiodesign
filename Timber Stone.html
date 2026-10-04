@@ -21,23 +21,12 @@ a{color:inherit;text-decoration:none}
 .intro{padding:100px 24px 90px;text-align:center}
 h1{font-weight:300;font-size:clamp(30px,4.4vw,52px);letter-spacing:.03em;margin:0 0 56px}
 .intro p{max-width:720px;margin:0 auto;font-size:13px;line-height:1.9;color:var(--mute);text-align:center}
-/* GALLERY */
+/* GALLERY: not full screen, 24px side space */
 main section{display:grid;gap:5px;max-width:1200px;margin:0 auto 5px;padding:0 24px}
 main section.two{grid-template-columns:1fr 1fr}
 main section.three{grid-template-columns:repeat(3,1fr)}
 main img{width:100%;height:auto;display:block}
 @media(max-width:700px){main section.two,main section.three{grid-template-columns:1fr !important}}
-
-/* PC view (same spacing as the other project pages):
-   - hero is shown whole (no crop), centered, never taller than the screen
-   - gallery uses 9.5% side margins and 6px gap, scales with screen width
-   - the single square image is centered and capped so it also fits on one screen */
-@media(min-width:701px){
-  .hero{display:flex;justify-content:center}
-  .hero img{width:auto;max-width:100%;height:auto;max-height:calc(100vh - 68px);max-height:calc(100svh - 68px)}
-  main section{max-width:none;margin:0 9.5% 6px;padding:0;gap:6px}
-  main section.full{width:min(81%, calc(100vh - 80px));margin:0 auto 6px}
-}
 
 /* ---------- progress bar ---------- */
 .progress{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:2px;width:0%;background:var(--brass);z-index:100;transition:width .08s linear}
@@ -91,6 +80,7 @@ body.glow-on{cursor:none}
 body.glow-on a, body.glow-on button{cursor:none}
 body.glow-on #glow, body.glow-on .cursor-dot, body.glow-on .cursor-ring{opacity:1}
 @media(max-width:900px){#glow,.cursor-dot,.cursor-ring{display:none}body.glow-on{cursor:auto}}
+/* dark hover areas: social rows, buttons -> cursor turns white */
 body.glow-on:has(.link-row:hover) .cursor-dot,
 body.glow-on:has(.cta-btn:hover) .cursor-dot,
 body.glow-on:has(.hdr-btn:hover) .cursor-dot{background:#fff}
@@ -222,6 +212,7 @@ body.glow-on:has(.hdr-btn:hover) #glow{opacity:0}
 })();
 </script>
 
+<!-- CURSOR SCRIPT -->
 <script>
 if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
   document.body.classList.add('glow-on');
@@ -250,6 +241,7 @@ if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
 }
 </script>
 
+<!-- SMOOTH MOUSE-WHEEL SCROLL -->
 <script>
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
