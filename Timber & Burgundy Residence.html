@@ -1,12 +1,12 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Timber &amp; Burgundy Residence</title><link rel="icon" type="image/jpeg" href="images/favicon.png">
 <link rel="apple-touch-icon" href="images/favicon.png">
-<link rel="stylesheet" href="pc-fix.css">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#ffffff;--fg:#161514;--mute:#5d5a56;--cream:#FFFFFF;--ink:#171717;--ink-soft:#6E6E6E;--rule:rgba(0,0,0,0.1);--brass:#A9895A;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:Montserrat,"Helvetica Neue",Arial,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
@@ -15,7 +15,7 @@ a{color:inherit;text-decoration:none}
 .hero{height:100vh;height:100svh}
 .hero img{width:100%;height:100%;object-fit:cover;display:block}
 
-/* meta row (Location / Year / Visualization) - same style as Little Haven */
+/* meta row (Location / Year / Visualization) */
 .meta{max-width:1200px;margin:0 auto;padding:26px 6vw 0;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px 22px;font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);text-align:center}
 .meta b{color:var(--ink);font-weight:600;letter-spacing:.03em}
 @media(max-width:640px){.meta{font-size:11.5px;gap:10px 14px;padding-top:20px}}
@@ -23,6 +23,7 @@ a{color:inherit;text-decoration:none}
 .intro{padding:100px 24px 90px;text-align:center}
 h1{font-weight:300;font-size:clamp(30px,4.4vw,52px);letter-spacing:.03em;margin:0 0 56px}
 .intro p{max-width:720px;margin:0 auto;font-size:13px;line-height:1.9;color:var(--mute);text-align:center}
+.intro h1{text-wrap:balance}
 main section{display:grid;gap:5px;max-width:1200px;margin:0 auto 5px;padding:0 24px}
 main section.two{grid-template-columns:1fr 1fr}
 main section.three{grid-template-columns:repeat(3,1fr)}
@@ -38,7 +39,6 @@ main section.kitchen img{aspect-ratio:4/5;height:auto;object-fit:cover}
 header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:60;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:14px 6vw;background:rgba(255,255,255,0.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);gap:20px}
 header.site .brand{justify-self:start;display:flex;align-items:center}
 header.site .brand a{display:block;line-height:0}
-/* logo is already black on white, so no filter */
 header.site .brand img{height:40px;width:auto;display:block}
 header.site nav.links{display:flex;align-items:center;justify-self:center;gap:40px}
 header.site nav.links a{font-family:'Montserrat',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);padding-bottom:3px;border-bottom:1px solid transparent;transition:color .2s ease,border-color .2s ease;white-space:nowrap}
@@ -53,15 +53,12 @@ header.site .hdr-btn:hover{background:var(--ink);color:var(--cream)}
 
 /* ---------- footer ---------- */
 footer.site{background:#FFFFFF;color:var(--ink-soft)}
-
-/* CTA */
 footer.site .cta-section{display:block;max-width:none;margin:0;text-align:center;padding:110px 6vw 90px;background:radial-gradient(ellipse 40% 45% at 50% 0%,rgba(0,0,0,0.06) 0%,rgba(0,0,0,0) 100%)}
 .cta-section h2{font-family:'Jost','Inter',sans-serif;font-weight:500;font-size:clamp(34px,5.2vw,70px);line-height:1.1;letter-spacing:.02em;text-transform:uppercase;color:var(--ink);margin:0}
 .cta-section p{font-family:'Jost','Inter',sans-serif;font-weight:300;font-size:clamp(14px,1.3vw,17px);letter-spacing:.03em;color:var(--ink-soft);margin:26px auto 0;max-width:560px;line-height:1.6}
 .cta-section .cta-btn{display:inline-block;margin-top:40px;font-family:'Jost','Inter',sans-serif;font-weight:400;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);padding:18px 44px;border:1px solid var(--brass);transition:background .2s ease,color .2s ease}
 .cta-section a.cta-btn:hover,.cta-section a.cta-btn:focus,.cta-section a.cta-btn:active,.cta-section a.cta-btn:visited:hover{background:var(--ink);border-color:var(--ink);color:#fff}
 
-/* social links */
 footer.site .social-links{display:block;max-width:none;margin:0;padding:0;border-top:1px solid var(--rule)}
 .link-row{position:relative;display:block;height:4rem;border-bottom:1px solid var(--rule);overflow:hidden;color:inherit}
 .link-row .static{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 6vw;font-family:'Poppins',sans-serif;font-size:clamp(16px,2.2vw,21px);font-weight:400;color:var(--ink);transition:opacity .25s ease}
@@ -86,7 +83,6 @@ body.glow-on{cursor:none}
 body.glow-on a, body.glow-on button{cursor:none}
 body.glow-on #glow, body.glow-on .cursor-dot, body.glow-on .cursor-ring{opacity:1}
 @media(max-width:900px){#glow,.cursor-dot,.cursor-ring{display:none}body.glow-on{cursor:auto}}
-/* dark hover areas: social rows, buttons -> cursor turns white */
 body.glow-on:has(.link-row:hover) .cursor-dot,
 body.glow-on:has(.cta-btn:hover) .cursor-dot,
 body.glow-on:has(.hdr-btn:hover) .cursor-dot{background:#fff}
@@ -116,7 +112,7 @@ body.glow-on:has(.hdr-btn:hover) #glow{opacity:0}
 
 <div class="hero"><img src="images/hero-1 (3).jpg" alt="Timber and Burgundy Residence" width="2800" height="2100"></div>
 <div class="meta"><span>Location: <b>UNITED STATES</b></span><span>Year: <b>2026</b></span><span>Visualization: <b>AJN Studio</b></span></div>
-<div class="intro"><h1>TIMBER &amp; BURGUNDY RESIDENCE</h1><p>Warm timber, deep burgundy accents and natural textures define this residence. The living and dining areas feature custom timber detailing and soft natural light, while the kitchen adds a marble focal point. The bedroom and wardrobe continue the palette with timber, muted green tones and warm lighting. The home office provides integrated storage and a practical workspace, while the bathroom takes a quieter, more minimal approach. Throughout, each space maintains a cohesive material language while having its own character.</p></div>
+<div class="intro"><h1>TIMBER &amp; BURGUNDY RESIDENCE</h1><p>Warm timber, deep burgundy accents and natural textures define this residence. The living and dining areas feature custom timber detailing, while the kitchen adds a marble focal point. The bedroom, wardrobe and home office continue the palette with warm lighting and integrated storage, and the bathroom takes a quieter, more minimal approach.</p></div>
 
 <main>
 <section class="two" style="grid-template-columns:0.8000fr 0.8000fr"><img src="images/timber_burgundy_1.jpg" alt="Living area with modular sofa and timber coffee table" width="1920" height="2400" loading="lazy"><img src="images/timber_burgundy_2.jpg" alt="Living area toward the garden window" width="1920" height="2400" loading="lazy"></section>
