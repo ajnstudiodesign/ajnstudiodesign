@@ -63,7 +63,7 @@
   .meta b { color: var(--ink); font-weight: 600; letter-spacing: 0.03em; }
   @media (max-width: 640px) { .meta { font-size: 11.5px; gap: 10px 14px; padding-top: 20px; } }
 
-  /* title + description (same as Walnut Nocturne) */
+  /* title + description */
   .intro { padding: 100px 24px 90px; text-align: center; }
   h1 { font-weight: 300; font-size: clamp(30px, 4.4vw, 52px); letter-spacing: .03em; margin: 0 0 56px; }
   .intro h1 { text-wrap: balance; }
@@ -76,6 +76,16 @@
   .split-row.in-view .cell img { transform: translateY(0) scale(1); opacity: 1; }
   .split-row.in-view .cell:nth-child(2) img { transition-delay: 0.2s; }
   @media (max-width: 700px) { .split-row { grid-template-columns: 1fr; width: 88%; } }
+
+  /* PC view (same spacing as the other project pages):
+     - hero is square, so it is shown whole (no crop), centered, never taller than the screen
+     - gallery uses 9.5% side margins and 6px gap, scales with screen width */
+  @media (min-width: 701px) {
+    .hero { display: flex; justify-content: center; }
+    .hero img { width: auto; max-width: 100%; height: auto; max-height: calc(100vh - 68px); max-height: calc(100svh - 68px); }
+    .split-row { width: auto; max-width: none; margin: 0 9.5% 6px; gap: 6px; }
+    footer.site { margin-top: 60px; }
+  }
 
   /* footer */
   footer.site { background: #FFFFFF; color: var(--ink-soft); }
@@ -273,7 +283,6 @@
 })();
 </script>
 
-<!-- CURSOR SCRIPT -->
 <script>
 if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
   document.body.classList.add('glow-on');
@@ -302,7 +311,6 @@ if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
 }
 </script>
 
-<!-- SMOOTH MOUSE-WHEEL SCROLL -->
 <script>
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
