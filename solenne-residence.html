@@ -108,7 +108,7 @@
   .hero { height: auto; }
   .hero img { width: 100%; height: auto; object-fit: contain; aspect-ratio: auto; }
 
-  /* meta row (Location / Year / Visualization) - same style as Little Haven */
+  /* meta row (Location / Year / Visualization) */
   .meta {
     max-width: 1200px;
     margin: 0 auto;
@@ -149,6 +149,16 @@
   .two { grid-template-columns: 1fr 1fr; }
   .three { grid-template-columns: repeat(3, 1fr); }
   @media (max-width: 700px) { .two, .three { grid-template-columns: 1fr; } }
+
+  /* PC view (same spacing as the other project pages):
+     - gallery uses 9.5% side margins and 6px gap, scales with screen width
+     - the white border on images is removed on PC so the gap stays an even 6px
+     - the square video is centered and capped so it fits on one screen */
+  @media (min-width: 701px) {
+    section.gallery { max-width: none; margin: 0 9.5% 6px; padding: 0; gap: 6px; }
+    section.gallery img { border: 0; }
+    section.gallery.video { width: min(81%, calc(100vh - 80px)); margin: 0 auto 6px; }
+  }
 
   /* footer */
   footer.site { background: #FFFFFF; color: var(--ink-soft); margin-top: 40px; }
@@ -285,7 +295,6 @@
   body.glow-on a, body.glow-on button{cursor:none}
   body.glow-on #glow, body.glow-on .cursor-dot, body.glow-on .cursor-ring{opacity:1}
   @media(max-width:900px){#glow,.cursor-dot,.cursor-ring{display:none}body.glow-on{cursor:auto}}
-  /* dark hover areas: social rows, buttons -> cursor turns white */
   body.glow-on:has(.link-row:hover) .cursor-dot,
   body.glow-on:has(.cta-btn:hover) .cursor-dot,
   body.glow-on:has(.hdr-btn:hover) .cursor-dot{background:#fff}
@@ -323,7 +332,7 @@
 <section class="gallery full"><img src="images/quiet_luxury_warm_5.jpg" alt="Solenne Residence interior" style="aspect-ratio:16/9" loading="lazy"></section>
 <section class="gallery two"><img src="images/quiet_luxury_warm_6.jpg" alt="Solenne Residence interior" style="aspect-ratio:4/5" loading="lazy"><img src="images/quiet_luxury_warm_2.jpg" alt="Solenne Residence interior" style="aspect-ratio:4/5" loading="lazy"></section>
 
-<section class="gallery full"><video src="videos/master-bedroom (1).mp4" poster="images/master-bedroom (1).mp4" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block" autoplay muted loop playsinline preload="metadata"></video></section>
+<section class="gallery full video"><video src="videos/master-bedroom (1).mp4" poster="images/master-bedroom (1).mp4" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block" autoplay muted loop playsinline preload="metadata"></video></section>
 
 <footer class="site">
   <section class="cta-section">
@@ -432,7 +441,6 @@
 })();
 </script>
 
-<!-- CURSOR SCRIPT -->
 <script>
 if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
   document.body.classList.add('glow-on');
@@ -461,7 +469,6 @@ if(window.innerWidth > 900 && matchMedia('(pointer: fine)').matches){
 }
 </script>
 
-<!-- SMOOTH MOUSE-WHEEL SCROLL -->
 <script>
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
