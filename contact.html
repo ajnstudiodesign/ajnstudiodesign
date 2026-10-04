@@ -14,6 +14,7 @@
     --ink:#14140f; --ink-dim:#6b6d64; --brass:#c69a5b; --brass-dim:#c69a5b55;
     --head:'Space Grotesk','Baloo 2',sans-serif;
     --pad: 48px;
+    --wrapw: 1240px;
   }
   *{ box-sizing:border-box; }
   html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
@@ -34,7 +35,7 @@
   }
 
   .wrap{
-    max-width:1240px; margin:0 auto;
+    max-width:var(--wrapw); margin:0 auto;
     padding-left:max(var(--pad), env(safe-area-inset-left));
     padding-right:max(var(--pad), env(safe-area-inset-right));
   }
@@ -147,13 +148,15 @@
     border-bottom:1px solid var(--line); overflow:hidden;
     -webkit-tap-highlight-color:transparent;
   }
+  /* text edges line up exactly with the .wrap content (header, hero, footer) */
   .link-row .static{
     position:absolute; inset:0; display:flex; align-items:center; justify-content:space-between;
-    padding:0 max(clamp(20px,6vw,48px), env(safe-area-inset-left));
+    padding-left:max(calc(max(0px, (100% - var(--wrapw)) / 2) + var(--pad)), env(safe-area-inset-left));
+    padding-right:max(calc(max(0px, (100% - var(--wrapw)) / 2) + var(--pad)), env(safe-area-inset-right));
     font-family:'Poppins',sans-serif; font-size:clamp(18px,2.4vw,24px); font-weight:400;
     color:var(--ink); transition:opacity .25s ease;
   }
-  .link-row .arrow{ color:var(--ink); font-size:1.2rem; transition:transform .3s ease; }
+  .link-row .arrow{ color:var(--ink); font-size:1.2rem; line-height:1; transition:transform .3s ease; }
   .link-row .marquee{
     position:absolute; inset:0; background:var(--ink); color:var(--bg);
     display:flex; align-items:center; overflow:hidden;
@@ -211,13 +214,13 @@
 
   /* ---------- RESPONSIVE ---------- */
   @media (min-width:2000px){
-    .wrap{ max-width:1600px; }
+    :root{ --wrapw:1600px; }
     .hero h1{ font-size:96px; }
     .hero p{ font-size:21px; max-width:640px; }
     .watermark span{ font-size:220px; }
   }
   @media (min-width:1600px) and (max-width:1999px){
-    .wrap{ max-width:1400px; }
+    :root{ --wrapw:1400px; }
   }
   @media (max-width:1100px){
     :root{ --pad:32px; }
