@@ -27,7 +27,7 @@ h1{font-weight:300;font-size:clamp(30px,4.4vw,52px);letter-spacing:.03em;margin:
 main section{display:grid;gap:5px;max-width:1200px;margin:0 auto 5px;padding:0 24px}
 main section.two{grid-template-columns:1fr 1fr}
 main img{width:100%;height:auto;display:block}
-main video{width:100%;height:auto;display:block;background:#000}
+main video{display:block;width:100%;height:auto;aspect-ratio:1/1}
 @media(max-width:700px){main section.two{grid-template-columns:1fr}}
 
 /* PC view: gallery uses 9.5% side margins and 6px gap and scales with screen width.
@@ -35,7 +35,7 @@ main video{width:100%;height:auto;display:block;background:#000}
 @media(min-width:701px){
   main section{max-width:none;margin:0 9.5% 6px;padding:0;gap:6px}
   main section.two{display:flex;align-items:flex-start}
-  main section.two img{flex:1 1 0;min-width:0}
+  main section.two img,main section.two video{flex:1 1 0;min-width:0}
 }
 
 /* ---------- progress bar ---------- */
@@ -124,7 +124,7 @@ body.glow-on:has(.hdr-btn:hover) #glow{opacity:0}
 <div class="intro"><h1>WALNUT &amp; MARBLE RESIDENCE</h1><p>Rich walnut joinery forms the main character of this residence, balanced by expressive marble surfaces and soft, neutral furnishings. From the detailed kitchen and dining spaces to the quieter reading corner and living area, the interiors bring together classic detailing with a more contemporary sense of comfort. Carefully layered lighting, arched elements and herringbone flooring add depth throughout, giving the home a refined look without making it feel overly formal.</p></div>
 
 <main>
-<section class="full"><video src="videos/Walnut___Marble_Residence.mp4" poster="images/Cam001_hero_3.jpg" width="1920" height="1080" autoplay muted loop playsinline preload="auto" aria-label="Walnut and Marble Residence walkthrough"></video></section>
+<section class="two"><video src="images/Walnut___Marble_Residence.mp4" poster="images/walnut-video-poster.jpg" width="1080" height="1080" autoplay muted loop playsinline preload="auto" aria-label="Walnut and Marble Residence walkthrough"></video><img src="images/walnut___marble_3.jpg" alt="Walnut and Marble Residence interior" loading="lazy"></section>
 <section class="full"><img src="images/walnut___marble_4.jpg" alt="Walnut and Marble Residence interior" loading="lazy"></section>
 <section class="two"><img src="images/walnut___marble_5.jpg" alt="Walnut and Marble Residence interior" loading="lazy"><img src="images/walnut___marble_6.jpg" alt="Walnut and Marble Residence interior" loading="lazy"></section>
 <section class="two"><img src="images/walnut___marble_7.jpg" alt="Walnut and Marble Residence interior" loading="lazy"><img src="images/walnut___marble_2.jpg" alt="Walnut and Marble Residence interior" loading="lazy"></section>
@@ -177,6 +177,7 @@ body.glow-on:has(.hdr-btn:hover) #glow{opacity:0}
       img.style.flexGrow = (img.naturalWidth / img.naturalHeight).toFixed(4);
     }
   }
+  document.querySelectorAll('main section.two video').forEach(function(v){ v.style.flexGrow = '1'; });
   document.querySelectorAll('main section.two img').forEach(function(img){
     if(img.complete) setRatio(img);
     else img.addEventListener('load', function(){ setRatio(img); });
