@@ -26,15 +26,16 @@ h1{font-weight:300;font-size:clamp(30px,4.4vw,52px);letter-spacing:.03em;margin:
 .intro p{max-width:720px;margin:0 auto;font-size:13px;line-height:1.9;color:var(--mute);text-align:justify;text-align-last:center;text-wrap:pretty;hyphens:none}
 main section{display:grid;gap:5px;max-width:1200px;margin:0 auto 5px;padding:0 24px}
 main section.two{grid-template-columns:1fr 1fr}
-main img,main video{width:100%;height:auto;display:block}
+main img{width:100%;height:auto;display:block}
+main video{width:100%;height:auto;display:block;background:#000}
 @media(max-width:700px){main section.two{grid-template-columns:1fr}}
 
 /* PC view: gallery uses 9.5% side margins and 6px gap and scales with screen width.
-   Items in a row sit at the SAME height, no crop (widths follow each item's ratio, set by the script below). */
+   Images in a row sit at the SAME height, no crop (widths follow each image's ratio, set by the script below). */
 @media(min-width:701px){
   main section{max-width:none;margin:0 9.5% 6px;padding:0;gap:6px}
   main section.two{display:flex;align-items:flex-start}
-  main section.two img,main section.two video{flex:1 1 0;min-width:0}
+  main section.two img{flex:1 1 0;min-width:0}
 }
 
 /* ---------- progress bar ---------- */
@@ -123,10 +124,10 @@ body.glow-on:has(.hdr-btn:hover) #glow{opacity:0}
 <div class="intro"><h1>WALNUT &amp; MARBLE RESIDENCE</h1><p>Rich walnut joinery forms the main character of this residence, balanced by expressive marble surfaces and soft, neutral furnishings. From the detailed kitchen and dining spaces to the quieter reading corner and living area, the interiors bring together classic detailing with a more contemporary sense of comfort. Carefully layered lighting, arched elements and herringbone flooring add depth throughout, giving the home a refined look without making it feel overly formal.</p></div>
 
 <main>
-<section class="two"><img src="images/walnut___marble_2.jpg" alt="Walnut and Marble Residence interior" loading="lazy"><video src="videos/Walnut & Marble Residence.mp4" width="1920" height="1080" autoplay muted loop playsinline preload="auto" aria-label="Walnut and Marble Residence walkthrough"></video></section>
+<section class="full"><video src="images/Walnut___Marble_Residence.mp4" poster="images/Cam001_hero_3.jpg" width="1920" height="1080" autoplay muted loop playsinline preload="auto" aria-label="Walnut and Marble Residence walkthrough"></video></section>
 <section class="full"><img src="images/walnut___marble_4.jpg" alt="Walnut and Marble Residence interior" loading="lazy"></section>
 <section class="two"><img src="images/walnut___marble_5.jpg" alt="Walnut and Marble Residence interior" loading="lazy"><img src="images/walnut___marble_6.jpg" alt="Walnut and Marble Residence interior" loading="lazy"></section>
-<section class="two"><img src="images/walnut___marble_7.jpg" alt="Walnut and Marble Residence interior" loading="lazy"><img src="images/walnut___marble_3.jpg" alt="Walnut and Marble Residence interior" loading="lazy"></section>
+<section class="two"><img src="images/walnut___marble_7.jpg" alt="Walnut and Marble Residence interior" loading="lazy"><img src="images/walnut___marble_2.jpg" alt="Walnut and Marble Residence interior" loading="lazy"></section>
 <section class="full"><img src="images/walnut___marble_8.jpg" alt="Walnut and Marble Residence interior" loading="lazy"></section>
 <section class="two"><img src="images/walnut___marble_9.jpg" alt="Walnut and Marble Residence interior" loading="lazy"><img src="images/walnut___marble_10.jpg" alt="Walnut and Marble Residence interior" loading="lazy"></section>
 <section class="full"><img src="images/walnut___marble_11.jpg" alt="Walnut and Marble Residence interior" loading="lazy"></section>
@@ -168,22 +169,17 @@ body.glow-on:has(.hdr-btn:hover) #glow{opacity:0}
 </footer>
 
 <script>
-/* PC view: make items in a row the same height without cropping.
-   Each image/video gets flex-grow = its own width/height ratio. */
+/* PC view: make images in a row the same height without cropping.
+   Each image gets flex-grow = its own width/height ratio. */
 (function(){
-  function setRatio(el){
-    var w = el.naturalWidth || el.videoWidth, h = el.naturalHeight || el.videoHeight;
-    if(w && h) el.style.flexGrow = (w / h).toFixed(4);
-  }
-  document.querySelectorAll('main section.two img, main section.two video').forEach(function(el){
-    if(el.tagName === 'VIDEO'){
-      if(el.readyState >= 1) setRatio(el);
-      else el.addEventListener('loadedmetadata', function(){ setRatio(el); });
-      el.style.flexGrow = (1920/1080).toFixed(4);
-    } else {
-      if(el.complete) setRatio(el);
-      else el.addEventListener('load', function(){ setRatio(el); });
+  function setRatio(img){
+    if(img.naturalWidth && img.naturalHeight){
+      img.style.flexGrow = (img.naturalWidth / img.naturalHeight).toFixed(4);
     }
+  }
+  document.querySelectorAll('main section.two img').forEach(function(img){
+    if(img.complete) setRatio(img);
+    else img.addEventListener('load', function(){ setRatio(img); });
   });
 })();
 </script>
