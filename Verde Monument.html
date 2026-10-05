@@ -6,8 +6,8 @@
 :root{--bg:#ffffff;--fg:#161514;--mute:#5d5a56;--ink:#000;--line:#00000014;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:Montserrat,"Helvetica Neue",Arial,sans-serif}
-.hero{height:calc(100svh - 73px);background:#000;overflow:hidden}.hero img{height:100%;aspect-ratio:auto}
-.hero video{display:block;width:100%;height:100%;object-fit:cover}
+.hero{background:#000}
+.hero video{display:block;width:100%;height:auto;object-fit:contain}
 section{display:grid;gap:5px;max-width:1200px;margin:0 auto 5px;padding:0 24px}
 img{width:100%;height:auto;object-fit:cover;display:block}
 .intro{padding:100px 24px 90px;text-align:center}
@@ -92,7 +92,7 @@ body.glow-on:has(.make-request:hover) #glow{opacity:0}
 <header class="top"><div class="nav"><div class="brand"><a href="index.html" aria-label="AJN Studio home"><img src="images/final logo.png" alt="AJN Studio logo" width="237" height="96" onerror="var s=this.dataset.step|0; var f=['images/ajn-logo.jpg','images/ajn-logo.jpeg']; if(s<f.length){this.dataset.step=s+1; this.src=f[s];} else {this.onerror=null;}"></a></div>
 <nav class="links"><ul><li><a href="index.html">Home</a></li><li><a href="project.html">Projects</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
 <a href="contact.html" class="make-request">Contact us</a></div></header>
-<div class="hero"><video src="videos/intro-animation (1).mp4" poster="videos/intro-animation (1).mp4" width="1920" height="1080" autoplay muted loop playsinline preload="auto" aria-label="Verde Monument walkthrough animation"></video></div>
+<div class="hero"><video src="images/intro-animation.mp4" poster="images/verde-01-hero.jpg" width="1920" height="1080" autoplay muted loop playsinline preload="auto" aria-label="Verde Monument walkthrough animation"></video></div>
 <div class="meta" style="display:flex;justify-content:center;gap:24px;flex-wrap:wrap;text-align:center;font-size:13px;padding-top:24px"><span>Location: <b>BANGALORE</b></span><span>Year: <b>2026</b></span><span>Visualization: <b>AJN Studio</b></span></div>
 <div class="intro"><h1>VERDE MONUMENT</h1><p>Rich walnut surfaces, sculptural furniture and deep green stone give this residence a strong visual identity. The open living and dining spaces are tied together by a custom timber screen, while the marble-framed openings and layered lighting add depth throughout. Softer seating, natural textures and carefully placed artwork keep the bold materials balanced, creating a home that feels expressive without becoming overwhelming.</p></div>
 <div class="gal"><div class="single"><img src="images/verde-01-hero.jpg" alt="Verde Monument living room"></div>
