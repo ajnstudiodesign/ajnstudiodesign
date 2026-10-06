@@ -149,20 +149,19 @@
   }
 
   /* ---------- LINK ROWS ---------- */
-  .cta-section{ border-top:1px solid var(--line); background:var(--bg); }
+  .cta-section{ border-top:1px solid rgba(0,0,0,0.1); background:var(--bg); }
   .link-row{
-    position:relative; display:block; height:73px;
-    border-bottom:1px solid var(--line); overflow:hidden;
+    position:relative; display:block; height:4rem;
+    border-bottom:1px solid rgba(0,0,0,0.1); overflow:hidden;
     -webkit-tap-highlight-color:transparent;
   }
   .link-row .static{
     position:absolute; inset:0; display:flex; align-items:center; justify-content:space-between;
-    padding-left:max(clamp(20px,3vw,48px), env(safe-area-inset-left));
-    padding-right:max(clamp(20px,3vw,48px), env(safe-area-inset-right));
-    font-family:'Poppins',sans-serif; font-size:clamp(18px,2.4vw,24px); font-weight:400;
+    padding:0 6vw;
+    font-family:'Poppins',sans-serif; font-size:clamp(16px,2.2vw,21px); font-weight:400;
     color:var(--ink); transition:opacity .25s ease;
   }
-  .link-row .arrow{ color:var(--ink); font-size:1.2rem; line-height:1; transition:transform .3s ease; }
+  .link-row .arrow{ color:var(--ink); font-size:1.1rem; line-height:1; transition:transform .3s ease; }
   .link-row .marquee{
     position:absolute; inset:0; background:var(--ink); color:var(--bg);
     display:flex; align-items:center; overflow:hidden;
@@ -172,10 +171,10 @@
   .marquee-track{ display:flex; flex:none; width:max-content; white-space:nowrap; will-change:transform; }
   .marquee-track span{
     flex:none; font-family:'Poppins',sans-serif; font-weight:400;
-    font-size:clamp(18px,2.4vw,24px); padding:0 1.75rem;
-    display:flex; align-items:center; gap:1.75rem;
+    font-size:clamp(16px,2.2vw,21px); padding:0 1.6rem;
+    display:flex; align-items:center; gap:1.6rem;
   }
-  .marquee-track span::after{ content:'↗'; font-size:1.05rem; }
+  .marquee-track span::after{ content:'↗'; font-size:1rem; }
 
   .link-row:focus-visible .static{ opacity:0; }
   .link-row:focus-visible .arrow{ transform:translate(3px,-3px); }
@@ -259,7 +258,7 @@
     .hero h1{ margin-bottom:18px; }
     .hero-actions{ flex-direction:column; align-items:stretch; gap:12px; margin-top:28px; }
     .hero-btn{ justify-content:center; width:100%; }
-    .link-row{ height:64px; }
+    .link-row{ height:3.5rem; }
     footer .wrap{ flex-direction:column; text-align:center; }
   }
   @media (max-width:380px){
